@@ -1,7 +1,11 @@
+<!-- questo file rappresenta il layout di ogni view -->
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Recipely</title>
+    <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>    
+    <!-- esegue il blocco di yield e il risultato (il titolo) resta dentro al template -->
+    
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +13,6 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= yield %>   <!-- il contenuto della specifica view viene convertito in HTML e messo qui -->
   </body>
 </html>
