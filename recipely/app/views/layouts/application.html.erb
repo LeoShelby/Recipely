@@ -11,9 +11,32 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    
+    <!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"> </script>       #roba per avere HTML5 su vecchie versioni di browser
+	<![endif]-->
+    
+    
   </head>
-
-  <body>
-    <%= yield %>   <!-- il contenuto della specifica view viene convertito in HTML e messo qui -->
-  </body>
+	<body>
+		<header class="navbar navbar-fixed-top navbar-inverse">     <!-- classi che servono per Bootstrap --> 
+			<div class="container">
+				<%= link_to "sample app", '#', id: "logo" %>
+				<nav>
+					<ul class="nav navbar-nav pull-right">       <!-- classi che servono per Bootstrap --> 
+					<li><%= link_to "Home", '#' %></li>
+					<li><%= link_to "Help",	'#' %></li>
+					<li><%= link_to "Log in", '#' %></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div class="container">
+			<%= yield %>                  <!-- il contenuto della specifica view viene convertito in HTML e messo qui -->
+		</div>
+	</body>
 </html>
+
+
+<!-- nav, header, section sono tre tag nuovi di HTML5 --> 
