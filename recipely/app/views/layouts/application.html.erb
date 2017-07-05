@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>    
+    <title><%= full_title(yield(:title)) %></title>   
+    <!-- full_title è un metodo definito in helpers/application_helper -->   
     <!-- esegue il blocco di yield e il risultato (il titolo) resta dentro al template -->
     
     <%= csrf_meta_tags %>
