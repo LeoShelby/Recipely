@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   #help_url -> 'http://www.example.com/help
   #così è possibile ad esempio utilizzare "help_path" nei link delle view
   
-  get 'signup' => 'users#new'
+  #get 'signup' => 'users#new'
   
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
