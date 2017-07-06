@@ -18,6 +18,11 @@
     
   </head>
 	<body>
+	
+	   <p class="notice"><%= notice %></p>   <!-- due righe consigliate durante l'installazione di device -->
+       <p class="alert"><%= alert %></p>
+
+
 		 <%= render 'layouts/header' %>
 		<div class="container">
 			<%= yield %>                  <!-- il contenuto della specifica view viene convertito in HTML e messo qui -->

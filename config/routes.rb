@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup'}
+  
+  
   #root 'static_pages#home' #setta "home" come pagina iniziale
 
   #get 'static_pages/help'  #mappa le richieste per l’URL /static_pages/home alla home action nel StaticPages controller, la route deve rispondere a una GET request
