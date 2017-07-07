@@ -14,7 +14,9 @@ class User < ApplicationRecord
 	
 	
 	has_secure_password  #metodo rails che aggiunge molte funzioni per gestire le psw, vedi pag 311
-	validates :password, length: { minimum: 6 }
+	validates :password, length: { minimum: 6 }, allow_blank: true 
+	#OSS allow_blank permette agli utenti di non dover per forza riscrivere la password nella form della modifica delle proprie informazioni di profilo
+	#nota inoltre che ciò non permette agli utenti di registarsi senza una password, poichè has_secure_password fa comunque quel controllo a prescindere!
 	
 	# Returns the hash digest of the given string.   
 	def User.digest(string)

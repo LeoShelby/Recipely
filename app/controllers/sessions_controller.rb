@@ -8,7 +8,9 @@ class SessionsController < ApplicationController
 	if user && user.authenticate(params[:session][:password])    #authenticate è un metodo fornito da "has_secure_password"
 		log_in user   #metodo di session_helper
 		params[:session][:remember_me] == '1' ? remember(user) : forget(user)  #se l'utente ha spuntato "ricordami" chiamo il metodo remember sull'utente
-		redirect_to user
+		redirect_back_or user  
+		#metodo definito in sessions_helper, reindirizza l'utente o sul default (ossia "user", la sua pagina utente) o sulla pagina 
+		#che aveva tentato di accedere prima che fosse loggato e che quindi avesse il permesso per accedervi
 	else
 		flash.now[:danger] = 'Invalid email/password combination' 
 		render 'new'

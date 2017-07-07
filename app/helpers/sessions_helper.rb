@@ -55,4 +55,24 @@ module SessionsHelper
 		cookies.delete(:user_id)  # poi tramite cookies levo tutto
 		cookies.delete(:remember_token)
 	end
+	
+	
+	# Returns true if the given user is the current user.
+	def current_user?(user)
+		user == current_user
+	end
+	
+	
+	# Salvo l'URL a cui l'utente non autorizzato stava cercando di accedere salvandolo nella chiave :forwarding_url di session
+	def store_location
+		session[:forwarding_url] = request.url if request.get?  #if request.get? serve a evitare che si generino errori, poichè questo metodo può gestire solo richieste GET
+	end
+	
+	# Redirect verso l'URL che avevo salvato oppure verso il default
+	def redirect_back_or(default)
+		redirect_to(session[:forwarding_url] || default)
+		session.delete(:forwarding_url)   #rimuovo l'URL che mi ero salvato
+	end
+	
+
 end
