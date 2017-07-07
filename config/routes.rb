@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   get 'users/new'
 
   #root 'static_pages#home' #setta "home" come pagina iniziale
@@ -23,6 +25,9 @@ Rails.application.routes.draw do
   
   resources :users  #ottengo tutte le azioni REST per gli users
   
+  get 'login' => 'sessions#new'       # azioni per login e logout
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

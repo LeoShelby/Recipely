@@ -1,0 +1,25 @@
+<% provide(:title, "Log in") %>
+<h1>Log in</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(:session, url: login_path) do |f| %>  <!-- non c'è alcun Session model, quindi devo indicare a Rails sia il nome della risorsa (session) sia l'url -->
+			<%= f.label :email %>
+			<%= f.email_field :email, class: 'form-control' %>
+			<%= f.label :password %>
+			<%= f.password_field :password, class: 'form-control' %>
+			
+			<%= f.label :remember_me, class: "checkbox inline" do %>   <!-- checkbox per il "ricordami" -->
+				<%= f.check_box :remember_me %>
+				<span>Ricordami</span>
+			<% end %>
+			
+			<%= f.submit "Log in", class: "btn btn-primary" %>
+		<% end %>
+		<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+	</div>
+</div>
+
+
+
+<!-- OSS. l’invio di questo form darà come risultato un params hash in cui 
+     params[:session][:email] e params[:session][:password] corrispondono ai campi e-mail e password. -->
