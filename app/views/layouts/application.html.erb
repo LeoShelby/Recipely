@@ -18,6 +18,12 @@
     
   </head>
 	<body>
+		 
+		<% flash.each do |message_type, message| %>    <!-- i contenuti flash vengono mostrati in tutto il sito, message_type ritorna il tipo di messaggio (es. :success) -->
+			<div class="alert alert-<%= message_type %>"><%= message %></div>
+		<% end %>
+		
+		
 		 <%= render 'layouts/header' %>
 		<div class="container">
 			<%= yield %>                  <!-- il contenuto della specifica view viene convertito in HTML e messo qui -->
