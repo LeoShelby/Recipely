@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token  #serve di creare un attributo virtuale, ossia che non stia sul database, per salvare il remember token non criptato
+	attr_accessor :remember_token, :activation_token #serve di creare un attributo virtuale, ossia che non stia sul database, per salvare il remember token non criptato
 	#OSS è come prima con la passwors, solo che has_secure_password creava già da solo l'attributo virtuale "password", qui devo crearlo io per il token!
 
-	before_save { self.email = email.downcase }   #prima di salvare l'utente, converto l'email in lowercase
+	before_save :downcase_email   #prima di salvare l'utente, converto l'email in lowercase
+	before_create :create_activation_digest
 	
 	validates :name, presence: true, length: { maximum: 50 }
 	
@@ -37,10 +38,17 @@ class User < ApplicationRecord
 	end
 	
 	# Returns true if the given token matches the digest.
-	def authenticated?(remember_token) 
+	#def authenticated?(remember_token) 
 		#soluzione al bug comune che accade se si accede con lo stesso profilo su browser diversi insieme e poi si fa il logout solo da uno dei due browser tipo...
-		return false if remember_digest.nil?  
-		BCrypt::Password.new(remember_digest).is_password?(remember_token)  #con BRcrypt posso verificare che il remember_digest (criptato) corrisponda al remember_token
+	#	return false if remember_digest.nil?  
+	#	BCrypt::Password.new(remember_digest).is_password?(remember_token)  #con BRcrypt posso verificare che il remember_digest (criptato) corrisponda al remember_token
+	#end
+	
+	# Versione generalizzata del metodo per qualsiasi tipo di token (remember, activated...)
+	def authenticated?(attribute, token)
+		digest = send("#{attribute}_digest")    #a seconda del tipo di token chiama un metodo differente
+		return false if digest.nil?
+		BCrypt::Password.new(digest).is_password?(token)
 	end
 	
 	
@@ -48,5 +56,32 @@ class User < ApplicationRecord
 	def forget
 		update_attribute(:remember_digest, nil)
 	end
+	
+	
+	
+	#metodi aux per snellire il codice MAOOO
+	# Activates an account.
+	def activate
+		update_attribute(:activated,true)
+		update_attribute(:activated_at, Time.zone.now)
+	end
+	# Sends activation email.
+	def send_activation_email
+		UserMailer.account_activation(self).deliver_now
+	end
+	
+	
+	private
+
+		# Converts email to all lower-case.
+		def downcase_email
+		  self.email = email.downcase
+		end
+
+		# Creates and assigns the activation token and digest.
+		def create_activation_digest
+		  self.activation_token  = User.new_token
+		  self.activation_digest = User.digest(activation_token)
+		end
 	
 end

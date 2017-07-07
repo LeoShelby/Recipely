@@ -17,10 +17,9 @@ class UsersController < ApplicationController
   def create
 	@user = User.new(user_params)   #invece di usare (params[:user]) che passava tutti i parametri, non sicuro!
 	if @user.save
-		log_in @user  #al momento della registrazione l'utente viene direttamente loggato
-		remember @user #metodo definito in session_helper
-		flash[:success] = "Welcome to Recipely!"  #success è una convezione di Rails per indicare esito positivo
-		redirect_to @user  #non faccio (non c'è proprio(?)) una views per la create, reindirizzo alla pagina utente!
+		@user.send_activation_email    #invio dell'email per l'attivazione
+		flash[:info] = "Please check your email to activate your account."
+		redirect_to root_url
 	else
 		render 'new'
 	end

@@ -21,7 +21,8 @@ module SessionsHelper
 			
 		elsif (user_id = cookies.signed[:user_id])  #se mi trovo nel caso di permanent session
 			user = User.find_by(id: user_id)		#recupero l'id dell'utente 	
-			if user && user.authenticated?(cookies[:remember_token])  #se l'utente ha il giusto token nei cookies (più o meno)
+			if user && user.authenticated?(:remember, cookies[:remember_token])  #se l'utente ha il giusto token nei cookies (più o meno)
+			#gli passso come primo argomento il tipo di token come richiesto dal metodo authenticated? definito nel model user
 				log_in user
 				@current_user = user
 			end
