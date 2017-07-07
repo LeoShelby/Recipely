@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token  #serve di creare un attributo virtuale, ossia che non stia sul database, per salvare il remember token non criptato
+	attr_accessor :remember_token, :activation_token #serve di creare un attributo virtuale, ossia che non stia sul database, per salvare il remember token non criptato
 	#OSS è come prima con la passwors, solo che has_secure_password creava già da solo l'attributo virtuale "password", qui devo crearlo io per il token!
 
-	before_save { self.email = email.downcase }   #prima di salvare l'utente, converto l'email in lowercase
+	before_save :downcase_email   #prima di salvare l'utente, converto l'email in lowercase
+	before_create :create_activation_digest
 	
 	validates :name, presence: true, length: { maximum: 50 }
 	
@@ -48,5 +49,19 @@ class User < ApplicationRecord
 	def forget
 		update_attribute(:remember_digest, nil)
 	end
+	
+	
+	private
+
+		# Converts email to all lower-case.
+		def downcase_email
+		  self.email = email.downcase
+		end
+
+		# Creates and assigns the activation token and digest.
+		def create_activation_digest
+		  self.activation_token  = User.new_token
+		  self.activation_digest = User.digest(activation_token)
+		end
 	
 end
