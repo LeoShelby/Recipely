@@ -1,8 +1,11 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token  #serve di creare un attributo virtuale, ossia che non stia sul database, per salvare il remember token non criptato
-	#OSS è come prima con la passwors, solo che has_secure_password creava già da solo l'attributo virtuale "password", qui devo crearlo io per il token!
+	attr_accessor :remember_token , :activation_token #serve di creare un attributo virtuale, ossia che non stia sul database, per salvare il remember token non criptato
+	#OSS è come prima con la passwords, solo che has_secure_password creava già da solo l'attributo virtuale "password", qui devo crearlo io per il token!
 
-	before_save { self.email = email.downcase }   #prima di salvare l'utente, converto l'email in lowercase
+	before_save :downcase_email   #prima di salvare l'utente, converto l'email in lowercase
+	
+	before_create :create_activation_digest  #prima che l'utente venga creato, devo assegnargli il token di attivazione e il relativo token criptato
+	#dato che il secondo è associato ad una colonna sul database, verrà scritto automaticamente non appena l’utente verrà salvato.
 	
 	validates :name, presence: true, length: { maximum: 50 }
 	
@@ -37,16 +40,48 @@ class User < ApplicationRecord
 	end
 	
 	# Returns true if the given token matches the digest.
-	def authenticated?(remember_token) 
+	#def authenticated?(remember_token) 
 		#soluzione al bug comune che accade se si accede con lo stesso profilo su browser diversi insieme e poi si fa il logout solo da uno dei due browser tipo...
-		return false if remember_digest.nil?  
-		BCrypt::Password.new(remember_digest).is_password?(remember_token)  #con BRcrypt posso verificare che il remember_digest (criptato) corrisponda al remember_token
-	end
+		#return false if remember_digest.nil?  
+		#BCrypt::Password.new(remember_digest).is_password?(remember_token)  #con BRcrypt posso verificare che il remember_digest (criptato) corrisponda al remember_token
+	#end
 	
+	
+	# Versione generalizzata per gestire sia i remember_token che gli activation_token
+	def authenticated?(attribute, token)
+		digest = send("#{attribute}_digest")   #il metodo send permette di chiamare il metodo tra parentesi sull'oggeto digest
+		return false if digest.nil?
+		BCrypt::Password.new(digest).is_password?(token)
+	end
+		
 	
 	# Forgets a user.
 	def forget
 		update_attribute(:remember_digest, nil)
 	end
 	
+	
+	# Activates an account.
+	def activate
+		update_attribute(:activated,true)
+		update_attribute(:activated_at, Time.zone.now)
+	end
+	# Sends activation email.
+	def send_activation_email
+		UserMailer.account_activation(self).deliver_now
+	end
+	
+	
+	private
+		# Converts email to all lower-case.
+		def downcase_email
+			self.email = email.downcase
+		end
+		# Creates and assigns the activation token and digest.
+		def create_activation_digest
+			self.activation_token = User.new_token
+			self.activation_digest = User.digest(activation_token) 
+			#dato che il secondo è associato ad una colonna sul database, verrà scritto automaticamente non appena l’utente verrà salvato.
+		end
+			
 end

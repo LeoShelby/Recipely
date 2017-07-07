@@ -29,5 +29,11 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   
+  
+  
+  resources :account_activations, only: [:edit]   
+  #l'unica risorsa che serve per il controller AccountActivations è l'edit, poichè modifica lo stato dell'utente da attivo a non attivo (e viceversa?)
+  
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
