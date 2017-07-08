@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_many :recipes, dependent: :destroy #metodi di associazione forniti come user.recipes.create ecc... + vincolo intrarelazionale
+   #cancella le ricette associate all utente quando è eliminato
 	attr_accessor :remember_token, :activation_token, :reset_token 
 	#serve di creare un attributo virtuale, ossia che non stia sul database, per salvare il remember token non criptato
 	#OSS è come prima con la passwors, solo che has_secure_password creava già da solo l'attributo virtuale "password", qui devo crearlo io per il token!
