@@ -1,16 +1,21 @@
 class RelationshipsController < ApplicationController
+  before_action :logged_in_user
 
-before_action :logged_in_user
+  def create
+    @user = User.find(params[:followed_id])
+    current_user.follow(@user)
+    respond_to do |format|     #dico a Rails di rispondere ad AJAX, chiamo la view create.js.erb in views/relationships
+      format.html { redirect_to @user }
+      format.js
+    end
+  end
 
-	def create
-		user = User.find(params[:followed_id])
-		current_user.follow(user)
-		redirect_to user
-	end
-	
-	def destroy
-		user = Relationship.find(params[:id]).followed
-		current_user.unfollow(user)
-		redirect_to user
-	end
+  def destroy
+    @user = Relationship.find(params[:id]).followed
+    current_user.unfollow(@user)
+    respond_to do |format|    #dico a Rails di rispondere ad AJAX, chiamo la view destroy.js.erb in views/relationships
+      format.html { redirect_to @user }
+      format.js
+    end
+  end
 end
