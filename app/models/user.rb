@@ -20,6 +20,19 @@ class User < ApplicationRecord
 	#OSS allow_blank permette agli utenti di non dover per forza riscrivere la password nella form della modifica delle proprie informazioni di profilo
 	#nota inoltre che ciò non permette agli utenti di registarsi senza una password, poichè has_secure_password fa comunque quel controllo a prescindere!
 	
+	
+	
+	
+	
+	
+	has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+	#un utente ha molte relazioni attive, ossia segue molti utenti
+	#stabilisco io il nome della foreign key, ed anche il nome "active_relationship" indicando a Rails che si tratta sempre della tabella "Relationship"
+	#quando un utente viene distrutto si distruggono anche le sue relazioni
+	
+	
+	
+	
 	# Returns the hash digest of the given string.   
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
