@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get 'sessions/new'
 
   get 'users/new'
@@ -31,7 +35,9 @@ Rails.application.routes.draw do
   
   
   
-  resources :account_activations, only: [:edit]
+  resources :account_activations, only: [:edit]  #il controller fa solo la edit, poichè deve solo modificare lo stato dell'utente da non attivo ad attivo e viceversa
+  
+  resources :password_resets, only: [:new, :create, :edit, :update] 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

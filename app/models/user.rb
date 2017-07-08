@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token, :activation_token #serve di creare un attributo virtuale, ossia che non stia sul database, per salvare il remember token non criptato
+	attr_accessor :remember_token, :activation_token, :reset_token 
+	#serve di creare un attributo virtuale, ossia che non stia sul database, per salvare il remember token non criptato
 	#OSS è come prima con la passwors, solo che has_secure_password creava già da solo l'attributo virtuale "password", qui devo crearlo io per il token!
 
 	before_save :downcase_email   #prima di salvare l'utente, converto l'email in lowercase
@@ -70,6 +71,22 @@ class User < ApplicationRecord
 		UserMailer.account_activation(self).deliver_now
 	end
 	
+	
+	# Sets the password reset attributes.
+	def create_reset_digest
+		self.reset_token = User.new_token
+		update_attribute(:reset_digest, User.digest(reset_token))
+		update_attribute(:reset_sent_at, Time.zone.now)
+	end
+	# Sends password reset email.
+	def send_password_reset_email
+		UserMailer.password_reset(self).deliver_now
+	end
+	
+	# Returns true if a password reset has expired.
+	def password_reset_expired?
+		reset_sent_at < 2.hours.ago
+	end
 	
 	private
 
