@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]   # solo gli utenti loggati possono accedere alle azioni edit ed update, ossia possono modificare il proprio profilo
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]   # solo gli utenti loggati possono accedere alle azioni edit ed update, ossia possono modificare il proprio profilo
   before_action :correct_user, only: [:edit, :update]     # un utente non può modificare le info di un altro utente, perciò deve esse il CORRETTO utente
   before_action :admin_user, only: :destroy  #si deve essere admin per eliminare un altro utente
   
@@ -52,6 +52,23 @@ class UsersController < ApplicationController
 	flash[:success] = "User deleted"
 	redirect_to users_url
   end
+
+
+  #OSS queste due azioni non avendo una view di default, fanno entrambe il render esplicito di show_follow
+  def following
+	@title = "Following"
+	@user = User.find(params[:id])
+	@users = @user.following.paginate(page: params[:page])
+	render 'show_follow'
+  end
+  
+  def followers
+	@title = "Followers"
+	@user = User.find(params[:id])
+	@users = @user.followers.paginate(page: params[:page])
+	render 'show_follow'
+  end
+
 
 
 

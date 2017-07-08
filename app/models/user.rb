@@ -30,6 +30,16 @@ class User < ApplicationRecord
 	#stabilisco io il nome della foreign key, ed anche il nome "active_relationship" indicando a Rails che si tratta sempre della tabella "Relationship"
 	#quando un utente viene distrutto si distruggono anche le sue relazioni
 	
+	has_many :following, through: :active_relationships, source: :followed
+	#un untente ha molti seguaci ATTRAVERSO l'active relationships
+	#source indica a Rails che la fonte è followed, ma noi la "rinominiamo" following perchè è più sensato
+	
+	
+	has_many :passive_relationships, class_name: "Relationship",foreign_key: "followed_id", dependent: :destroy
+	
+	has_many :followers, through: :passive_relationships, source: :follower
+	
+	
 	
 	
 	
@@ -99,6 +109,20 @@ class User < ApplicationRecord
 	# Returns true if a password reset has expired.
 	def password_reset_expired?
 		reset_sent_at < 2.hours.ago
+	end
+	
+	
+	# Follows a user.
+	def follow(other_user)
+		active_relationships.create(followed_id: other_user.id)
+	end
+	# Unfollows a user.
+	def unfollow(other_user)
+		active_relationships.find_by(followed_id: other_user.id).destroy
+	end
+	# Returns true if the current user is following the other user.
+	def following?(other_user)
+		following.include?(other_user)
 	end
 	
 	private

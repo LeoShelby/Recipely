@@ -38,6 +38,17 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]  #il controller fa solo la edit, poichè deve solo modificare lo stato dell'utente da non attivo ad attivo e viceversa
   
   resources :password_resets, only: [:new, :create, :edit, :update] 
+  
+  
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  
+  resources :relationships, only: [:create, :destroy]
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
