@@ -129,8 +129,10 @@ class User < ApplicationRecord
 	
 	class << self
 	  def from_omniauth(auth_hash)
-	    if user=User.find_by(email: auth_hash['info']['email'])
-	        user
+	  if ( user=User.find_by(email: auth_hash['info']['email'] ))
+		
+	      user
+	    
 	    else 
 			user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])   #trova o crea utente autenticato tramite provider
 			user.name = auth_hash['info']['name']                #prendo il nome dal provider
@@ -139,6 +141,7 @@ class User < ApplicationRecord
 			user.activated=true   #chi accede da provider è gia attivato
 			user.save!
 			user
+		end
 	  end
    end
 	
