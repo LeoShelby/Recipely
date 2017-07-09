@@ -16,6 +16,14 @@
 	
 	
 	<div class="col-md-8">
+		<% if @user.recipes.any? %> <!-- mostra ricette di ogni utente -->
+			<h3>Recipes (<%= @user.recipes.count %>)</h3>
+			<ol class="recipes">
+			<%= render @recipes %>
+			</ol>
+			<%= will_paginate @recipes %>
+		<% end %> <!-- fine codice per la mostra ricette -->
+  </div>
 		<%= render 'follow_form' if logged_in? %>
 	</div>
 </div>

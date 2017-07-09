@@ -26,6 +26,16 @@ User.create!(name:  "Example User",
               activated: true,
               activated_at: Time.zone.now)
 end
+#Recipe
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  title= Faker::Address.state
+  rate=rand(1..5)
+  category=["primo","secondo","contorno","dessert"][rand(0..3)]
+  users.each { |user| user.recipes.create!(content: content, title: title, category: category, rate: rate ) }
+end
+
 
 # Following relationships
 users = User.all
