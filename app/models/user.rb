@@ -43,7 +43,9 @@ class User < ApplicationRecord
 	
 	
 	
-	
+	def feed
+		Recipe.where("user_id IN (?) OR user_id = ?",following_ids,id)
+	end
 	
 	# Returns the hash digest of the given string.   
 	def User.digest(string)
