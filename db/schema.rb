@@ -10,18 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170709095650) do
+ActiveRecord::Schema.define(version: 20170709160833) do
 
-  create_table "recipes", force: :cascade do |t|
-    t.text     "title"
-    t.text     "content"
-    t.integer  "rate"
-    t.string   "category"
+  create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_recipes_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_recipes_on_user_id"
+    t.integer  "notified_by_id"
+    t.string   "type_not"
+    t.boolean  "read",           default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

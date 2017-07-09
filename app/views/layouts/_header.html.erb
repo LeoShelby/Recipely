@@ -20,6 +20,54 @@
 							</li>
 						</ul>
 					</li>
+					
+
+
+		<div class="btn-group dropdown dropdown-notifications sw-open">
+		  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<i data-count="3" class="glyphicon glyphicon-bell notification-icon"></i>
+			<span class="caret"></span>
+		  </button>
+
+		  <div class="dropdown-container">
+		   <div class="dropdown-toolbar">
+			  <div class="dropdown-toolbar-actions">
+				<a href="#"><i class="glyphicon glyphicon-search"></i> View All</a>
+			  </div>
+			  <h3 class="dropdown-toolbar-title">Recent Notifications  (3)</h3>
+			</div><!-- /dropdown-toolbar -->
+
+			<ul class="dropdown-menu notifications">
+			<% current_user.notifications.each do |notif| %>
+			
+			
+			<ul class="notifications">
+				  <li class="notification">
+					  <div class="media">
+						<div class="media-left">
+						  <div class="media-object">
+							<img class="img-circle"> <%= gravatar_for notif.notified_by, size: 50 %> </img>
+						  </div>
+						</div>
+						<div class="media-body">
+						  <strong class="notification-title"><a href="#"> <%= notif.notified_by.name %> </a> Started to follow you </strong>
+    						  <div class="notification-meta">
+							<small class="timestamp"> <%= notif.created_at %> </small>
+						  </div>
+						</div>
+					  </div>
+				  </li>
+		  </ul>
+		  
+		  
+		  <% end %>
+    </ul>
+  </div>
+</div>
+
+
+
+	
 				<% else %>
 					<li><%= link_to "Log in", login_path %></li>
 				<% end %>
@@ -27,3 +75,11 @@
 		</nav>
 	</div>
 </header>
+
+
+
+
+    
+
+
+
