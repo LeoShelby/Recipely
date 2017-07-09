@@ -27,6 +27,15 @@ class SessionsController < ApplicationController
 	end
   end
 
+
+  def create_with_provider
+	user = User.from_omniauth(request.env['omniauth.auth'])
+	log_in user
+	forget(user)  #di default chi accede tramite provider non viene ricordato
+	redirect_to root_url
+  end
+
+  
   def destroy
 	log_out if logged_in?    #metodo definito in session_helper, che applico solo se l'utente è effetivamente loggato
 	redirect_to root_url

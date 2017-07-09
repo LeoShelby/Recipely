@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708101918) do
+ActiveRecord::Schema.define(version: 20170709095650) do
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -35,7 +35,12 @@ ActiveRecord::Schema.define(version: 20170708101918) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "uid"
+    t.string   "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
+    t.index ["provider"], name: "index_users_on_provider"
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
 end
