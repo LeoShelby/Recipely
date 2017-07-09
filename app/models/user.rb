@@ -129,13 +129,16 @@ class User < ApplicationRecord
 	
 	class << self
 	  def from_omniauth(auth_hash)
-		user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])   #trova o crea utente autenticato tramite provider
-		user.name = auth_hash['info']['name']                #prendo il nome dal provider
-		user.email = auth_hash['info']['email']              #prendo l'email dal provider
-		user.password=SecureRandom.hex(9)           #creo una psw randomica, tanto l'utente non dovrai mai inserirla ma "has_secure_password" la richiede
-		user.activated=true   #chi accede da provider è gia attivato
-		user.save!
-		user
+	    if user=User.find_by(email: auth_hash['info']['email'])
+	        user
+	    else 
+			user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])   #trova o crea utente autenticato tramite provider
+			user.name = auth_hash['info']['name']                #prendo il nome dal provider
+			user.email = auth_hash['info']['email']              #prendo l'email dal provider
+			user.password=SecureRandom.hex(9)           #creo una psw randomica, tanto l'utente non dovrai mai inserirla ma "has_secure_password" la richiede
+			user.activated=true   #chi accede da provider è gia attivato
+			user.save!
+			user
 	  end
    end
 	
