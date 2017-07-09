@@ -1,3 +1,12 @@
 Per la ricerca di ricette dal titolo / categoria e voto aggiungo gli indici SEPARATAMENTE successivamente
 
 Le stelle al rate che è un integerrimo ci vanno col css 
+il campo rate è la difficlta in recipe
+ va aggiunto l edit delle ricette
+ per l image resize va installato imagemagick --fix-missing
+ 
+ rails db:drop:all
+ rails db:migrate
+ rails db:seed
+ 
+ vanno fatti prima di ogni test /avvio app
