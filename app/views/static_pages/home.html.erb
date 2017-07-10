@@ -7,9 +7,11 @@
 			<section class="stats">
 				<%= render 'shared/stats' %>
 			</section>
-		    <section class="recipe_form">
-				<%= render 'shared/recipe_form' %>
-			</section>
+			<!-- link new recipe-->
+			<div >      <!-- classe specifica per Bootstrap -->
+				<%= link_to "New Recipe!", new_recipe_path , class: "btn btn-lg btn-primary" %>        <!-- classi specifice per Bootstrap -->    
+			</div>
+		
 		</aside>
 		<!-- inizio codice per il feed -->
 		<div class="col-md-8">

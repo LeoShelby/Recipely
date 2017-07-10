@@ -16,7 +16,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     assert_match @user.recipes.count.to_s, response.body
     assert_select 'div.pagination'
     @user.recipes.paginate(page: 1).each do |recipe|
-      assert_match recipe.content, response.body
+      assert_match recipe.title, response.body
     end
   end
 end
