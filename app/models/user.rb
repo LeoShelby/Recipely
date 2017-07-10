@@ -22,7 +22,7 @@ class User < ApplicationRecord
 	
 	
 	
-	has_many :notifications, dependent: :destroy 
+	has_many :notifications, dependent: :destroy    #ogni utente ha molte notifiche che vengono distrutte con esso
 	
 	
 	

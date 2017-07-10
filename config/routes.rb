@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'notifications/link_through'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -50,6 +52,13 @@ Rails.application.routes.draw do
 
 
   get '/auth/:provider/callback', to: 'sessions#create_with_provider'
+
+
+
+
+  get 'notifications/:id/link_through' => 'notifications#link_through', as: :link_through   #route per l'azione "link_through" del controller Notifications
+  
+  get 'notifications' => 'notifications#index'  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

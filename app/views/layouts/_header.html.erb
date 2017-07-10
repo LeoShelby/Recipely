@@ -21,53 +21,7 @@
 						</ul>
 					</li>
 					
-         <!-- menu dropdown delle notifiche -->
-
-		<div class="btn-group dropdown dropdown-notifications sw-open">
-		  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			  
-			<i data-count= <%= current_user.notifications.count %>   class="glyphicon glyphicon-bell notification-icon"></i>
-			
-			<span class="caret"></span>
-		  </button>
-
-		  <div class="dropdown-container">
-		   <div class="dropdown-toolbar">
-			  <div class="dropdown-toolbar-actions">
-				<a href="#"><i class="glyphicon glyphicon-search"></i> View All</a>
-			  </div>
-			  <h3 class="dropdown-toolbar-title">Recent Notifications  (3)</h3>
-			</div><!-- /dropdown-toolbar -->
-
-			<ul class="dropdown-menu notifications">
-			<% current_user.notifications.each do |notif| %>
-			
-			<%= link_to (notif.notified_by) do %>     <!-- tutta la notifica è cliccabile e ti reindirizza al profilo che ti segue -->
-			<ul class="notifications">
-				  <li class="notification">
-					  <div class="media">
-						<div class="media-left">
-						  <div class="media-object">
-							<img class="img-circle"> <%= gravatar_for notif.notified_by, size: 50 %> </img>
-						  </div>
-						</div>
-						<div class="media-body">
-						  <strong class="notification-title"><%= notif.notified_by.name %>Started to follow you </strong>
-    						  <div class="notification-meta">
-							<small class="timestamp"> <%= notif.created_at %> </small>
-						  </div>
-						</div>
-					  </div>
-				  </li>
-		  </ul>
-		  <% end %>  <!-- end del link_to -->
-		  
-		  
-		  <% end %>  <!-- end del ciclo sulle notifiche -->
-    </ul>
-  </div>
-</div>
-
+              <%= render 'layouts/notification' %>   <!-- menù a tendina per le notifiche -->
 
 
 	
