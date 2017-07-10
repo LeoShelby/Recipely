@@ -3,6 +3,10 @@
   <%= link_to gravatar_for(recipe.user, size: 50), recipe.user %>
   <span class="user"><%= link_to recipe.user.name, recipe.user %></span>
   <span class="title"><%= link_to recipe.title,recipe_path(recipe.id) %></span>
-  <%= image_tag recipe.picture.url if recipe.picture? %>
+  <%= link_to recipe_path(recipe.id) do %>
+		<%= image_tag recipe.picture.url if recipe.picture? %>
+  <% end %>
+  <span class="timestamp">
+  Posted <%= time_ago_in_words(recipe.created_at) %> ago.
 </li>
 

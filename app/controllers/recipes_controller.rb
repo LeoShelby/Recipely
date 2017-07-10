@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :logged_in_user , only: [:create, :destroy]#per creare / ditruggerere/fare la new o la show devo essere loggato
-  before_action :correct_user,   only: [:destroy, :edit, :update, :show] #posso distruggere o modificare la receipe solo se sono io il crreatore
+  before_action :logged_in_user #, only: [:create, :destroy, :show, :edit, :update]#per creare / ditruggerere/fare la new o la show devo essere loggato
+  before_action :correct_user,   only: [:destroy, :edit, :update] #posso distruggere o modificare la receipe solo se sono io il crreatore
 	
 	def new
 		if logged_in?
@@ -49,19 +49,12 @@ class RecipesController < ApplicationController
   private
 
     def recipe_params
-      params.require(:recipe).permit(:content,:title,:rate,:category,:picture)
+      params.require(:recipe).permit(:content,:title,:rate,:category,:picture,:time)
     end
     
     def correct_user
-      @recipe = current_user.recipes.find_by(id: params[:id]) unless current_user.nil?
-      if @recipe.nil?
-			store_location  
-			#METODO definito in sessions_helper con cui mi salvo l'URL a cui l'utente non autorizzato stava cercando di accedere, così poi lo reindirizzo lì una volta loggato
-			flash[:danger] = "Please log in."
-			redirect_to login_url
-	 end
-
-		
+      @recipe = current_user.recipes.find_by(id: params[:id])
+      redirect_to root_url if @recipe.nil?
     end
 end
   

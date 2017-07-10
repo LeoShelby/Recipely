@@ -6,9 +6,18 @@
   <span class="content"><%= @recipe.content %></span>
   <span class="rate">Difficolta:<%= @recipe.rate %></span>
   <span class="category">Category:<%= @recipe.category %></span>
+  <span class="time">Durata:
+	<% if not  @recipe.time.blank?  %>
+		<%= pluralize(@recipe.time, "minute") %>.
+	<% else %>
+	Non fonito
+	<% end %>
+  
+  </span>
   <%= image_tag @recipe.picture.url if @recipe.picture? %>
   <span class="timestamp">
     Posted <%= time_ago_in_words(@recipe.created_at) %> ago.
+  </span>
 	<% if current_user?(@recipe.user) %>
 	 <div >
 		<%= link_to "delete", @recipe, method: :delete,

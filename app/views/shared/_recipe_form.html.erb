@@ -9,7 +9,10 @@
 			
 			<%= f.label :category %>
 			<%= f.select :category, options_for_select([ "primo", "secondo", "contorno", "dessert"]), :class => 'form-control' %>
-
+			
+			<%= f.label :exitametd_time  %>
+			<%= f.number_field :time, class: 'form-control' %>
+			
 			<%= f.label :difficulty %>
 			<%= f.select :rate, options_for_select([ 1, 2, 3, 4,5]), :class => 'form-control' %>
   <%= f.submit "Post", class: "btn btn-primary" %>

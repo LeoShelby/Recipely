@@ -16,7 +16,7 @@ User.create!(name:  "Example User",
              activated_at: Time.zone.now)
 
 99.times do |n|
-  name  = Faker::Name.name
+  name  =Faker::Simpsons.character
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name:  name,
@@ -29,11 +29,13 @@ end
 #Recipe
 users = User.order(:created_at).take(6)
 50.times do
-  content = Faker::Lorem.sentence(5)
-  title= Faker::Address.state
+  content = Faker::ChuckNorris.fact
+  title= Faker::Food.dish
   rate=rand(1..5)
+  time=rand(1..50)
   category=["primo","secondo","contorno","dessert"][rand(0..3)]
-  users.each { |user| user.recipes.create!(content: content, title: title, category: category, rate: rate ) }
+  
+  users.each { |user| user.recipes.create!(content: content, title: title, category: category, rate: rate,time: time ) }
 end
 
 

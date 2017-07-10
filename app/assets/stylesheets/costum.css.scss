@@ -13,6 +13,8 @@ $blu-light: #0000ff;
 
 $green-light: #3cb371;
 
+$orange-light: #ffa500;
+
 @mixin box_sizing {
 	-moz-box-sizing:
 	border-box;
@@ -221,6 +223,15 @@ input {
   }
   .category {   
     color: $blu-light;
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .time {   
+    color: $orange-light;
     display: block;
     margin-left: 60px;
     img {
