@@ -148,6 +148,15 @@ class User < ApplicationRecord
 		end
 	  end
    end
+   
+   
+   #ricerca nel database
+   def self.search(search)
+		#where("name LIKE ?", "%#{search}%") 
+		left_outer_joins(:recipes).where('recipes.title LIKE ? or users.name LIKE ?', "%#{search}%", "%#{search}%")
+		# voglio cercare gli utenti anche tramite il nome delle ricette che hanno fatto
+		#faccio un left_outer_joins poichè non tutti gli utenti hanno fatto delle ricette e risulterebbero esclusi dalla ricerca per nome!
+   end
 	
 	private
 

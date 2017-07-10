@@ -1,5 +1,15 @@
 <% provide(:title, 'All users') %>
-<h1>All users</h1>
+
+
+<!-- barra per la ricerca degli utenti --> 
+
+<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>  <!-- metodo search definito nel model user -->
+    <%= submit_tag "Search User", :name => nil %>
+<% end %>
+
+
+<h1>Users</h1>
 
 <%= will_paginate %>   <!-- visualizza gli utenti su più pagine a patto che si usi il metodo paginate nell'azione index del controller -->
 
@@ -8,6 +18,10 @@
 		<%= render user %>   <!-- chiama il partial _user -->
 	<% end %>
 </ul>
+
+<% if @users.blank? %>
+  <h4>There are no Users containing the term "<%= params[:search] %>".</h4>
+<% end %>
 
 <!-- rails è talmente sveglio che potevo pure solo scrivere	%= render @users %, senza fare l'each do -->
 
