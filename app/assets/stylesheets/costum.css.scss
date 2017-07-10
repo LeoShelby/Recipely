@@ -455,8 +455,13 @@ a.notification:hover {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .notification .media-body {
-  padding-top: 5.6px;
+  padding-top: -10px;
 }
+
+.notification .media-object {
+  padding-top: 5px;
+}
+
 .btn-lg .notification-icon:after {
   margin-left: -8.253px;
   margin-top: -8.253px;
