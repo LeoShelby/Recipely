@@ -26,6 +26,6 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Recipe.count' do
       delete recipe_path(recipe)
     end
-    assert_redirected_to root_url
+    assert_redirected_to login_url
   end
 end

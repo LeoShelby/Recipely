@@ -4,7 +4,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
-    def setup
+  def setup
     @user = users(:michael)
   end
 

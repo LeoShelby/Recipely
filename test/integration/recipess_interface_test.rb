@@ -26,9 +26,7 @@ def setup
     assert_match title, response.body
     # Delete post
    
-   # assert_select 'a', text: 'delete'
     first_recipe = @user.recipes.paginate(page: 1).first
-   
    
     assert_difference 'Recipe.count', -1 do
       delete recipe_path(first_recipe)
