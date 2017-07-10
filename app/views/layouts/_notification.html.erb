@@ -1,6 +1,6 @@
 <!-- menu dropdown delle notifiche -->
 
-<div class="btn dropdown dropdown-notifications sw-open">
+<div class="btn-group dropdown dropdown-notifications sw-open">
   <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 	  
 	<i data-count= <%= current_user.notifications.where(read: false).count %>   class="glyphicon glyphicon-bell notification-icon"></i>
