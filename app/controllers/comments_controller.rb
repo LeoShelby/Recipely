@@ -10,11 +10,8 @@ class CommentsController < ApplicationController
 	  @comment.user=current_user
 	  if @comment.save
 		respond_to do |format|
-			format.html do
-
-			  redirect_to recipe_path(@recipe)
-			end
-			format.js # JavaScript response
+			format.html {redirect_to recipe_path(@recipe)}
+			format.js
 		end
 	  else
 		redirect_to recipe_path(@recipe)
@@ -22,9 +19,17 @@ class CommentsController < ApplicationController
 
 	end
 
-	def show
-	  @comment = Comment.find(params[:id])
-	end
+
+	def destroy
+		@comment=Comment.find_by(id: params[:id])
+		@recipe = @comment.recipe
+		@comment.destroy
+		respond_to do |format|
+			format.html {redirect_to recipe_path(@recipe)}
+			format.js 
+        end
+    end
+
 
     private
 		def comment_params

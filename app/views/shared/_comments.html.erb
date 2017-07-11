@@ -12,7 +12,9 @@
 	 <%= comment.content %>
 	<br/>
 	<%= comment.created_at %>
-
+	<% if current_user?(comment.user) %>
+		<font color="#0000FF"><%= link_to "delete", comment , method: :delete, data: { confirm: "You sure?" }, remote: true %> </font>
+    <% end %>
     </li>
 <% end %>
 </ul>
