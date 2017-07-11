@@ -17,8 +17,7 @@ class CommentsController < ApplicationController
 	  else
 		respond_to do |format|
 			format.html {redirect_to recipe_path(@recipe)}
-			format.js {render :template => "comments/wrong.js.erb", :layout => false }
-			#se il commento che hai inserito supera la lunghezza consentita, faccio partire il file wrong js
+			format.js 
 		end
 	  end
 	end

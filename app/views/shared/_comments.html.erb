@@ -4,23 +4,20 @@
 <ul class="users">
 	
 
-<% @recipe.comments.order('created_at DESC').take(5).each do |comment| %>
+<% @recipe.comments.order('created_at DESC').each do |comment| %>
 	<li>
 	<%= gravatar_for comment.user, size: 50 %>
 	<font color="#0000FF"> <%= link_to comment.user.name, user_path(comment.user.id) %> </font> 
 	<br/>
 	 <%= comment.content %>
 	<br/>
-	<%= comment.created_at %>
+	Posted <%= time_ago_in_words(@recipe.created_at) %> ago
 	<% if current_user?(comment.user) %>
 	    | 
 		<font color="#0000FF"><%= link_to "delete", comment , method: :delete, data: { confirm: "You sure?" }, remote: true %> </font>
     <% end %>
     </li>
 <% end %>
-
-<br/>
-<font color="#0000FF"><%= link_to "View all comment", comment_path(@recipe) %></font>
 
 <li/>
 <br/>
