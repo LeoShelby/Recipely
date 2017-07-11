@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :logged_in_user #, only: [:create, :destroy, :show, :edit, :update]#per creare / ditruggerere/fare la new o la show devo essere loggato
+  before_action :logged_in_user , only: [:create, :destroy,  :edit, :update]#per creare / ditruggerere/fare la new o la show devo essere loggato
   before_action :correct_user,   only: [:destroy, :edit, :update] #posso distruggere o modificare la receipe solo se sono io il crreatore
 	
 	def new
