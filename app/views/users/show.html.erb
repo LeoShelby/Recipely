@@ -1,21 +1,42 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-	<aside class="col-md-4">
-		<section class="user_info">
-			<h1>
-				<%= gravatar_for @user %>   <!-- utilizzo di gravatar per gestire le immagini di profilo, gravatar_for è definito in users_helper -->
-				<%= @user.name %>
-			</h1>
-		</section>
-		
-		<section class="stats">
-			<%= render 'shared/stats' %>  <!-- mostra statistiche di follow e follower del tale utente -->
-		</section>
-		
-	</aside>
-	
-	
-	<div class="col-md-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+body {font-family: "Open Sans"}
+</style>
+<body class="w3-light-grey">
+
+
+  
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1600px">
+
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b><%= gravatar_for @user %></b></h1>
+    <h6>Welcome to the kitchen of <span class="w3-tag"> <%= @user.name %></span></h6>
+	<section class="stats">
+		<%= render 'shared/stats' %>  <!-- mostra statistiche di follow e follower del tale utente -->
+	</section>
+  </header>
+
+
+
+  <!-- Grid -->
+  <div class="w3-row w3-padding w3-border">
+
+    <!-- Blog entries -->
+    
+    
+      <!-- Blog entry -->
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <div class="w3-center">
 		<% if @user.recipes.any? %> <!-- mostra ricette di ogni utente -->
 			<h3>Recipes (<%= @user.recipes.count %>)</h3>
 			<ol class="recipes">
@@ -23,7 +44,27 @@
 			</ol>
 			<%= will_paginate @recipes %>
 		<% end %> <!-- fine codice per la mostra ricette -->
+        </div>
+      </div>
+      <hr>
+
+     
+      <!-- Subscribe -->
+      <div class="w3-white w3-margin">
+ 
+        <div> Follow me  and get notified on the latest receipes.</p>
+				<%= render 'follow_form' if logged_in? %>        </div>
+      </div>
+
+    <!-- END About/Intro Menu -->
+    </div>
+
+  <!-- END GRID -->
   </div>
-		<%= render 'follow_form' if logged_in? %>
-	</div>
+
+<!-- END w3-content -->
 </div>
+
+</body>
+</html>
+

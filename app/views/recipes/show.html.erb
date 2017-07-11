@@ -1,20 +1,57 @@
-<ol class="recipes">
-<li id="recipe-<%= @recipe.id %>">
-  <%= link_to gravatar_for(@recipe.user, size: 50), @recipe.user %>
-  <span class="user"><%= link_to @recipe.user.name, @recipe.user %></span>
-  <span class="title"><%= @recipe.title %></span>
-  <span class="content"><%= @recipe.content %></span>
-  <span class="rate">Difficolta:<%= @recipe.rate %></span>
-  <span class="category">Category:<%= @recipe.category %></span>
-  <span class="time">Durata:
-	<% if not  @recipe.time.blank?  %>
-		<%= pluralize(@recipe.time, "minute") %>.
-	<% else %>
-	Non fonito
-	<% end %>
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+
+
+
+
+<!-- user content -->
+<div class="w3-content" style="max-width:1100px">
+      <h1 class="w3-center"><%= link_to gravatar_for(@recipe.user, size: 50), @recipe.user %><%= link_to @recipe.user.name, @recipe.user %></h1><br>
+</div>
+
   
-  </span>
-  <%= image_tag @recipe.picture.url if @recipe.picture? %>
+  <hr>
+  
+  <!-- Menu Section -->
+  <div class="w3-row w3-padding-64" id="menu">
+    <div class="w3-col l6 w3-padding-large">
+		
+      <h1 class="w3-center"><%=  @recipe.title.capitalize %> </h1><br>
+      <h4>Description</h4>
+      <p class="w3-text-grey"><%=  @recipe.content %></p><br>
+    
+      <h4>Rate</h4>
+      <p class="w3-text-grey"><%=  @recipe.rate %></p><br>
+    
+      <h4>Time</h4>
+      <p class="w3-text-grey">
+    	<% if not  @recipe.time.blank?  %>
+			<%= pluralize(@recipe.time, "minute") %>.
+		<% else %>
+			Non fonito
+		<% end %>
+	</p><br>
+    
+      <h4>Category</h4>
+      <p class="w3-text-grey"><%=  @recipe.category %></p><br>
+    
+   
+    </div>
+    
+    <div class="w3-col l6 w3-padding-large">
+		
+      <%= image_tag( @recipe.picture.url , :class => "w3-round w3-image w3-opacity-min" , :width => "500", :height => "750") if @recipe.picture?  %>
+    </div>
+  </div>
+
+  <hr>
+
   <span class="timestamp">
     Posted <%= time_ago_in_words(@recipe.created_at) %> ago.
   </span>
@@ -27,9 +64,13 @@
 	
 	</div>
     <% end %>
- 
-  </span>
+
   
-</li>
-</ol>
+<!-- End page content -->
+</div>
+
+
+
+</body>
+</html>
 
