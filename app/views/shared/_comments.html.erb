@@ -1,7 +1,10 @@
+<div id="wrapper" style="overflow-x: hidden">
+
 <div id="com">
 
 
-<ul class="users">
+<div id="" style="overflow-y: scroll; height:400px; max-width: 100%; overflow-x: hidden ">
+	<ul class="users">
 	
 
 <% @recipe.comments.order('created_at DESC').each do |comment| %>
@@ -22,4 +25,6 @@
 <li/>
 <br/>
 </ul>
+</div>
+</div>
 </div>

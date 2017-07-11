@@ -1,10 +1,5 @@
 class CommentsController < ApplicationController
 
-	def show  #questa show è magheggio perchè mostra tutti i commenti della ricetta in oggetto
-	  @recipe = Recipe.find(params[:id])
-	  @comments = @recipe.comments
-	end
-
 	def create
 	  @recipe = Recipe.find(params[:recipe_id])
 	  @comment = @recipe.comments.build(comment_params)
