@@ -43,6 +43,8 @@ class User < ApplicationRecord
 	
 	
 	
+	has_many :comments, dependent: :destroy   #un utente ha più commenti effettuati
+	
 	def feed
 		Recipe.where("user_id IN (?) OR user_id = ?",following_ids,id)
 	end

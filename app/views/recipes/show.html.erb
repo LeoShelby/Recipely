@@ -48,7 +48,9 @@
 		
       <%= image_tag( @recipe.picture.url , :class => "w3-round w3-image w3-opacity-min" , :width => "500", :height => "750") if @recipe.picture?  %>
     </div>
-  </div>
+  </div> 
+  
+
 
   <hr>
 
@@ -64,8 +66,14 @@
 	
 	</div>
     <% end %>
+    
+    
 
   
+    
+     <%= render 'shared/comment_form' %>  <!-- forma per commentare una ricetta -->
+     
+
 <!-- End page content -->
 </div>
 

@@ -11,6 +11,10 @@ class Recipe < ApplicationRecord
   validates :category, presence: true, format: { with: VALID_CATEGORY_REGEX }
   validate  :picture_size #definisco un validatore personale per le immagini ossia campmpo picture
 
+
+
+  has_many :comments, dependent: :destroy
+
   private
 
     # Validates the size of an uploaded picture.
