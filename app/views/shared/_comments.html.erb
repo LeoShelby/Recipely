@@ -1,0 +1,19 @@
+<div id="com">
+
+
+<ul class="users">
+	
+
+<% @recipe.comments.order('created_at DESC').take(5).each do |comment| %>
+	<li>
+	<%= gravatar_for comment.user, size: 50 %>
+	<font color="#0000FF"> <%= link_to comment.user.name, user_path(comment.user.id) %> </font> 
+	<br/>
+	 <%= comment.content %>
+	<br/>
+	<%= comment.created_at %>
+
+    </li>
+<% end %>
+</ul>
+</div>

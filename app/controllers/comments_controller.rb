@@ -9,13 +9,17 @@ class CommentsController < ApplicationController
 	  @comment = @recipe.comments.build(comment_params)
 	  @comment.user=current_user
 	  if @comment.save
-		flash[:success] = "Comment successfully added"
-		redirect_to recipe_path(@recipe)
+		respond_to do |format|
+			format.html do
+
+			  redirect_to recipe_path(@recipe)
+			end
+			format.js # JavaScript response
+		end
 	  else
-	    flash[:danger]="caoa"
 		redirect_to recipe_path(@recipe)
 	  end
-       
+
 	end
 
 	def show
