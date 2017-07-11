@@ -12,10 +12,15 @@ class RecipesController < ApplicationController
 	def show
 		@recipe=Recipe.find(params[:id])
 	end
+	
 	def edit
 		@recipe = Recipe.find(params[:id])
 	end
-
+	
+	def index
+		@recipes=Recipe.paginate(page: params[:page])
+	end
+	
     def update
 		@recipe = Recipe.find(params[:id])
 		if @recipe.update_attributes(recipe_params)   #se l'aggiornamento del recipe va a buon fine...

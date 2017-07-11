@@ -1,0 +1,15 @@
+<% provide(:title, 'All recipes') %>
+<h1>All recipes</h1>
+
+<%= will_paginate %>   <!-- visualizza gli utenti su più pagine a patto che si usi il metodo paginate nell'azione index del controller -->
+
+<ul class="recipes">
+	<% @recipes.each do |recipe| %>
+		<%= render recipe %>   <!-- chiama il partial _recipeIndex -->
+	<% end %>
+</ul>
+
+<!-- rails è talmente sveglio che potevo pure solo scrivere	%= render @users %, senza fare l'each do -->
+
+
+<%= will_paginate %>
