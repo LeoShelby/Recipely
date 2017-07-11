@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
 
-	def index
-	  @comments = Comment.all.where(recipe_id: params[:recipe_id])
+	def show  #questa show è magheggio perchè mostra tutti i commenti della ricetta in oggetto
+	  @recipe = Recipe.find(params[:id])
+	  @comments = @recipe.comments
 	end
 
 	def create
@@ -14,9 +15,12 @@ class CommentsController < ApplicationController
 			format.js
 		end
 	  else
-		redirect_to recipe_path(@recipe)
+		respond_to do |format|
+			format.html {redirect_to recipe_path(@recipe)}
+			format.js {render :template => "comments/wrong.js.erb", :layout => false }
+			#se il commento che hai inserito supera la lunghezza consentita, faccio partire il file wrong js
+		end
 	  end
-
 	end
 
 

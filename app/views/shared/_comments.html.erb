@@ -13,9 +13,16 @@
 	<br/>
 	<%= comment.created_at %>
 	<% if current_user?(comment.user) %>
+	    | 
 		<font color="#0000FF"><%= link_to "delete", comment , method: :delete, data: { confirm: "You sure?" }, remote: true %> </font>
     <% end %>
     </li>
 <% end %>
+
+<br/>
+<font color="#0000FF"><%= link_to "View all comment", comment_path(@recipe) %></font>
+
+<li/>
+<br/>
 </ul>
 </div>
