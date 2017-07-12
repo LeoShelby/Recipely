@@ -70,8 +70,27 @@
     <br/>
     <br/>
     <br/>
-
     
+    <!-- mostro numero di likes, l'id serve a js per aggiornarlo al volo se metto o tolgo il like alla ricetta -->
+    
+
+
+	<%= link_to like_path(@recipe.id) do %>
+		<FONT id="likes" SIZE="6" COLOR="#FFA500"> <%= pluralize(@recipe.likes.count, "Like") %> </FONT>  <!-- numero di like cliccabile, reidirizza alla show magheggio che funziona come una index -->
+	<% end %>
+	
+	
+	
+    <!-- se sei loggato puoi mettere like -->
+    <br/>
+    <br/>
+     <% if logged_in? %>
+		<%= render 'shared/like_form' %>
+     <% end %>
+     <br/>
+     <br/>
+     
+     
      <%= render 'shared/comments' %>    <!-- mostra i commenti alla ricetta -->
 	
     <br/>

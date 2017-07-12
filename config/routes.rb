@@ -48,7 +48,8 @@ Rails.application.routes.draw do
   resources :recipes        # only: [:create, :destroy] poichè mi servono tutte
   resources :relationships, only: [:create, :destroy]
 
-  resources :comments
+  resources :comments, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy, :show]
 
 
   get '/auth/:provider/callback', to: 'sessions#create_with_provider'

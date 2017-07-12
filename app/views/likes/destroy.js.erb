@@ -1,0 +1,2 @@
+$("#like_form").html("<%= escape_javascript(render('shared/like')) %>");
+$("#likes").html("<%= pluralize(@recipe.likes.count, "Like") %>");
