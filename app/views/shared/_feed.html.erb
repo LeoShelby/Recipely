@@ -3,4 +3,16 @@
     <%= render @feed_items %>
   </ol>
   <%= will_paginate @feed_items %>
+<% else %>
+ <a href="<%= following_user_path(@user) %>">
+ 	<a href="<%= users_path %>">
+	<h2>
+		Start following a user
+	</a>
+	or
+	<a href="<%= new_recipe_path %>">
+
+		  publish a fantastic recipe!
+	</a>
+	</h2>
 <% end %>
