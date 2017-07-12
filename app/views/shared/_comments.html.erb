@@ -1,0 +1,30 @@
+
+<div id="com">
+
+<FONT SIZE="6" COLOR="#FFA500"> Comments </FONT>
+<br/>
+<br/>
+
+<div class="box">
+<br/>
+<% @recipe.comments.order('created_at DESC').each do |comment| %>
+	<li  class="padded" >
+	<%= gravatar_for comment.user, size: 65 %>
+	<font color="#0000FF"> <%= link_to comment.user.name, user_path(comment.user.id) %> </font> 
+	<br/>
+	 <strong><%= comment.content %> </strong>
+	<br/>
+	Posted <%= time_ago_in_words(@recipe.created_at) %> ago
+	<% if current_user?(comment.user) %>
+	    | 
+		<font color="#0000FF"><%= link_to "delete", comment , method: :delete, data: { confirm: "You sure?" }, remote: true %> </font>
+    <% end %>
+    </li>
+    <hr style="border: 1px solid " ></hr>
+<% end %>
+
+<li/>
+<br/>
+</ul>
+</div>
+</div>

@@ -273,3 +273,18 @@ span.picture {
     border: 0;
   }
 }
+
+/* comments box */
+
+.box{
+    height: 400px;
+    overflow: auto;
+    border: 3px orange solid; 
+    overflow-wrap: break-word;
+}
+.padded {
+    padding-left: 20px;
+}
+
+
+
