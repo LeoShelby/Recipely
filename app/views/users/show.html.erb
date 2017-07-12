@@ -24,6 +24,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 	<section class="stats">
 		<%= render 'shared/stats' %>  <!-- mostra statistiche di follow e follower del tale utente -->
 	</section>
+	<%= render 'follow_form' if logged_in? %> 
   </header>
 
 
