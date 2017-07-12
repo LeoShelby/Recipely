@@ -3,7 +3,7 @@
 <h1 >New Comment</h1>
 <div class="row">
 <div class="col-xs-12">
-  <%= form_for(@recipe.comments.build, :html => {class: "form-horizontal", role: "form"},  remote: true, local: true ) do |f| %>	
+  <%= form_for(@recipe.comments.build, :html => {class: "form-horizontal", role: "form"},remote: true, local: true ) do |f| %>	
 	
   <%= render 'shared/error_messages', object: f.object %>
 
@@ -12,7 +12,7 @@
     </div>
 
     <div class="col-sm-8">
-      <%= f.text_area :content, rows: 3, class: "form-control", placeholder: "Please enter a comment", autofocus: true %>
+      <%= f.text_area :content, rows: 3, class: "form-control", placeholder: "Please enter a comment" %>
     </div>
   </div>
 
@@ -29,3 +29,4 @@
 
 </div>
 </div>
+
