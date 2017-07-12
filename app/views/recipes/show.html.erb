@@ -77,8 +77,9 @@
     <br/>
     <br/>
     
-     <%= render 'shared/comment_form' %>  <!-- forma per commentare una ricetta -->
-     
+    <% if logged_in? %>
+    	<%= render 'shared/comment_form' %>  <!-- forma per commentare una ricetta -->
+	<% end %>
 
 <!-- End page content -->
 </div>
