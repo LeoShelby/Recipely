@@ -1,18 +1,18 @@
-<div id="wrapper" style="overflow-x: hidden">
 
 <div id="com">
 
+<FONT SIZE="6" COLOR="#FFA500"> Comments </FONT>
+<br/>
+<br/>
 
-<div id="" style="overflow-y: scroll; height:400px; max-width: 100%; overflow-x: hidden ">
-	<ul class="users">
-	
-
+<div class="box">
+<br/>
 <% @recipe.comments.order('created_at DESC').each do |comment| %>
-	<li>
-	<%= gravatar_for comment.user, size: 50 %>
+	<li  class="padded" >
+	<%= gravatar_for comment.user, size: 65 %>
 	<font color="#0000FF"> <%= link_to comment.user.name, user_path(comment.user.id) %> </font> 
 	<br/>
-	 <%= comment.content %>
+	 <strong><%= comment.content %> </strong>
 	<br/>
 	Posted <%= time_ago_in_words(@recipe.created_at) %> ago
 	<% if current_user?(comment.user) %>
@@ -20,11 +20,11 @@
 		<font color="#0000FF"><%= link_to "delete", comment , method: :delete, data: { confirm: "You sure?" }, remote: true %> </font>
     <% end %>
     </li>
+    <hr style="border: 1px solid " ></hr>
 <% end %>
 
 <li/>
 <br/>
 </ul>
-</div>
 </div>
 </div>
