@@ -44,7 +44,7 @@ class User < ApplicationRecord
 	
 	
 	has_many :comments, dependent: :destroy   #un utente ha più commenti effettuati
-	
+	has_many :likes, dependent: :destroy
 	def feed
 		Recipe.where("user_id IN (?) OR user_id = ?",following_ids,id)
 	end
@@ -132,6 +132,18 @@ class User < ApplicationRecord
 	end
 	
 	
+	
+	def likes?(recipe)
+	    !(likes.where(recipe_id: recipe.id)==[])
+	end
+	
+	def like(recipe)
+		likes.create(recipe_id: recipe.id)
+	end
+	
+	def unlike(recipe)
+		likes.find_by(recipe_id: recipe.id).destroy
+	end
 	
 	class << self
 	  def from_omniauth(auth_hash)

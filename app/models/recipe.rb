@@ -14,7 +14,7 @@ class Recipe < ApplicationRecord
 
 
   has_many :comments, dependent: :destroy
-
+  has_many :likes, dependent: :destroy
   private
 
     # Validates the size of an uploaded picture.
