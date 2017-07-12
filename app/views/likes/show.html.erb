@@ -1,0 +1,17 @@
+<div>
+
+<ul class="users">
+	
+<FONT size="6"> 	All Likes </FONT>
+
+<% @likes.order('created_at DESC').each do |like| %>
+	<li>
+	<%= gravatar_for like.user, size: 50 %>
+	<font color="#0000FF"> <%= link_to like.user.name, user_path(like.user.id) %> </font> 
+	<br/>
+	Liked <%= time_ago_in_words(like.created_at) %> ago
+<% end %>
+
+
+</ul>
+</div>
