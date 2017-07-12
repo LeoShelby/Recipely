@@ -78,6 +78,8 @@
     <br/>
     
     <% if logged_in? %>
+		<div id="err">
+		</div>
     	<%= render 'shared/comment_form' %>  <!-- forma per commentare una ricetta -->
 	<% end %>
 

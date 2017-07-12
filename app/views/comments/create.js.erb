@@ -1,3 +1,12 @@
+$("#err").html("")
 $("#com").html("<%= escape_javascript(render('shared/comments')) %>")
+
+<% if @error %>
+$("#err").html("<%= escape_javascript(render :partial => 'shared/errjs',:locals => { id:"+@error+"} ) %>")
+<% end %>
+
+
+
+
 $("#comment_form").html("<%= escape_javascript(render('shared/comment_form')) %>")
 

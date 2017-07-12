@@ -1,0 +1,13 @@
+
+
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@error.count, "error") %>.
+    </div>
+    <ul>
+    <% @error.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+

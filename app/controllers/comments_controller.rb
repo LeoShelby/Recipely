@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 	
 	
 	def create
+	  
 	  @recipe = Recipe.find(params[:recipe_id])
 	  @comment = @recipe.comments.build(comment_params)
 	  @comment.user=current_user
@@ -13,6 +14,7 @@ class CommentsController < ApplicationController
 			format.js
 		end
 	  else
+	   @error=@comment.errors
 		respond_to do |format|
 			format.html {redirect_to recipe_path(@recipe)}
 			format.js 
