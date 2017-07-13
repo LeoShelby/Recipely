@@ -11,7 +11,7 @@
   <div class="dropdown-container">
 	   <div class="dropdown-toolbar">
 		  <div class="dropdown-toolbar-actions">
-			
+			<a href="#"><i class="glyphicon glyphicon-search"></i> <%= link_to "View All" , notifications_path %></a>
 		  </div>
 			<h3 class="dropdown-toolbar-title"><%= current_user.notifications.where(read: false).count %> Unread Notifications </h3>
 		</div><!-- /dropdown-toolbar -->
@@ -19,7 +19,7 @@
 		<ul class="dropdown-menu notifications">
 			<% current_user.notifications.order('created_at DESC').where(read: false).each do |notif| %>   <!-- mostro le notifiche in ordine temporale decrescente e solo quelle non lette -->
 			
-				    <!-- tutta la notifica è cliccabile e ti reindirizza al profilo che ti segue -->
+				<%= link_to link_through_path(notif) do %>     <!-- tutta la notifica è cliccabile e ti reindirizza al profilo che ti segue -->
 					<!-- il link è reindirizzato sull'azione del controller che rende la notifica non letta, tale azione ti reindirizza alla pagina della notifica -->
 					<ul class="notifications">
 						  <li class="notification">
@@ -38,7 +38,7 @@
 							  </div>
 						  </li>
 					</ul>
-				  <!-- end del link_to -->
+				<% end %>  <!-- end del link_to -->
 		   
 			<% end %>  <!-- end del ciclo sulle notifiche -->
 			
