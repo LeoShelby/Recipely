@@ -4,7 +4,11 @@ class NotificationsController < ApplicationController
   def link_through
 	@notification = Notification.find(params[:id])
 	@notification.update read: true
-	redirect_to @notification.notified_by
+	if @notification.type_not=="following"
+		redirect_to @notification.notified_by
+	else 
+		redirect_to recipe_path(@notification.recipe)
+	end
   end
   
   
