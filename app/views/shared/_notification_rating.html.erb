@@ -1,0 +1,22 @@
+
+<%= link_to link_through_path(notif) do %>     <!-- tutta la notifica è cliccabile e ti reindirizza al profilo che ti segue -->
+	<!-- il link è reindirizzato sull'azione del controller che rende la notifica non letta, tale azione ti reindirizza alla pagina della notifica -->
+	<ul class="notifications">
+		  <li class="notification">
+			  <div class="media">
+				<div class="media-left">
+				  <div class="media-object">
+					<img class="img-circle"> <%= gravatar_for notif.notified_by, size: 50 %> </img>
+				  </div>
+				</div>
+				<div class="media-body">
+				  <strong class="notification-title"><font color="#0000FF"><%= notif.notified_by.name %> </font> rate your recipe </strong> 
+				  <strong><font color="#0000FF"><%=  notif.recipe.title %> </font></strong>
+					  <div class="notification-meta">
+					<small class="timestamp"><%= time_ago_in_words(notif.created_at) %> ago </small>   <!-- quando è arrivata la notifica -->
+				  </div>
+				</div>
+			  </div>
+		  </li>
+	</ul>
+<% end %>  <!-- end del link_to -->

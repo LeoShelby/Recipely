@@ -1,6 +1,5 @@
 class RatingsController < ApplicationController
-
-
+  
   def update
     @rating = Rating.find(params[:id])
     @recipe = @rating.recipe
