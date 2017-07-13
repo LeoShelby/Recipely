@@ -7,6 +7,7 @@ class Rating < ApplicationRecord
   
   private      
 	def create_notification
+		return if recipe.user == user
 	    if recipe.ratings.where(user_id: user.id).first.score != 0   
 	    #quando l'utente vede una ricetta, viene creato un rating pari a 0 a prescindere
 	    #quindi non devo creare una notifica se l'utente ha semplimente visto la ricetta ma non ha votato

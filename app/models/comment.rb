@@ -12,6 +12,7 @@ class Comment < ApplicationRecord
   
   private      
 	def create_notification
+		return if recipe.user == user
 		Notification.create(
 		  user:  recipe.user,
 		  notified_by:  user,
