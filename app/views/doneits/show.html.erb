@@ -1,0 +1,17 @@
+<div>
+
+<ul class="users">
+	
+<FONT size="6">    All Doneit </FONT>
+
+<% @doneits.order('created_at DESC').each do |doneit| %>
+	<li>
+	<%= gravatar_for doneit.user, size: 50 %>
+	<font color="#0000FF"> <%= link_to doneit.user.name, user_path(doneit.user.id) %> </font> 
+	<br/>
+	Done <%= time_ago_in_words(doneit.created_at) %> ago
+<% end %>
+
+
+</ul>
+</div>

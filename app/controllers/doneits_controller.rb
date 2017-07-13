@@ -1,6 +1,13 @@
 class DoneitsController < ApplicationController
   before_action :logged_in_user
 
+
+  def show  #accroccata per mostrare tutti i doneit
+		@recipe=Recipe.find(params[:id])
+	    @doneits=@recipe.doneits
+  end
+	
+	
   def create
     @recipe = Recipe.find(params[:recipe_id])
     current_user.doneit(@recipe)

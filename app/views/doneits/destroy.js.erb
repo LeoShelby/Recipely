@@ -1,1 +1,2 @@
 $("#doneit_form").html("<%= escape_javascript(render('shared/doneit')) %>");
+$("#doneits").html("<%= pluralize(@recipe.doneits.count, "Doneit") %>");

@@ -86,7 +86,19 @@
     <br/>
      <% if logged_in? %>
 		<%= render 'shared/like_form' %>
-		<hr/>
+     <% end %>
+     <br/>
+     <br/>
+     
+     <%= link_to doneit_path(@recipe.id) do %>
+		<FONT id="doneits" SIZE="6" COLOR="#FFA500"> <%= pluralize(@recipe.doneits.count, "Doneit") %> </FONT>  <!-- numero di like cliccabile, reidirizza alla show magheggio che funziona come una index -->
+	<% end %>
+	
+	
+	<!-- se sei loggato puoi mettere doneit -->
+    <br/>
+    <br/>
+     <% if logged_in? %>
 		<%= render 'shared/doneits_form' %>
      <% end %>
      <br/>

@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
   before_action :logged_in_user
 	
-  def show  #accroccata per mostrare tutte le notifiche
+  def show  #accroccata per mostrare tutti i likes
 		@recipe=Recipe.find(params[:id])
 	    @likes=@recipe.likes
 	end
