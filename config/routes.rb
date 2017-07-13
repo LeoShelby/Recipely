@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy, :show]
+  resources :doneits, only: [:create, :destroy, :show]
 
 
   get '/auth/:provider/callback', to: 'sessions#create_with_provider'
