@@ -21,7 +21,7 @@ class Recipe < ApplicationRecord
   
   
   
-  
+  #calcolo la media escludendo tutti i rating pari a 0, ossia tutti i rating generati non appena ogni utente apre una ricetta
   def average_rating
     if ratings.where("score > 0").size != 0
 		ratings.where("score > 0").sum(:score) / ratings.where("score > 0").size

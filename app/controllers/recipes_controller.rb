@@ -11,7 +11,11 @@ class RecipesController < ApplicationController
 	
 	def show
 		@recipe=Recipe.find(params[:id])
-		if logged_in?
+		if logged_in?   
+		#quando mostro un ricetta creo in automatico il rating dell'utente che la sta vedendo, poichè
+		#il controller Rating non ha la create ma solo l'update, quindi se l'utente non ha già valutato la ricetta
+		#creo un rating di score=0 che ovviamente non considero quando calcolo la media nel model della ricetta
+		#quindi tutto ciò implica che non puoi valutare una ricetta con zero stelle
 			@rating = Rating.where(recipe_id: @recipe.id, user_id: current_user.id).first
 			unless @rating
 			  @rating = Rating.create(recipe_id: @recipe.id, user_id: current_user.id, score: 0)
