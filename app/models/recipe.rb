@@ -12,7 +12,7 @@ class Recipe < ApplicationRecord
   validate  :picture_size #definisco un validatore personale per le immagini ossia campmpo picture
 
 
-
+  has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   private
