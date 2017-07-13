@@ -11,7 +11,7 @@ class DoneitsController < ApplicationController
   end
 
   def destroy
-	@recipe = Like.find(params[:id]).recipe
+	@recipe = Doneit.find(params[:id]).recipe
     current_user.undoneit(@recipe)
     respond_to do |format|    
       format.html { redirect_to @recipe }
