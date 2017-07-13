@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
 	@notification.update read: true
 	if @notification.type_not=="following"
 		redirect_to @notification.notified_by
-	else 
+	else #altrimenti è commento o like quindi vai comunque sulla ricetta
 		redirect_to recipe_path(@notification.recipe)
 	end
   end

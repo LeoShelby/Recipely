@@ -21,9 +21,11 @@
 			
 				
 				<% if notif.type_not=="following" %>
-				<%= render 'shared/notification_following', :notif => notif %>
-				<% else %>
-				<%= render 'shared/notification_comment', :notif => notif %>
+					<%= render 'shared/notification_following', :notif => notif %>
+				<% elsif notif.type_not=="comment" %>
+					<%= render 'shared/notification_comment', :notif => notif %>
+				<% else %>  <!-- è un like -->
+					<%= render 'shared/notification_like', :notif => notif %>
 				<% end %>  <!-- end del ciclo sulle notifiche -->
 				
 			<%end%>

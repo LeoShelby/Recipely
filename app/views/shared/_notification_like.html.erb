@@ -10,10 +10,10 @@
 				  </div>
 				</div>
 				<div class="media-body">
-				  <strong class="notification-title"><font color="#0000FF"><%= notif.notified_by.name %> </font> comment your recipe </strong> 
+				  <strong class="notification-title"><font color="#0000FF"><%= notif.notified_by.name %> </font> like your recipe </strong> 
 				  <strong><font color="#0000FF"><%=  notif.recipe.title %> </font></strong>
 					  <div class="notification-meta">
-					<small class="timestamp"> <%= time_ago_in_words(notif.created_at) %> ago </small>   <!-- quando è arrivata la notifica -->
+					<small class="timestamp"><%= time_ago_in_words(notif.created_at) %> ago </small>   <!-- quando è arrivata la notifica -->
 				  </div>
 				</div>
 			  </div>

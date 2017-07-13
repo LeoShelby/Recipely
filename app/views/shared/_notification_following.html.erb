@@ -12,7 +12,7 @@
 				<div class="media-body">
 				  <strong class="notification-title"><font color="#0000FF"><%= notif.notified_by.name %> </font> started to follow you </strong>  <!-- da mofidicare quando avremo altri tipi di notifiche -->
 					  <div class="notification-meta">
-					<small class="timestamp"> <%= notif.created_at %> </small>   <!-- quando è arrivata la notifica -->
+					<small class="timestamp"> <%= time_ago_in_words(notif.created_at) %> ago</small>   <!-- quando è arrivata la notifica -->
 				  </div>
 				</div>
 			  </div>
