@@ -1,0 +1,21 @@
+
+<h1> 1 oz of <%= @ingr.name.capitalize %></h1>
+
+<% @info.each do |t, a| %>
+	<% next if t=='uri'%>
+  <h2><%= t unless t=='totalNutrients' || t=='uri'%></h2>
+  
+  <% if t=='totalNutrients' %>
+	
+
+  <% break %>
+  <% end %>
+  
+  <h2><%= a %></h2>
+  <br/>
+<% end %>
+
+
+
+	
+

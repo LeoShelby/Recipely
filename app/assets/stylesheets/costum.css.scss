@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "jquery-ui/autocomplete";
 
 /* unico file CSS per tutto, saranno un bordello di righe ma a quanto pare dividere nei vari css per ogni controller è un casino assurdo */
 /* "." indica una classe, "#" indica un id */

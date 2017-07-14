@@ -45,6 +45,8 @@ class RecipesController < ApplicationController
  
     def create
     @recipe = current_user.recipes.build(recipe_params)
+
+    
     if @recipe.save
       flash[:success] = "Recipe created!"
       redirect_to root_url

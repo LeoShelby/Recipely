@@ -18,3 +18,6 @@
 
 
 //= require jquery.raty
+
+
+

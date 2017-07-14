@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
   VALID_CATEGORY_REGEX = /\A(primo|secondo|contorno|dessert)\z/i   #espressione regolare per gestire il giusto formate delle content(primo secondo contorno dessert) e rate(
+  has_many  :ingredients
   belongs_to :user #la ricetta ha un solo utente 
   default_scope -> { order(created_at: :desc) }#prendere le ricette in ordine decrescente temporalmente
    mount_uploader :picture, PictureUploader #per caricare una sola immagine

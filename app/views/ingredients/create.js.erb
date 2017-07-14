@@ -1,0 +1,7 @@
+$("#erringr").html("")
+
+<% if @error %>
+$("#erringr").html("<%= escape_javascript(render :partial => 'shared/errjs',:locals => { id:"+@error+"} ) %>")
+<% end %>
+
+

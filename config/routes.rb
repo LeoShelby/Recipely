@@ -59,8 +59,10 @@ Rails.application.routes.draw do
   get 'notifications/:id/link_through' => 'notifications#link_through', as: :link_through   #route per l'azione "link_through" del controller Notifications
   get 'notifications' => 'notifications#index'
   
+   #per ingredients:
+   resources :ingredients, only: [:create, :show]
   
-  resources :ratings, only: :update
+  resources :ratings, only: :update 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

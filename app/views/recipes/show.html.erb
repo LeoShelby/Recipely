@@ -40,7 +40,12 @@
     
       <h4>Category</h4>
       <p class="w3-text-grey"><%=  @recipe.category %></p><br>
-    
+     <h4>Ingredients:</h4>
+     <% @recipe.ingredients.each do |ingredient| %>  
+    <p class="w3-text-grey"> <%= link_to   ingredient.name , ingredient_path(ingredient)   %> <p/>
+		 
+
+	<% end %>
    
     </div>
     
@@ -63,6 +68,10 @@
                                   data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
 	<%= link_to "update", edit_recipe_path(@recipe.id),
                                   data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
+	
+	<div id="erringr">
+	</div>
+	 <%= render 'shared/ingr_form' %>  
 	
 	</div>
     <% end %>
