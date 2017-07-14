@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713144629) do
+ActiveRecord::Schema.define(version: 20170713163000) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 20170713144629) do
     t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
     t.index ["recipe_id"], name: "index_notifications_on_recipe_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.integer  "score",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["recipe_id"], name: "index_ratings_on_recipe_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "recipes", force: :cascade do |t|

@@ -12,7 +12,7 @@ class Relationship < ApplicationRecord
   validates :followed_id, presence: true
   
   private      
-	def create_notification  # per il momento ho fatto questo metodo private, quando avremo altri tipi di notifiche si vedrà, forse ne faccio un altro privato dove serve
+	def create_notification 
 		Notification.create(
 		  user:  followed,
 		  notified_by:  follower,

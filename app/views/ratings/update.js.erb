@@ -1,0 +1,19 @@
+$('#star').raty({
+  readOnly: true,
+  score: <%= @recipe.average_rating %>,
+  path: '/assets'
+});
+
+$('#user_star').raty({
+  score: <%= @rating.score %>,
+  path: '/assets',
+  click: function(score, evt) {
+    $.ajax({
+      url: '/ratings/' + <%= @rating.id %>,
+      type: 'PATCH',
+      data: { score: score }
+    }).done(function (data){});
+  }
+});
+
+<!-- script identico a quello che sta in fondo alla show della recipe, vai a vedere lì-->

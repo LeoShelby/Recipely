@@ -16,6 +16,20 @@ class Recipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :doneits, dependent: :destroy
+  
+  has_many :ratings, dependent: :destroy
+  
+  
+  
+  #calcolo la media escludendo tutti i rating pari a 0, ossia tutti i rating generati non appena ogni utente apre una ricetta
+  def average_rating
+    if ratings.where("score > 0").size != 0
+		ratings.where("score > 0").sum(:score) / ratings.where("score > 0").size
+	else
+		0
+	end
+  end
+  
   private
 
     # Validates the size of an uploaded picture.

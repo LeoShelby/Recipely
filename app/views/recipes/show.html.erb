@@ -73,6 +73,23 @@
     
     <!-- mostro numero di likes, l'id serve a js per aggiornarlo al volo se metto o tolgo il like alla ricetta -->
     
+    
+    
+
+    <br/>
+    <br/>
+    <p>Average rating</p>           <!-- rating avarage che viene mostrato grazie allo script in fondo a questo file -->
+		<div id="star"></div>
+    <br/>
+    
+    <% if logged_in? %>
+		<p>Your rating</p>
+			<div id="user_star"></div>  <!-- lo script in fondo a questo file fa illuminare le stesse in tempo reale  -->
+		<br/>
+		<br/>
+    <% end %>
+
+    
 
 
 	<%= link_to like_path(@recipe.id) do %>
@@ -123,4 +140,35 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+<script>
+  $('#star').raty({
+    readOnly: true,
+    score: <%= @recipe.average_rating %>,
+    path: '/assets'
+  });
+  
+  <% if logged_in? %>           <!-- lo script parte solo se sei loggato, altrimento va in errore tutto giustamente dato che @rating gliela-->
+  $('#user_star').raty({         <!-- passa la show del controller recipe -->
+	score: <%= @rating.score %>,
+	path: '/assets',
+	click: function(score, evt) {
+	  $.ajax({
+		url: '/ratings/' + <%= @rating.id %>,
+		type: 'PATCH',
+		data: { score: score }
+	  });
+	}
+  });
+  <% end %>
+  
+</script>
 
