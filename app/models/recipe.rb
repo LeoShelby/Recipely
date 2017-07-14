@@ -42,6 +42,10 @@ class Recipe < ApplicationRecord
       end
     end
     
+    
+    
+    #chiamo il metodo comune a tutti i badges nel model application_record  SUPERDRY
+    
     def badge_level_up
 		badge_level_up_aux("Creator","creator","recipes")
 	end

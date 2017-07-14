@@ -24,7 +24,8 @@ class Like < ApplicationRecord
 		)
 	end
 	
-	def badge_level_up
+	#chiamo il metodo comune a tutti i badges nel model application_record  SUPERDRY
+	def badge_level_up 
 		badge_level_up_aux("Liker","liker","likes")
 	end
     def badge_level_down
