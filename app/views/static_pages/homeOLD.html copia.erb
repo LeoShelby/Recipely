@@ -7,31 +7,31 @@
 			<section class="stats">
 				<%= render 'shared/stats' %>
 			</section>
-			<!-- link new recipe-->
-			<div >      <!-- classe specifica per Bootstrap -->
-				<%= link_to "New Recipe!", new_recipe_path , class: "btn btn-lg btn-primary" %>        <!-- classi specifice per Bootstrap -->    
+			<%# link new recipe %>
+			<div >      <%# classe specifica per Bootstrap %>
+				<%= link_to "New Recipe!", new_recipe_path , class: "btn btn-lg btn-primary" %>        <%# classi specifice per Bootstrap %>    
 			</div>
 		
 		</aside>
-		<!-- inizio codice per il feed -->
+		<%# inizio codice per il feed %>
 		<div class="col-md-8">
 			<h3>Recipe Feed</h3>
 			<%= render 'shared/feed' %>
 		</div>
-		<!-- finecodice per il feed -->
+		<%# finecodice per il feed %>
 	</div>
 	
 <% else %>
-	<div class="center jumbotron">      <!-- classe specifica per Bootstrap -->
+	<div class="center jumbotron">      <%# classe specifica per Bootstrap %>
 		<h1>Welcome to the Recipely!</h1>
 		<h2>
 			This is where you can find the best recipes!
 		</h2>
-		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>        <!-- classi specifice per Bootstrap -->
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>        <%# classi specifice per Bootstrap %>
 		
 		      
 	</div>
 	<%=  image_tag("mario.png", alt: "Rails logo") %>  
-	<!-- sta roba l'ho lasciata solo come esempio, mette l'immagine di SuperMario nella home come link cliccabile, l'immagine sta in assets/images -->
+	<%# sta roba l'ho lasciata solo come esempio, mette l'immagine di SuperMario nella home come link cliccabile, l'immagine sta in assets/images %>
 
 <% end %>

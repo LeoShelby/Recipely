@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   def show  #accroccata per mostrare tutti i likes
 		@recipe=Recipe.find(params[:id])
 	    @likes=@recipe.likes
-	end
+  end
   
   def create
     @recipe = Recipe.find(params[:recipe_id])

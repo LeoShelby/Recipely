@@ -1,11 +1,11 @@
-<!-- questo file rappresenta il layout di ogni view -->
+<%# questo file rappresenta il layout di ogni view %>
 
 <!DOCTYPE html>
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>   
-    <!-- full_title è un metodo definito in helpers/application_helper -->   
-    <!-- esegue il blocco di yield e il risultato (il titolo) resta dentro al template -->
+    <%# full_title è un metodo definito in helpers/application_helper %>   
+    <%# esegue il blocco di yield e il risultato (il titolo) resta dentro al template %>
     
     <%= csrf_meta_tags %>
 
@@ -13,20 +13,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     
-   <%= render 'layouts/shim' %>    <!-- carica il partial chiamato _shim -->
+   <%= render 'layouts/shim' %>    <%# carica il partial chiamato _shim %>
     
     
   </head>
 	<body>
 		 
-		<% flash.each do |message_type, message| %>    <!-- i contenuti flash vengono mostrati in tutto il sito, message_type ritorna il tipo di messaggio (es. :success) -->
+		<% flash.each do |message_type, message| %>    <%# i contenuti flash vengono mostrati in tutto il sito, message_type ritorna il tipo di messaggio (es. :success) %>
 			<div class="alert alert-<%= message_type %>"><%= message %></div>
 		<% end %>
 		
 		
 		 <%= render 'layouts/header' %>
 		<div class="container">
-			<%= yield %>                  <!-- il contenuto della specifica view viene convertito in HTML e messo qui -->
+			<%= yield %>                  <%# il contenuto della specifica view viene convertito in HTML e messo qui %>
 			<%= render 'layouts/footer' %>
 			<%= debug(params) if Rails.env.development? %>
 		</div>
@@ -34,4 +34,4 @@
 </html>
 
 
-<!-- nav, header, section sono tre tag nuovi di HTML5 --> 
+<%# nav, header, section sono tre tag nuovi di HTML5 %> 

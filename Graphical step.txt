@@ -1,7 +1,0 @@
-Graphical information:
-
-- CSS with Responsive Design or not?
-- BootStrap with CSS
-- Dynamic or Static Layout?
-- Floated Layout or Fixed Position Layout?
-- Is it important navigate with smartphone?

@@ -80,20 +80,20 @@
     <br/>
     <br/>
     
-    <!-- mostro numero di likes, l'id serve a js per aggiornarlo al volo se metto o tolgo il like alla ricetta -->
+    <%# mostro numero di likes, id serve a js per aggiornarlo al volo se metto o tolgo il like alla ricetta %>
     
     
     
 
     <br/>
     <br/>
-    <p>Average rating</p>           <!-- rating avarage che viene mostrato grazie allo script in fondo a questo file -->
+    <p>Average rating</p>           <%# rating average che viene mostrato grazie allo script in fondo a questo file %>
 		<div id="star"></div>
     <br/>
     
     <% if logged_in? %>
 		<p>Your rating</p>
-			<div id="user_star"></div>  <!-- lo script in fondo a questo file fa illuminare le stesse in tempo reale  -->
+			<div id="user_star"></div>  <%# lo script in fondo a questo file fa illuminare le stesse in tempo reale  %>
 		<br/>
 		<br/>
     <% end %>
@@ -102,12 +102,12 @@
 
 
 	<%= link_to like_path(@recipe.id) do %>
-		<FONT id="likes" SIZE="6" COLOR="#FFA500"> <%= pluralize(@recipe.likes.count, "Like") %> </FONT>  <!-- numero di like cliccabile, reidirizza alla show magheggio che funziona come una index -->
+		<FONT id="likes" SIZE="6" COLOR="#FFA500"> <%= pluralize(@recipe.likes.count, "Like") %> </FONT>  <%# numero di like cliccabile, reidirizza alla show magheggio che funziona come una index %>
 	<% end %>
 	
 	
 	
-    <!-- se sei loggato puoi mettere like -->
+    <%# se sei loggato puoi mettere like %>
     <br/>
     <br/>
      <% if logged_in? %>
@@ -117,11 +117,11 @@
      <br/>
      
      <%= link_to doneit_path(@recipe.id) do %>
-		<FONT id="doneits" SIZE="6" COLOR="#FFA500"> <%= pluralize(@recipe.doneits.count, "Doneit") %> </FONT>  <!-- numero di like cliccabile, reidirizza alla show magheggio che funziona come una index -->
+		<FONT id="doneits" SIZE="6" COLOR="#FFA500"> <%= pluralize(@recipe.doneits.count, "Doneit") %> </FONT>  <%# numero di like cliccabile, reidirizza alla show magheggio che funziona come una index %>
 	<% end %>
 	
 	
-	<!-- se sei loggato puoi mettere doneit -->
+	<%# se sei loggato puoi mettere doneit %>
     <br/>
     <br/>
      <% if logged_in? %>
@@ -131,7 +131,7 @@
      <br/>
      
      
-     <%= render 'shared/comments' %>    <!-- mostra i commenti alla ricetta -->
+     <%= render 'shared/comments' %>    <%# mostra i commenti alla ricetta %>
 	
     <br/>
     <br/>
@@ -139,7 +139,7 @@
     <% if logged_in? %>
 		<div id="err">
 		</div>
-    	<%= render 'shared/comment_form' %>  <!-- forma per commentare una ricetta -->
+    	<%= render 'shared/comment_form' %>  <%# form per commentare una ricetta %>
 	<% end %>
 
 <!-- End page content -->
@@ -165,8 +165,8 @@
     path: '/assets'
   });
   
-  <% if logged_in? %>           <!-- lo script parte solo se sei loggato, altrimento va in errore tutto giustamente dato che @rating gliela-->
-  $('#user_star').raty({         <!-- passa la show del controller recipe -->
+  <% if logged_in? %>           <%# lo script parte solo se sei loggato, altrimento va in errore tutto giustamente dato che @rating gliela %>
+  $('#user_star').raty({         <%# passa la show del controller recipe %>
 	score: <%= @rating.score %>,
 	path: '/assets',
 	click: function(score, evt) {

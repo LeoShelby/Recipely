@@ -6,12 +6,12 @@
 			<%= render 'shared/error_messages', object: f.object %>
 			
 			<%= hidden_field_tag :email, @user.email %>
-			<!-- campo nascoto, ossia non è visibile nella pagina ma è presente, quindi verrà inviato insieme alle altre info della form
+			<%# campo nascoto, ossia non è visibile nella pagina ma è presente, quindi verrà inviato insieme alle altre info della form
 			questo serve poichè abbiamo pianificato di reperire l’utente mediante indirizzo
             email, il che significa che è necessario il suo valore value in entrambe
 			le azioni edit e update . La email verrà resa automaticamente disponibile
 			nell’azione edit per la sua presenza nel link qui sopra, ma dopo che avremo
-			trasmesso il form il suo valore andrà perso -->
+			trasmesso il form il suo valore andrà perso %>
 			
 			<%= f.label :password %>
 			<%= f.password_field :password, class: 'form-control' %>

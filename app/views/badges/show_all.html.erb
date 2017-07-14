@@ -1,0 +1,19 @@
+
+<h1>Your Badges</h1>
+
+<% @badges.each do |badge| %>
+
+
+<br/>
+<br/>
+
+<%= image_tag( badge.picture , :class => "w3-round w3-image w3-opacity-min" , :width => "150", :height => "150")%>
+
+
+ <FONT size="6" color="blue"><%= badge.type_bad %>
+ 
+ 
+
+ Level <%= badge.level %> </FONT>
+
+<% end %>

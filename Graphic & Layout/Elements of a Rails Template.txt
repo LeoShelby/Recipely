@@ -1,0 +1,9 @@
+Un template in Rails può essere composto da diversi elementi:
+
+layout
+Rappresenta lo scheletro della pagina
+view (vista)
+Rappresenta il contenuto della pagina per una determinata action. È “avvolto” da un layout, di norma quello predefito per il controller.
+partial (parziale)
+Rappresenta un frammento di template, normalmente un elemento ripetuto in più template.
+Ogni action può avere un solo layout ed una sola vista ma può contenere illimitati parziali.

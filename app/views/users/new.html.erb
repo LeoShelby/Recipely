@@ -2,11 +2,11 @@
 <h1>Sign up</h1>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<%= form_for(@user) do |f| %>    <!-- gli passo @user creatore nella new del controller, la form mi riempie le info di quell'utente-->
-			 <%= render 'shared/error_messages', object: f.object %>   <!-- partial definito in views/shared -->
+		<%= form_for(@user) do |f| %>    <%# gli passo @user creatore nella new del controller, la form mi riempie le info di quell'utente %>
+			 <%= render 'shared/error_messages', object: f.object %>   <%# partial definito in views/shared %>
 			
 			<%= f.label :name %>
-			<%= f.text_field :name, class: 'form-control' %>   <!-- form-control classe specifica per Bootstrap -->
+			<%= f.text_field :name, class: 'form-control' %>   <%# form-control classe specifica per Bootstrap %>
 			<%= f.label :email %>
 			<%= f.text_field :email, class: 'form-control' %>
 			<%= f.label :password %>

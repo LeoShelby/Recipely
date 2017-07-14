@@ -1,0 +1,23 @@
+
+<%= link_to link_through_path(notif) do %>     <!-- tutta la notifica è cliccabile e ti reindirizza al profilo che ti segue -->
+	<!-- il link è reindirizzato sull'azione del controller che rende la notifica non letta, tale azione ti reindirizza alla pagina della notifica -->
+	<ul class="notifications">
+		  <li class="notification">
+			  <div class="media">
+				<div class="media-left">
+				  <div class="media-object">
+					<img class="img-circle">
+					<%= image_tag(notif.badge.picture , :class => "w3-round w3-image w3-opacity-min" , :width => "50", :height => "50")%> 
+				  </div>
+				</div>
+				<div class="media-body">
+				  <strong class="notification-title"> You gain a new badge! </strong> 
+				  <strong><font color="#0000FF"><%=  notif.badge.type_bad %> </font></strong>
+					  <div class="notification-meta">
+					<small class="timestamp"> <%= time_ago_in_words(notif.created_at) %> ago </small>   <!-- quando è arrivata la notifica -->
+				  </div>
+				</div>
+			  </div>
+		  </li>
+	</ul>
+<% end %>  <!-- end del link_to -->
