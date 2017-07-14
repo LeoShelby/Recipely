@@ -15,6 +15,6 @@ CSS3 media query is the trick for responsive design. It is like writing if condi
 The following set of rules will be in effect if the viewport width is 980px or less. Basically, I set all the container width from pixel value to percentage value so the containers will become fluid.
 Then for viewport 700px or less, specify the #content and #sidebar to auto width and remove the float so they will display as full width.
 For 480px or less (mobile screen), reset the #header height to auto, change the h1 font size to 24px and hide the #sidebar.
-You can write as many media query as you like. I’ve only shown 3 media queries in my demo. The purpose of the media queries is to apply different CSS rules to achieve different layouts for specified viewport width. The media queries can be in the same stylesheet or in a separate file.
+The purpose of the media queries is to apply different CSS rules to achieve different layouts for specified viewport width. The media queries can be in the same stylesheet or in a separate file.
 
 
