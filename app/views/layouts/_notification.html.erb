@@ -1,4 +1,4 @@
-<!-- menu dropdown delle notifiche -->
+<%# menu dropdown delle notifiche %>
 
 <div class="btn-group dropdown dropdown-notifications sw-open">
   <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -17,7 +17,7 @@
 		</div><!-- /dropdown-toolbar -->
 
 		<ul class="dropdown-menu notifications">
-			<% current_user.notifications.order('created_at DESC').where(read: false).each do |notif| %>   <!-- mostro le notifiche in ordine temporale decrescente e solo quelle non lette -->
+			<% current_user.notifications.order('created_at DESC').where(read: false).each do |notif| %>   <%# mostro le notifiche in ordine temporale decrescente e solo quelle non lette %>
 			
 				
 				<% if notif.type_not=="following" %>
@@ -26,9 +26,11 @@
 					<%= render 'shared/notification_comment', :notif => notif %>
 				<% elsif notif.type_not=="doneit" %>
 					<%= render 'shared/notification_doneit', :notif => notif %>
-				<% else %>  <!-- è un like -->
+				<% elsif notif.type_not=="rating" %>
+					<%= render 'shared/notification_rating', :notif => notif %>
+				<% else %>  <%# è un like %>
 					<%= render 'shared/notification_like', :notif => notif %>
-				<% end %>  <!-- end del ciclo sulle notifiche -->
+				<% end %>  <%# end del ciclo sulle notifiche %>
 				
 			<%end%>
 		</ul>

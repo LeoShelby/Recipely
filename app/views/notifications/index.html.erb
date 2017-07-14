@@ -1,5 +1,5 @@
 
-<!-- pagine per l'index delle notifiche scritta identica a quella per l'index degli utenti -->
+<%# pagine per l'index delle notifiche scritta identica a quella per l'index degli utenti %>
 
 <% provide(:title, 'All Notifications') %>
 <h1>All Notifications</h1>
@@ -14,9 +14,11 @@
 		<%= render 'shared/notification_comment', :notif => notif %>
 	<% elsif notif.type_not=="doneit" %>
 		<%= render 'shared/notification_doneit', :notif => notif %>
-	<% else %>  <!-- è un like -->
+	<% elsif notif.type_not=="rating" %>
+		<%= render 'shared/notification_rating', :notif => notif %>
+	<% else %>  <%# è un like %>
 		<%= render 'shared/notification_like', :notif => notif %>
-	<% end %>  <!-- end del ciclo sulle notifiche -->
+	<% end %>  <%# end del ciclo sulle notifiche %>
 <% end %>
 </ul>
 
