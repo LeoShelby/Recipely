@@ -1,15 +1,22 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
 
-<%= will_paginate %>   <!-- visualizza gli utenti su più pagine a patto che si usi il metodo paginate nell'azione index del controller -->
+<%= will_paginate %>
+<%# visualizza gli utenti su più pagine a patto che si usi il metodo paginate nell'azione index del controller %>
 
 <ul class="users">
 	<% @users.each do |user| %>
-		<%= render user if (user.activated)%>   <!-- chiama il partial _user -->
+		<% if false %>	<%# usando if false commento via il codice (questo invece è un commento "tradizionale") %>	
+			<% if (!user.activated && current_user.admin) %>
+				<b>(Not activated)</b>
+			<% end %>
+		<% end %>
+		<%= render user  if (user.activated || current_user.admin)%>   <%# chiama il partial _user %>
+		<%# Gli utenti admin vedono tutti, gli altri solo quelli confermati %>
 	<% end %>
 </ul>
 
-<!-- rails è talmente sveglio che potevo pure solo scrivere	%= render @users %, senza fare l'each do -->
+<%# rails è talmente sveglio che potevo pure solo scrivere	%= render @users %, senza fare l'each do %>
 
 
 <%= will_paginate %>
