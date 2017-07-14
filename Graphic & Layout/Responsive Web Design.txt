@@ -1,9 +1,24 @@
 Responsive Web Design 
 
-What is it?
+1 - What is it?
 
 Responsive web design (RWD) is an approach to web design aimed at allowing desktop webpages to be viewed in response to the size of the screen or web browser one is viewing with. In addition it's important to understand that Responsive Web Design tasks include offering the same support to a variety of devices for a single website. Recent work also considers the viewer proximity as part of the viewing context as an extension for RWD. As mentioned by the Nielsen Norman Group: content, design and performance are necessary across all devices to ensure usability and satisfaction.
 A site designed with RWD adapts the layout to the viewing environment by using fluid, proportion-based grids, flexible images, and CSS3 media queries, an extension of the @media rule, in the following ways:
 The fluid grid concept calls for page element sizing to be in relative units like percentages, rather than absolute units like pixels or points.
 Flexible images are also sized in relative units, so as to prevent them from displaying outside their containing element.
 Media queries allow the page to use different CSS style rules based on characteristics of the device the site is being displayed on, most commonly the width of the browser.
+
+2 - Why Responsive Design is important ang Google approved?
+
+In 2015, Google rolled out a change to the search engine algorithms which now factor in a website’s mobile presence as a ranking signal. This reason alone can justify why responsive design is important!
+Simply put, a website needs to be usable on a smartphone.
+This includes elements such as:
+readable text without requiring zoom,
+adequate space for tap targets,
+and no horizontal scrolling.
+Can you recall the shrunken version of a desktop site on your phone? It was likely not an optimal experience!
+The number of smartphone users internationally will surpass 2 billion in 2016.
+Websites not optimized for these smaller screens can experience a decline in their search engine rankings.
+It’s true: over 60% of searches now come from a mobile device.
+To ensure your website offers an experience tailored to handheld devices (without creating a separate app), consider why responsive design is important as a mobile solution.
+
