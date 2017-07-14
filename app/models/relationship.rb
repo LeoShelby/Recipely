@@ -23,7 +23,8 @@ class Relationship < ApplicationRecord
 		)
 	end
 	
-	    
+	
+	#chiamo il metodo comune a tutti i badges nel model application_record  SUPERDRY
     def badge_level_up
 		badge_level_up_aux("Birdman","bird","following","follower")  #devo passare il parametro follower poichè non si chiama "user" come negli altri casi di badges
 	end

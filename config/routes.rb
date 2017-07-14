@@ -63,7 +63,9 @@ Rails.application.routes.draw do
   resources :ratings, only: :update
   
   
+  #mi creo una nuova route per l'azione show_all del controllore di badges
   get 'badges/show_all'
+  #faccio in modo che tale route prenda come parametro l'id
   get 'badges/:id/show_all' => 'badges#show_all', as: :show_all
 
 

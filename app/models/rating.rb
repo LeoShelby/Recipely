@@ -27,7 +27,7 @@ class Rating < ApplicationRecord
 		end
 	end
 	
-	
+	#chiamo il metodo comune a tutti i badges nel model application_record  SUPERDRY
 	def badge_level_up
 	    return if recipe.ratings.where(user_id: user.id).first.score == 0 
 		badge_level_up_aux("Critic","critic","ratings")
