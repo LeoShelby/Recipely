@@ -5,7 +5,7 @@
 		<%= form_for(@recipe) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 			<%= f.label :title %>
-			<%= f.text_field :title, class: 'form-control' %>   <!-- form-control classe specifica per Bootstrap -->
+			<%= f.text_field :title, class: 'form-control' %>   <%# form-control classe specifica per Bootstrap %>
 			
 			<%= f.label :content %>
 			<%= f.text_field :content, class: 'form-control' %>
@@ -20,11 +20,11 @@
 			<%= f.label :difficulty %>
 			<%= f.select :rate, options_for_select([ 1, 2, 3, 4,5]), :class => 'form-control' %>
 			<%= f.submit "Save changes", class: "btn btn-primary" %>
-			<span class="picture"> <!-- aggiungo il campo per l immagine-->
-				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %> <!-- client side imag validator format -->
+			<span class="picture"> <%# aggiungo il campo per l immagine %>
+				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %> <%# client side image validator format %>
 			</span>
 		<% end %>
-<!-- jquery per alert quando l immagine è troppo grande senza sprecare risore nel lato database  -->
+<%# jquery per alert quando l immagine è troppo grande senza sprecare risorse nel lato database %>
 <script type="text/javascript">
   $('#recipe_picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;

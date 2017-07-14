@@ -3,26 +3,26 @@
 	<aside class="col-md-4">
 		<section class="user_info">
 			<h1>
-				<%= gravatar_for @user %>   <!-- utilizzo di gravatar per gestire le immagini di profilo, gravatar_for è definito in users_helper -->
+				<%= gravatar_for @user %>   <%# utilizzo di gravatar per gestire le immagini di profilo, gravatar_for è definito in users_helper %>
 				<%= @user.name %>
 			</h1>
 		</section>
 		
 		<section class="stats">
-			<%= render 'shared/stats' %>  <!-- mostra statistiche di follow e follower del tale utente -->
+			<%= render 'shared/stats' %>  <%# mostra statistiche di follow e follower del tale utente %>
 		</section>
 		
 	</aside>
 	
 	
 	<div class="col-md-8">
-		<% if @user.recipes.any? %> <!-- mostra ricette di ogni utente -->
+		<% if @user.recipes.any? %> <%# mostra ricette di ogni utente %>
 			<h3>Recipes (<%= @user.recipes.count %>)</h3>
 			<ol class="recipes">
 			<%= render @recipes %>
 			</ol>
 			<%= will_paginate @recipes %>
-		<% end %> <!-- fine codice per la mostra ricette -->
+		<% end %> <%# fine codice per la mostra ricette %>
   </div>
 		<%= render 'follow_form' if logged_in? %>
 	</div>

@@ -2,16 +2,16 @@
 <h1>Log in</h1>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<%= form_for(:session, url: login_path) do |f| %>  <!-- non c'è alcun Session model, quindi devo indicare a Rails sia il nome della risorsa (session) sia l'url -->
+		<%= form_for(:session, url: login_path) do |f| %>  <%# non c'è alcun Session model, quindi devo indicare a Rails sia il nome della risorsa (session) sia l'url %>
 			<%= f.label :email %>
 			<%= f.email_field :email, class: 'form-control' %>
 			<%= f.label :password %>
 			
-			<%= link_to "(password dimenticata)", new_password_reset_path %>  <!-- link per reimpostare la password -->
+			<%= link_to "(password dimenticata)", new_password_reset_path %>  <%# link per reimpostare la password %>
 						
 			<%= f.password_field :password, class: 'form-control' %>
 			
-			<%= f.label :remember_me, class: "checkbox inline" do %>   <!-- checkbox per il "ricordami" -->
+			<%= f.label :remember_me, class: "checkbox inline" do %>   <%# checkbox per il "ricordami" %>
 				<%= f.check_box :remember_me %>
 				<span>Ricordami</span>
 			<% end %>
@@ -28,5 +28,5 @@
 
 
 
-<!-- OSS. l’invio di questo form darà come risultato un params hash in cui 
-     params[:session][:email] e params[:session][:password] corrispondono ai campi e-mail e password. -->
+<%# OSS. l’invio di questo form darà come risultato un params hash in cui 
+     params[:session][:email] e params[:session][:password] corrispondono ai campi e-mail e password. %>
