@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713163000) do
+ActiveRecord::Schema.define(version: 20170714094409) do
+
+  create_table "badges", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "type_bad"
+    t.integer  "level"
+    t.string   "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_badges_on_user_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"

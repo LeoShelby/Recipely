@@ -61,6 +61,11 @@ Rails.application.routes.draw do
   
   
   resources :ratings, only: :update
+  
+  
+  get 'badges/show_all'
+  get 'badges/:id/show_all' => 'badges#show_all', as: :show_all
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
