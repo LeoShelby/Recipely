@@ -31,6 +31,8 @@ class Like < ApplicationRecord
 				badge.update_attribute(:level , "3")
 			elsif user.likes.count >=2
 				badge.update_attribute(:level , "2")
+			elsif user.likes.count >=1
+				badge.update_attribute(:level , "1")
 			end
 		else 
 			if user.likes.count >= 1       #se non ho già un badge e ho messo più di 10 like ottengo il badge di livello 1
