@@ -11,7 +11,7 @@ class ApplicationRecord < ActiveRecord::Base
   
 			if !(send(user).badges.find_by(type_bad: type_badge).nil?)    #se ho già il badge devo solo vedere se va aggiornato al livello superiore
 				badge=send(user).badges.find_by(type_bad: type_badge)
-				if send(user).send(type_model).count >=3
+				if send(user).send(type_model).count >=30
 					badge.update_attribute(:level , "3")
 				elsif send(user).send(type_model).count >=2
 					badge.update_attribute(:level , "2")
@@ -38,7 +38,7 @@ class ApplicationRecord < ActiveRecord::Base
 				badge.update_attribute(:level , "0")         #se togli tutti i like arrivi al livello zero
 			elsif send(user).send(type_model).count < 2
 				badge.update_attribute(:level , "1")
-			elsif send(user).send(type_model).count < 3
+			elsif send(user).send(type_model).count < 30
 				badge.update_attribute(:level , "2")
 	        end
 	    end
