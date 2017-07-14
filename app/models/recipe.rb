@@ -45,8 +45,8 @@ class Recipe < ApplicationRecord
     
     
     def badge_level_up
-		if !(user.badges.find_by(type_bad: "Recipe Creator").nil?)    #se ho già il badge devo solo vedere se va aggiornato al livello superiore
-			badge=user.badges.find_by(type_bad: "Recipe Creator")
+		if !(user.badges.find_by(type_bad: "Creator").nil?)    #se ho già il badge devo solo vedere se va aggiornato al livello superiore
+			badge=user.badges.find_by(type_bad: "Creator")
 			if user.recipes.count >=3
 				badge.update_attribute(:level , "3")
 			elsif user.recipes.count >=2
@@ -58,7 +58,7 @@ class Recipe < ApplicationRecord
 			if user.recipes.count >= 1       #se non ho già un badge e ho messo più di 10 like ottengo il badge di livello 1
 				Badge.create(
 				  user:  user,
-				  type_bad: "Recipe Creator",
+				  type_bad: "Creator",
 				  level: 1,
 				  picture: "creator.png"
 				)
@@ -67,8 +67,8 @@ class Recipe < ApplicationRecord
 	end
 	
 	def badge_level_down
-		if !(user.badges.find_by(type_bad: "Recipe Creator").nil?)    #se ho già il badge devo solo vedere se va aggiornato al livello inferiore
-			badge=user.badges.find_by(type_bad: "Recipe Creator")
+		if !(user.badges.find_by(type_bad: "Creator").nil?)    #se ho già il badge devo solo vedere se va aggiornato al livello inferiore
+			badge=user.badges.find_by(type_bad: "Creator")
 			if user.recipes.count==0
 				badge.update_attribute(:level , "0")         #se togli tutti i like arrivi al livello zero
 			elsif user.recipes.count < 2
