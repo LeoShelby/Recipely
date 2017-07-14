@@ -1,4 +1,4 @@
-Responsive Web Design 
+﻿Responsive Web Design 
 
 1 - What is it?
 
@@ -16,7 +16,6 @@ This includes elements such as:
 readable text without requiring zoom,
 adequate space for tap targets,
 and no horizontal scrolling.
-Can you recall the shrunken version of a desktop site on your phone? It was likely not an optimal experience!
 The number of smartphone users internationally will surpass 2 billion in 2016.
 Websites not optimized for these smaller screens can experience a decline in their search engine rankings.
 It’s true: over 60% of searches now come from a mobile device.
