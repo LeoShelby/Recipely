@@ -22,7 +22,9 @@ gem 'jquery-rails',            '4.3.1'
 gem 'turbolinks',              '5.0.1'
 gem 'jbuilder',                '2.6.1'
 
+gem 'httparty',                '0.13.5' #per le api esterne uso httparty
 
+Gem 
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 
