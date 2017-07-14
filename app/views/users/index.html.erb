@@ -6,11 +6,6 @@
 
 <ul class="users">
 	<% @users.each do |user| %>
-		<% if false %>	<%# usando if false commento via il codice (questo invece è un commento "tradizionale") %>	
-			<% if (!user.activated && current_user.admin) %>
-				<b>(Not activated)</b>
-			<% end %>
-		<% end %>
 		<%= render user  if (user.activated || current_user.admin)%>   <%# chiama il partial _user %>
 		<%# Gli utenti admin vedono tutti, gli altri solo quelli confermati %>
 	<% end %>
