@@ -49,6 +49,9 @@ class User < ApplicationRecord
 	
 	has_many :ratings, dependent: :destroy
 	
+	
+	has_many :badges, dependent: :destroy
+	
 	def feed
 		Recipe.where("user_id IN (?) OR user_id = ?",following_ids,id)
 	end

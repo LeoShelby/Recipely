@@ -22,7 +22,11 @@ and is wrapped around the whole page content, except for the footer in this exam
     <h1 class="w3-xxxlarge"><b><%= gravatar_for @user %></b></h1>
     <h6>Welcome to the kitchen of <span class="w3-tag"> <%= @user.name %></span></h6>
 	<section class="stats">
-		<%= render 'shared/stats' %>  <%# mostra statistiche di follow e follower del tale utente %>
+		<%= render 'shared/stats' %>  <!-- mostra statistiche di follow e follower del tale utente -->
+		
+		<hr/>
+		
+		<%= link_to "View the Badges", show_all_path(@user) %>
 	</section>
 	<br/><br/><br/><br/><br/>
 	<%= render 'follow_form' if logged_in? %> 

@@ -19,6 +19,9 @@ class Recipe < ApplicationRecord
   
   has_many :ratings, dependent: :destroy
   
+  after_create :badge_level_up
+  after_destroy :badge_level_down
+  
   
   
   #calcolo la media escludendo tutti i rating pari a 0, ossia tutti i rating generati non appena ogni utente apre una ricetta
@@ -38,5 +41,19 @@ class Recipe < ApplicationRecord
         errors.add(:picture, "should be less than 5MB")
       end
     end
+    
+    
+    
+    #chiamo il metodo comune a tutti i badges nel model application_record  SUPERDRY
+    
+    def badge_level_up
+		badge_level_up_aux("Creator","creator","recipes")
+	end
+    def badge_level_down
+		badge_level_down_aux("Creator","creator","recipes")
+	end
+    
+    
+    
   
 end
