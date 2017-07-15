@@ -3,7 +3,7 @@
 <h1 >New ingredient</h1>
 <div class="row">
 <div class="col-xs-12">
-  <%= form_for(@recipe.ingredients.build, :html => {class: "form-horizontal", role: "form"}, local: true,remote: true ) do |f| %>	
+  <%= form_for(@recipe.nutrients.build, :html => {class: "form-horizontal", role: "form"}, local: true,remote: true ) do |f| %>	
 	
   
 
@@ -14,7 +14,7 @@
     <div class="col-sm-8">
     
 	  <%= f.label :Ingredient %>
-      <%= f.text_area :name, rows: 3, class: "form-control", placeholder: "Please enter an ingredient" ,id: "ingredient"%>
+      <%= f.text_area :ingredient_id, rows: 3, class: "form-control", placeholder: "Please enter an ingredient" ,id: "ingredient"%>
 		
 
     </div>
@@ -25,7 +25,7 @@
 
   <div class="form-group">
     <div class="center col-sm-offset-1 col-sm-10">
-      <%= f.submit class: "btn btn-primary btn-lg" %>
+     <%= f.submit class: 'btn btn-primary', value: 'Add Ingredient' %>
     </div>
   </div>
 <% end %>

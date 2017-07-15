@@ -60,8 +60,9 @@ Rails.application.routes.draw do
   get 'notifications' => 'notifications#index'
   
    #per ingredients:
-   resources :ingredients, only: [:create, :show]
-  
+   resources :ingredients, only: [ :show ]
+   
+   resources :quantities, only: [:create]
 
   resources :ratings, only: :update
   

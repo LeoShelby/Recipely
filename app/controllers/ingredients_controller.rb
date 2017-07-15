@@ -1,39 +1,16 @@
 require 'httparty'
 class IngredientsController < ApplicationController
 	
-	
-	def create
-		
-		@recipe = Recipe.find(params[:recipe_id])
-		
-		
-		
-		@ingredient = @recipe.ingredients.build(ingredient_params)
-		
-		
-		
-		if @ingredient.save
-			@ingredient.recipes.create!(content: @recipe.content, title: @recipe.title, category: @recipe.category, rate: @recipe.rate,time: @recipe.time,user_id: @recipe.user_id )
-			respond_to do |format|
-				format.html {redirect_to recipe_path(@recipe)}
-				#format.js
-			end
-		else
-			
-			@error=@ingredient.errors
-			respond_to do |format|
-				format.html {redirect_to recipe_path(@recipe)}
-				format.js 
-			end	
-		end
+	def destroy
+		redirect_to root_url
 	end
-	
+
 	def show
-		@ingr = Ingredient.find(params[:id])
-		
+		@ingr = Ingredient.find(params[:id])	
 		@info=search(@ingr.name)
 		
-		
+		@allergen=['Molluscs','Lupin','Mustard','Crustaceans', 'Eggs ', 'Fish','Peanuts','Soybeans','Milk','Nuts','Celery'].include? @ingr.name.capitalize
+
 		
 	end
 	

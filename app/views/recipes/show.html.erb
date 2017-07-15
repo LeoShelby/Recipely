@@ -26,7 +26,7 @@
       <h4>Description</h4>
       <p class="w3-text-grey"><%=  @recipe.content %></p><br>
     
-      <h4>Rate</h4>
+      <h4>Difficulty</h4>
       <p class="w3-text-grey"><%=  @recipe.rate %></p><br>
     
       <h4>Time</h4>
@@ -41,12 +41,16 @@
       <h4>Category</h4>
       <p class="w3-text-grey"><%=  @recipe.category %></p><br>
      <h4>Ingredients:</h4>
-     <% @recipe.ingredients.each do |ingredient| %>  
-    <p class="w3-text-grey"> <%= link_to   ingredient.name , ingredient_path(ingredient)   %> <p/>
-		 
+     <% @ingredients.each do |ingredient| %>  
+     
+    <p class="w3-text-grey"> <%= link_to   ingredient.name , ingredient_path(ingredient.id)   %>     
+ </p>
+   
+
 
 	<% end %>
-   
+
+    
     </div>
     
     <div class="w3-col l6 w3-padding-large">
@@ -69,8 +73,8 @@
 	<%= link_to "update", edit_recipe_path(@recipe.id),
                                   data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
 	
-	<div id="erringr">
-	</div>
+	<p id="erringr">
+	
 	 <%= render 'shared/ingr_form' %>  
 	
 	</div>

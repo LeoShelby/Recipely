@@ -11,6 +11,8 @@ class RecipesController < ApplicationController
 	
 	def show
 		@recipe=Recipe.find(params[:id])
+		@ingredients=@recipe.ingredients
+		
 		if logged_in?   
 		#quando mostro un ricetta creo in automatico il rating dell'utente che la sta vedendo, poichè
 		#il controller Rating non ha la create ma solo l'update, quindi se l'utente non ha già valutato la ricetta

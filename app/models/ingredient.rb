@@ -1,8 +1,11 @@
 class Ingredient < ApplicationRecord
 	
 	before_save :downcase_name
-	has_many  :recipes
-	validates :name, presence: true 
+	
+	has_many  :presences , class_name: "Quantity" , foreign_key: "ingredient_id",dependent: :destroy
+	has_many  :recipes , through: :presences ,source: :recipe  
+	
+	validates :name, presence: true ,uniqueness: { case_sensitive: false }
 
 	
 end
