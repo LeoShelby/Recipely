@@ -28,14 +28,20 @@ User.create!(name:  "Example User",
 end
 #Recipe
 users = User.order(:created_at).take(6)
+i=0
 4.times do
+
   content = Faker::ChuckNorris.fact
   title= Faker::Food.dish
+  
   rate=rand(1..5)
   time=rand(1..50)
   category=["primo","secondo","contorno","dessert"][rand(0..3)]
   
-  users.each { |user| user.recipes.create!(content: content, title: title, category: category, rate: rate,time: time ) }
+  users.each do
+  |user| user.recipes.create!(content: content, title: title+i.to_s, category: category, rate: rate,time: time )
+  i=i+1 
+  end
 end
 
 

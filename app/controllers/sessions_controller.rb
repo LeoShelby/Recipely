@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
 	user = User.find_by(email: params[:session][:email].downcase)  #trovo l'utente attraverso la email che trasmette nel form della session ossia il form di login
 	if user && user.authenticate(params[:session][:password])    #authenticate è un metodo fornito da "has_secure_password"
-		if user.activated?  #metodo generato automaticamente da Rails poichè "active" è un attributo boooleano nel db
+		if true #user.activated?  #metodo generato automaticamente da Rails poichè "active" è un attributo boooleano nel db
 			log_in user   #metodo di session_helper
 			params[:session][:remember_me] == '1' ? remember(user) : forget(user)  #se l'utente ha spuntato "ricordami" chiamo il metodo remember sull'utente
 			redirect_back_or user  
