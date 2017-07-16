@@ -66,3 +66,22 @@ Some of these, like border-radius or box-shadow, have been around since the intr
 In CSS3, the box model hasn't changed. But there are a bunch of new style properties that can help you style the backgrounds and borders of your boxes.
 CSS3 BORDER PROPERTIES
 In CSS3 borders can be the styles we're used to (solid, double, dashed, etc.) or they can be an image. Plus, CSS3 brings in the ability to create rounded corners. Border images are interesting because you create an image of all four borders and then tell the CSS how to apply that image to your borders.
+NEW BORDER STYLE PROPERTIES
+There are some new border properties in CSS3:
+
+border-radius
+border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius, border-top-left-radiusThese properties allow you to create rounded corners on your borders.
+border-image-sourceSpecifies the image source file to be used instead of border styles already defined.
+border-image-sliceRepresents the inward offsets from the border image edges
+border-image-widthDefines the value of the width for your border image
+border-image-outsetSpecifies the amount that the border image area extends beyond the border box
+border-image-stretchDefines how the sides and middle parts of the border image should be tiled or scaled
+border-imageThe shorthand property for all the border image properties
+ADDITIONAL CSS3 PROPERTIES RELATED TO BORDERS AND BACKGROUNDS
+When a box is broken at a page break, column break for line break (for inline elements) the box-decoration-break property defines how the new boxes are wrapped with border and padding.
+
+Backgrounds can be divided up between multiple broken boxes using this property.
+
+There also is a box-shadow property that can be used to add shadows to box elements.
+
+With CSS3, you can now easily set up a Web page with multiple columns without tables or complicated div tag structures. You simply tell the browser how many columns the body element should have and how wide they should be. Plus you can add borders (rules), background colors that span the height of the column, and your text will flow through all the columns automatically.
