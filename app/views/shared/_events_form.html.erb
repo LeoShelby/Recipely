@@ -1,0 +1,18 @@
+<%= form_for(@event , html: {multipart:true} ) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+			<%= f.label :title %>
+			<%= f.text_field :title, class: 'form-control' %>   <!-- form-control classe specifica per Bootstrap -->
+			
+			<%= f.label :content %>
+			<%= f.text_field :content, class: 'form-control' %>
+			
+			
+			<%= f.label :data_ev %>
+			<%= f.text_field :data_ev, class: 'form-control' %>
+			
+			
+
+  <%= f.submit "Post", class: "btn btn-primary" %>
+
+<% end %>
+

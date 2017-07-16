@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'events/new'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -72,7 +74,7 @@ Rails.application.routes.draw do
   #faccio in modo che tale route prenda come parametro l'id
   get 'badges/:id/show_all' => 'badges#show_all', as: :show_all
 
-
-
+  resources :events
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
