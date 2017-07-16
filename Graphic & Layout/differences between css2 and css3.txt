@@ -40,3 +40,10 @@ match when the element does not match the simple selector s
 One new combinator:
 
 elementA ~ elementBmatch when elementB follows somewhere after elementA, not necessarily immediately
+
+NEW PROPERTIES
+CSS3 also introduced a number of new CSS properties. Many of these properties were to create visual styles that would likely associate more with a graphics program like Photoshop.
+
+Some of these, like border-radius or box-shadow, have been around since the introduction if CSS3. Others, like flexbox or even CSS Grid are newer styles that are still often considered CSS3 additions.
+
+In CSS3, the box model hasn't changed. But there are a bunch of new style properties that can help you style the backgrounds and borders of your boxes.
