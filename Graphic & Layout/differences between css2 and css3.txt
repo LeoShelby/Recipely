@@ -54,6 +54,12 @@ background-clip
 This property defines how the background image should be clipped. The default is the border box, but it can be changed to the padding box or the content box.
 background-originThis property determines whether the background should be places in the padding box, the border box, or the content box.
 background-sizeThis property allows you to indicate the size of the background image. It allows you to stretch smaller images to fit the page.
+CHANGES TO EXISTING BACKGROUND STYLE PROPERTIES
+And there are a few changes to existing background style properties:
+
+background-repeatThere are two new values for this property: space and round. Space spaces the tiled image evenly within the box without being clipped. Round rescales the background image so that it will tile a whole number of times in the box.
+background-attachmentA new value "local" is added so that the background will scroll with the element's content when that element has a scroll bar.
+backgroundThe background shorthand property adds in the size and origin properties.
 
 Some of these, like border-radius or box-shadow, have been around since the introduction if CSS3. Others, like flexbox or even CSS Grid are newer styles that are still often considered CSS3 additions.
 
