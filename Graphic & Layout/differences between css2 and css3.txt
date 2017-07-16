@@ -85,3 +85,10 @@ Backgrounds can be divided up between multiple broken boxes using this property.
 There also is a box-shadow property that can be used to add shadows to box elements.
 
 With CSS3, you can now easily set up a Web page with multiple columns without tables or complicated div tag structures. You simply tell the browser how many columns the body element should have and how wide they should be. Plus you can add borders (rules), background colors that span the height of the column, and your text will flow through all the columns automatically.
+
+CSS3 COLUMNS - DEFINE THE NUMBER AND WIDTH OF THE COLUMNS
+There are three new properties that allow you to define the number and width of your columns:
+
+column-widthDefines the width your columns should be. The browser will then flow the text to fill the space with columns that wide.
+column-countDefines the number of columns on the page. The browser will then create columns wide enough to fit in the space, but only the number you specify.
+columnsShorthand property where you can define either the width or number (or both, but that rarely makes sense)
