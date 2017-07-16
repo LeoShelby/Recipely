@@ -1,0 +1,35 @@
+<div id="allergen_form">
+	
+<h1 >Add allergen</h1>
+<div class="row">
+<div class="col-xs-12">
+  <%= form_for(@allergen, :html => {class: "form-horizontal", role: "form"}, local: true,remote: true ) do |f| %>	
+	
+  
+
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+    </div>
+
+    <div class="col-sm-8">
+    
+	  <%= f.label :Allergen %>
+		
+
+    </div>
+  </div>
+
+
+       <!--passo alla create l'id della ricetta come parametro nascosto -->
+
+  <div class="form-group">
+    <div class="center col-sm-offset-1 col-sm-10">
+     <%= f.submit class: 'btn btn-primary', value: 'Add Ingredient' %>
+    </div>
+  </div>
+<% end %>
+
+
+</div>
+</div>
+

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'allergens/new'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -62,7 +64,10 @@ Rails.application.routes.draw do
    #per ingredients:
    resources :ingredients, only: [ :show ]
    
-   resources :quantities, only: [:create]
+   resources :quantities, only: [:create,:new]
+   resources :allergens
+   get 'allergens/new/:id' => 'allergens#new'
+  # get 'quantities/:id/' => 'quantities#new'
 
   resources :ratings, only: :update
   
