@@ -1,0 +1,5 @@
+The biggest difference between CSS2 and CSS3 is that CSS3 has been split up into different sections, called modules. Each of these modules is making its way through the W3C in various stages of the recommendation process. This process has made it much easier for various pieces of CSS3 to be accepted and implemented in the browser by different manufacturers.
+
+If you compare this process to what happened with CSS2, where everything was submitted as a single document with all the Cascading Style Sheets information within it, you will begin to see the advantages of breaking the recommendation up into smaller, individual pieces.
+
+Because each of the modules is being worked on individually, we have a much wider range of browser support for CSS3 modules. As with any new and changing specification, be sure to test your CSS3 pages thoroughly in as many browsers and operating systems as you can. Remember the goal is not to create web pages that look exactly the same in every browser, but to ensure that any styles that you use, including CSS3 styles, look great in the browsers that support them and that they fall back gracefully for older browsers that do not.
