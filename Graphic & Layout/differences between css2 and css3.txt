@@ -3,3 +3,40 @@ The biggest difference between CSS2 and CSS3 is that CSS3 has been split up into
 If you compare this process to what happened with CSS2, where everything was submitted as a single document with all the Cascading Style Sheets information within it, you will begin to see the advantages of breaking the recommendation up into smaller, individual pieces.
 
 Because each of the modules is being worked on individually, we have a much wider range of browser support for CSS3 modules. As with any new and changing specification, be sure to test your CSS3 pages thoroughly in as many browsers and operating systems as you can. Remember the goal is not to create web pages that look exactly the same in every browser, but to ensure that any styles that you use, including CSS3 styles, look great in the browsers that support them and that they fall back gracefully for older browsers that do not.
+
+NEW CSS3 SELECTORS
+CSS3 offers a bunch of new ways you can write CSS rules with new CSS selectors, as well as a new combinator, and some new pseudo-elements.
+
+Three new attribute selectors:
+
+attribute beginning matches exactly
+element[foo^="bar"]
+The element has an attribute called foo that begins with "bar" e.g.
+attribute ending matches exactly
+element[foo$="bar"]
+The element has an attribute called foo that ends with "bar" e.g.
+attribute contains the match
+element[foo*="bar"]
+The element has an attribute called foo that contains the string "bar" e.g.
+16 new pseudo-classes:
+
+:rootThe root element of the document. In HTML this is always
+:nth-child(n)use this to match exact child elements or use variables to get alternating matches
+:nth-last-child(n)match exact child elements counting up from the last one
+:nth-of-type(n)match sibling elements with the same name before it in the document tree
+:nth-last-of-type(n)match sibling elements with the same name counting up from the bottom
+:last-childmatch the last child element of the parent
+:first-of-typematch the first sibling element of that type
+:last-of-typematch the last sibling element of that type
+:only-childmatch the element that is the only child of its parent
+:only-of-typematch the element that is the only one of its type
+:emptymatch the element that has no children (including text nodes)
+:targetmatch an element that is the target of the referring URI
+:enabledmatch the element when it's enabled
+:disabledmatch the element when it's disabled
+:checkedmatch the element when it's checked (radio button or checkbox)
+:not(s)
+match when the element does not match the simple selector s
+One new combinator:
+
+elementA ~ elementBmatch when elementB follows somewhere after elementA, not necessarily immediately
