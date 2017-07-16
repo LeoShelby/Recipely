@@ -44,6 +44,17 @@ elementA ~ elementBmatch when elementB follows somewhere after elementA, not nec
 NEW PROPERTIES
 CSS3 also introduced a number of new CSS properties. Many of these properties were to create visual styles that would likely associate more with a graphics program like Photoshop.
 
+MULTIPLE BACKGROUND I​MAGES
+Using the background-image, background-position, and background-repeat styles you can specify multiple background images to be layered on top of one another in the box. The first image is the layer closest to the user, with the following ones painted behind. If there is a background color, it is painted below all the image layers.
+
+NEW BACKGROUND STYLE PROPERTIES
+There are also some new background properties in CSS3.
+
+background-clip
+This property defines how the background image should be clipped. The default is the border box, but it can be changed to the padding box or the content box.
+background-originThis property determines whether the background should be places in the padding box, the border box, or the content box.
+background-sizeThis property allows you to indicate the size of the background image. It allows you to stretch smaller images to fit the page.
+
 Some of these, like border-radius or box-shadow, have been around since the introduction if CSS3. Others, like flexbox or even CSS Grid are newer styles that are still often considered CSS3 additions.
 
 In CSS3, the box model hasn't changed. But there are a bunch of new style properties that can help you style the backgrounds and borders of your boxes.
