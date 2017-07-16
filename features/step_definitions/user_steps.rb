@@ -1,3 +1,12 @@
+# This will cause OmniAuth to short circuit so that you can set the auth responses by:
+OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({
+  :info => {:email => 'prova@examle.com' , :name => 'prova' },
+  :uid => '123545' 
+
+}) 
+
+
+
 Given(/^I am not registred$/) do
 	@user = User.new(name: 'Marco Example', 
 	email: 'marco@example.com',
@@ -60,3 +69,31 @@ Then(/^I want to retrieve it by email$/) do
 	expect(page).to have_content("Email sent with password reset instructions")
 	expect(page).to have_content("Email sent with password reset instructions")
 end
+
+When(/^I sign up with (Facebook|Google\+)$/) do |provider|
+	
+	assert find_link('Sign up now!')
+	click_link 'Sign up now!'
+	#save_and_open_page
+	assert find_link('Sign up with '+provider)
+	
+	click_link 'Sign up with '+provider #ritorna al controller  le credenziali autohash come se fossi veramente acceduto a facebook con quelle
+	
+	
+	
+end
+Then(/^I want to view my account$/) do
+	save_and_open_page
+	assert find_link('Account')
+	#assert find_link('following')
+	assert find('.row').first(:link, "following") #row è la classe all internmo del quale cerco il link following per evitare collision
+	assert find_link('follower')
+	click_link 'Account'
+	assert find_link('Profile')
+	assert find_link('Settings')
+	assert find_link('Log out')
+end
+
+
+
+
