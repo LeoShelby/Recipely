@@ -40,13 +40,16 @@ i=0
   while ( Recipe.find_by(title: title ) )
 		title= Faker::Food.dish
   end
+
   rate=rand(1..5)
   time=rand(1..50)
   category=["primo","secondo","contorno","dessert"][rand(0..3)]
   
   user=users[i]
   user.recipes.create!(content: content, title: title, category: category, rate: rate,time: time )
+
   user.allergens.create!(type_allergen: full_list[rand(0..10)])
+
   i=i+1
   
 end

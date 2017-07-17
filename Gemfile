@@ -4,7 +4,14 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
+group :test do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+end
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+end
 gem 'rails',                   '5.0.3'
 gem 'bcrypt',                  '3.1.11'
 gem 'faker',                   '1.8.1'

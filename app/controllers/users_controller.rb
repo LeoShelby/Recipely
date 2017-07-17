@@ -18,9 +18,18 @@ class UsersController < ApplicationController
   def create
 	@user = User.new(user_params)   #invece di usare (params[:user]) che passava tutti i parametri, non sicuro!
 	if @user.save
-		@user.send_activation_email    #invio dell'email per l'attivazione
-		flash[:info] = "Please check your email to activate your account."
+
+		#@user.send_activation_email    #invio dell'email per l'attivazione
+		#flash[:info] = "Please check your email to activate your account."
+		
+
+		@user.activated=true #l invio dell email funzion solo in deployment
+		@user.activated_at= Time.zone.now
+		
+		#flash[:info] = "Please check your email to activate your account."
 		redirect_to allergens_users_path(@user.id)
+		
+
 	else
 		render 'new'
 	end
