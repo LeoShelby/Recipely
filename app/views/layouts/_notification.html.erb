@@ -30,6 +30,8 @@
 					<%= render 'shared/notification_rating', :notif => notif %>
 				<% elsif notif.type_not=="badge" %>
 					<%= render 'shared/notification_badge', :notif => notif %>
+				<% elsif notif.type_not=="event" %>
+					<%= render 'shared/notification_event', :notif => notif %>
 				<% else %>  <!-- è un like -->
 					<%= render 'shared/notification_like', :notif => notif %>
 				<% end %>  <%# end del ciclo sulle notifiche %>

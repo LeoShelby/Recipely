@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717185122) do
+ActiveRecord::Schema.define(version: 20170717195705) do
 
   create_table "badges", force: :cascade do |t|
     t.integer  "user_id"
@@ -101,7 +101,9 @@ ActiveRecord::Schema.define(version: 20170717185122) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "badge_id"
+    t.integer  "event_id"
     t.index ["badge_id"], name: "index_notifications_on_badge_id"
+    t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
     t.index ["recipe_id"], name: "index_notifications_on_recipe_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"

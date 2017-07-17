@@ -5,5 +5,7 @@ class Notification < ApplicationRecord
                                        #ma una notifica di follow non ha nessuna ricetta associata ovviamente
   belongs_to :badge, optional: true
   
+  belongs_to :event, optional: true
+  
   validates :user,:type_not, presence: true
 end
