@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'menus/new'
+
   get 'events/new'
 
   get 'password_resets/new'
@@ -75,6 +77,7 @@ Rails.application.routes.draw do
   get 'badges/:id/show_all' => 'badges#show_all', as: :show_all
 
   resources :events
+  resources :menus 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

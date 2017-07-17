@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716201824) do
+ActiveRecord::Schema.define(version: 20170717123115) do
 
   create_table "badges", force: :cascade do |t|
     t.integer  "user_id"
@@ -65,6 +65,21 @@ ActiveRecord::Schema.define(version: 20170716201824) do
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_likes_on_recipe_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "primo_id"
+    t.integer  "secondo_id"
+    t.integer  "contorno_id"
+    t.integer  "dessert_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["contorno_id"], name: "index_menus_on_contorno_id"
+    t.index ["dessert_id"], name: "index_menus_on_dessert_id"
+    t.index ["event_id"], name: "index_menus_on_event_id"
+    t.index ["primo_id"], name: "index_menus_on_primo_id"
+    t.index ["secondo_id"], name: "index_menus_on_secondo_id"
   end
 
   create_table "notifications", force: :cascade do |t|

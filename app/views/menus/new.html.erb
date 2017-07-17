@@ -1,0 +1,24 @@
+<%= form_for(@menu , html: {multipart:true} ) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+	
+            <%= f.label :primo %>
+			<%= f.collection_select :primo_id , current_user.recipes, :id, :title, {:prompt => 'Vuoi cucinare il primo?'} %>
+			
+			<%= f.label :secondo %>
+			<%= f.collection_select :secondo_id , current_user.recipes, :id, :title, {:prompt => 'Vuoi cucinare il secondo?'} %>
+			
+			<%= f.label :contorno %>
+			<%= f.collection_select :contorno_id ,current_user.recipes, :id, :title, {:prompt => 'Vuoi cucinare il contorno?'} %>
+			
+			<%= f.label :dessert %>
+			<%= f.collection_select :dessert_id , current_user.recipes, :id, :title, {:prompt => 'Vuoi cucinare il dessert?'} %>
+
+
+			<%= hidden_field_tag :event_id, @event.id %> 
+			
+			
+
+			<%= f.submit "Post", class: "btn btn-primary" %>
+
+<% end %>

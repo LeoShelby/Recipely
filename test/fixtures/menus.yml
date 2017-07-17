@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: one
+  primo: one
+  secondo: one
+  contorno: one
+  dessert: one
+
+two:
+  event: two
+  primo: two
+  secondo: two
+  contorno: two
+  dessert: two
