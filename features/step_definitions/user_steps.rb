@@ -34,7 +34,18 @@ Then(/^I want to register with valid params$/) do
 	fill_in "Password", :with => 'password'
 	fill_in "Confirmation", :with => 'password'
 	click_button "Create my account"
-	expect(page).to have_content("Welcome to the Recipely!")
+	
+end
+
+And (/^I want to fill in my allergen list$/) do
+	expect(page).to have_content("Add allergen")
+	#save_and_open_page
+	assert find_button "Add allergen"
+	click_button "Add allergen"
+	#save_and_open_page
+	assert find_link "View my profile"
+	click_link "View my profile"
+	
 end
 
 Given(/^I am registred$/) do
@@ -83,7 +94,7 @@ When(/^I sign up with (Facebook|Google\+)$/) do |provider|
 	
 end
 Then(/^I want to view my account$/) do
-	save_and_open_page
+	#save_and_open_page
 	assert find_link('Account')
 	#assert find_link('following')
 	assert find('.row').first(:link, "following") #row è la classe all internmo del quale cerco il link following per evitare collision
@@ -92,8 +103,15 @@ Then(/^I want to view my account$/) do
 	assert find_link('Profile')
 	assert find_link('Settings')
 	assert find_link('Log out')
+	
 end
 
+Then(/^I want to view my profile$/) do
 
+	assert find_link('following')	
+	assert find_link('follower')
+	expect(page).to have_content("My allergens are :")
+	expect(page).to have_content("Welcome to the kitchen of ")
+end
 
 
