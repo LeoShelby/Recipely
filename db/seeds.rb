@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-	
+full_list=['Molluscs','Lupin','Mustard','Crustaceans', 'Eggs ', 'Fish','Peanuts','Soybeans','Milk','Nuts','Celery']
+
 
 User.create!(name:  "Example User",
              email: "example@railstutorial.org",
@@ -28,16 +29,26 @@ User.create!(name:  "Example User",
               activated: true,
               activated_at: Time.zone.now)
 end
-#Recipe
+#Recipe + user allergen
 users = User.order(:created_at).take(6)
-4.times do
+i=0
+6.times do
+
   content = Faker::ChuckNorris.fact
   title= Faker::Food.dish
+  
+  while ( Recipe.find_by(title: title ) )
+		title= Faker::Food.dish
+  end
   rate=rand(1..5)
   time=rand(1..50)
   category=["primo","secondo","contorno","dessert"][rand(0..3)]
   
-  users.each { |user| user.recipes.create!(content: content, title: title, category: category, rate: rate,time: time ) }
+  user=users[i]
+  user.recipes.create!(content: content, title: title, category: category, rate: rate,time: time )
+  user.allergens.create!(type_allergen: full_list[rand(0..10)])
+  i=i+1
+  
 end
 
 
