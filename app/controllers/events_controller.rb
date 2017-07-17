@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 	@guests=@event.users  #lista degli invitati
 	@menu=@event.menu
 	
-	@meteo=search
+	@meteo=search(@event.location)
   end
   
   
@@ -32,16 +32,16 @@ class EventsController < ApplicationController
     private
 
     def event_params
-      params.require(:event).permit(:content,:title,:data_ev)
+      params.require(:event).permit(:content,:title,:data_ev,:location)
     end
     
     
-    def search()
+    def search(city)
 
 		app_key = '04dc0e30db0c4ee3b28164434171707'
 
 
-		api='http://api.apixu.com/v1/current.json?key=' + app_key +'&q=Modena'
+		api='http://api.apixu.com/v1/current.json?key=' + app_key +'&q='+city
 
 		response = HTTParty.get(api)
 		json = JSON.parse(response.body)
