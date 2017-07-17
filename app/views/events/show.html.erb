@@ -1,0 +1,93 @@
+  <!-- Menu Section -->
+  <div class="w3-row w3-padding-64" id="menu">
+    <div class="w3-col l6 w3-padding-large">
+		
+      <h1 class="w3-center"><%=  @event.title.capitalize %> </h1><br>
+      
+      <FONT color="green" size="6">Created by <%=  @event.user.name.capitalize %> </FONT>
+      
+      <h4>Description</h4>
+      <p class="w3-text-grey"><%=  @event.content %></p><br>
+
+    
+      <h4>Date</h4>
+      <p class="w3-text-grey"><%=  @event.data_ev %></p><br>
+      
+      
+      
+      
+      
+     <h4>Menù:</h4><br/>
+     
+     Primo:<h4>
+     <% if @event.menu.primo%> 
+		<%= link_to @event.menu.primo.title, recipe_path(@event.menu.primo) %>
+	 <% else %> Assente
+     <% end %> <h4/>
+     <br/>
+     
+     
+     Secondo:<h4> 
+     <% if @event.menu.secondo%> 
+		<%= link_to @event.menu.secondo.title, recipe_path(@event.menu.secondo) %>
+	 <% else %> Assente
+     <% end %> <h4/>
+     <br/>
+     
+     Contorno:<h4>
+     <% if @event.menu.contorno%> 
+		<%= link_to @event.menu.contorno.title, recipe_path(@event.menu.contorno) %>
+     <% else %> Assente
+     <% end %> <h4/>
+     <br/>
+     
+     Dessert:<h4> 
+     <% if @event.menu.dessert%> 
+		<%= link_to @event.menu.dessert.title, recipe_path(@event.menu.dessert) %>
+     <% else %> Assente 
+     <% end %>  <h4/>
+     <br/>
+     
+     
+    <div id="com">
+
+	<FONT SIZE="6" COLOR="#FFA500"> <%= pluralize(@event.users.count, "Guest") %> </FONT>
+	<br/>
+	<br/>
+
+	<div class="box">
+	<br/>
+	<% @event.users.each do |guest| %>
+		<li  class="padded" >
+		<%= gravatar_for guest, size: 50 %>
+		<font color="#0000FF"> <%= link_to guest.name, user_path(guest.id) %> </font> 
+		</li>
+		<hr style="border: 1px solid " ></hr>
+	<% end %>
+
+	<li/>
+	<br/>
+	</ul>
+	</div>
+	</div>
+
+	 
+
+
+
+    
+
+
+
+
+
+
+
+<!-- End page content -->
+</div>
+
+
+
+
+
+

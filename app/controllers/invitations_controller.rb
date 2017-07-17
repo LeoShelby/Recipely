@@ -20,4 +20,5 @@ class InvitationsController < ApplicationController
 
 
   end
+
 end

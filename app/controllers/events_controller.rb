@@ -17,6 +17,14 @@ class EventsController < ApplicationController
   end
   
   
+  def show
+	@event=Event.find(params[:id])
+	@guests=@event.users  #lista degli invitati
+	@menu=@event.menu
+  end
+  
+  
+  
     private
 
     def event_params
