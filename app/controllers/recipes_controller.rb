@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
 	def show
 		@recipe=Recipe.find(params[:id])
 		@ingredients=@recipe.ingredients
+		@qta=@recipe.nutrients
 		
 		if logged_in?   
 		#quando mostro un ricetta creo in automatico il rating dell'utente che la sta vedendo, poichè
@@ -51,7 +52,8 @@ class RecipesController < ApplicationController
     
     if @recipe.save
       flash[:success] = "Recipe created!"
-      redirect_to root_url
+      #redirect_to new_quantity_path
+      redirect_to controller: 'quantities', action: 'new',recipe_id: @recipe.id
     else
 	  @feed_items=[] #altrimenti va in errore la view per il feed
       render 'recipes/new'

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170715114319) do
+ActiveRecord::Schema.define(version: 20170717011958) do
+
+  create_table "allergens", force: :cascade do |t|
+    t.string   "type_allergen"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "recipe_id"
+    t.integer  "user_id"
+  end
 
   create_table "badges", force: :cascade do |t|
     t.integer  "user_id"
@@ -77,6 +85,7 @@ ActiveRecord::Schema.define(version: 20170715114319) do
     t.integer  "ingredient_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "measure"
   end
 
   create_table "ratings", force: :cascade do |t|

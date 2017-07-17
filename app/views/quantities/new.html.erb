@@ -1,0 +1,42 @@
+
+<div id="ingredient_form">
+<div id="erringr"></div>
+<h1 >New ingredient</h1>
+<div class="row">
+<div class="col-xs-12">
+  <%= form_for(@quantity, :html => {class: "form-horizontal", role: "form"}, local: true,remote: true ) do |f| %>	
+	
+  
+
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+    </div>
+
+    <div class="col-sm-8">
+    
+	  <%= f.label :Ingredient %>
+      <%= f.text_area :ingredient_id, rows: 3, class: "form-control", placeholder: "Please enter an ingredient" ,id: "ingredient"%>	
+	 
+	  <%= f.label :Quantity %>
+      <%= f.number_field :measure, rows: 3, class: "form-control", placeholder: "Please enter an quantity" ,id: "measure"%>
+		
+    </div>
+  </div>
+
+
+  <%= hidden_field_tag :recipe_id, @recipe.id %>     <!--passo alla create l'id della ricetta come parametro nascosto -->
+
+  <div class="form-group">
+    <div class="center col-sm-offset-1 col-sm-10">
+     <%= f.submit class: 'btn btn-primary', value: 'Add Ingredient' %>
+     	<%= link_to "next step :Allergens ", allergens_new_path(@recipe.id),
+                                  data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
+	
+    </div>
+  </div>
+<% end %>
+
+
+</div>
+</div>
+

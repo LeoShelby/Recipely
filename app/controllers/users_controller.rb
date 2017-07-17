@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 	if @user.save
 		@user.send_activation_email    #invio dell'email per l'attivazione
 		flash[:info] = "Please check your email to activate your account."
-		redirect_to root_url
+		redirect_to allergens_users_path(@user.id)
 	else
 		render 'new'
 	end

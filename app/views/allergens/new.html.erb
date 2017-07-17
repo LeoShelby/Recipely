@@ -1,0 +1,21 @@
+
+<% provide(:title, 'Add allergen') %>
+<h1>Add allergen</h1>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@allergen) do |f| %>    <%# gli passo @user creatore nella new del controller, la form mi riempie le info di quell'utente %>
+			 <%= render 'shared/error_messages', object: f.object %>   <%# partial definito in views/shared %>
+			
+			<%= f.label :name %>
+			<%= f.select :type_allergen, @full_list, class: 'form-control' %>
+			
+			<%= hidden_field_tag :recipe_id, @recipe.id %>
+			
+			<%= f.submit "Add allergen", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+	
+	<%= link_to 'View my recipe', recipe_path(@recipe), class: "btn btn-lg btn-primary" %>        
+	
+</div>

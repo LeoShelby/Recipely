@@ -4,7 +4,7 @@ class Recipe < ApplicationRecord
   	has_many  :nutrients , class_name: "Quantity" , foreign_key: "recipe_id",dependent: :destroy
 	has_many  :ingredients , through: :nutrients ,source: :ingredient
   
-  
+	has_many  :allergens
   
   
   

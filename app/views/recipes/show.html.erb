@@ -42,11 +42,21 @@
       <p class="w3-text-grey"><%=  @recipe.category %></p><br>
      <h4>Ingredients:</h4>
      <% @ingredients.each do |ingredient| %>  
-     
-    <p class="w3-text-grey"> <%= link_to   ingredient.name , ingredient_path(ingredient.id)   %>     
+   <%q=Quantity.find_by(recipe_id: @recipe.id , ingredient_id: ingredient.id).measure %>
+    <p class="w3-text-grey"> <%= link_to   ingredient.name , ingredient_path(ingredient.id)   %>  : 
+    <% if q==0 %> 
+    non fornito
+    <% else %>
+		<%= q %>
+    <% end %>
  </p>
-   
+<br/>
+	<% end %>
+     <h4>Allergens:</h4>
+     <% @recipe.allergens.each do |a| %>  
+    <p class="w3-text-grey">  <%= a.type_allergen %> 
 
+ </p>
 
 	<% end %>
 
@@ -72,12 +82,7 @@
                                   data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
 	<%= link_to "update", edit_recipe_path(@recipe.id),
                                   data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
-	
-	<p id="erringr">
-	
-	 <%= render 'shared/ingr_form' %>  
-	
-	</div>
+
     <% end %>
     
     <br/>

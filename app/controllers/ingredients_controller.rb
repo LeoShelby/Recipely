@@ -1,9 +1,7 @@
 require 'httparty'
 class IngredientsController < ApplicationController
 	
-	def destroy
-		redirect_to root_url
-	end
+
 
 	def show
 		@ingr = Ingredient.find(params[:id])	

@@ -27,7 +27,9 @@ and is wrapped around the whole page content, except for the footer in this exam
 		<hr/>
 		
 		<%= link_to "View the Badges", show_all_path(@user) %>
+		
 	</section>
+	
 	<br/><br/><br/><br/><br/>
 	<%= render 'follow_form' if logged_in? %> 
   </header>
@@ -38,8 +40,16 @@ and is wrapped around the whole page content, except for the footer in this exam
   <div class="w3-row w3-padding w3-border">
 
     <!-- Blog entries -->
-    
-    
+    <%  unless @user.allergens.empty? %>
+   <div class="w3-container w3-white w3-margin w3-padding-large">
+ 
+  <h3> My allergens are : <h3/>
+   		<% @user.allergens.each do |a| %>
+			<h6><%= a.type_allergen %><h6/>
+		<% end %>
+   
+   <%end%>
+   </div>
       <!-- Blog entry -->
       <div class="w3-container w3-white w3-margin w3-padding-large">
         <div class="w3-center">
