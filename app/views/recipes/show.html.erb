@@ -49,11 +49,14 @@
     <% else %>
 		<%= q %>
     <% end %>
-    
- 
  </p>
-   
+<br/>
+	<% end %>
+     <h4>Allergens:</h4>
+     <% @recipe.allergens.each do |a| %>  
+    <p class="w3-text-grey">  <%= a.type_allergen %> 
 
+ </p>
 
 	<% end %>
 

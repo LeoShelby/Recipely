@@ -18,7 +18,7 @@ class QuantitiesController < ApplicationController
 			
 			@ingredient=Ingredient.new(name: params[:quantity][:ingredient_id])
 			if @ingredient.save
-				flash[:success]="Ingredient added"
+				flash[:success]="Ingredient added : "+@ingredient.name
 				@recipe.nutrients.create(recipe_id: params[:recipe_id],ingredient_id: @ingredient.id,measure: params[:quantity][:measure])
 				redirect_to request.referrer
 			else
@@ -35,7 +35,7 @@ class QuantitiesController < ApplicationController
 				redirect_to request.referrer
 				
 			else
-				flash[:success]="Ingredient added "
+				flash[:success]="Ingredient added : "+@ingredient.name
 				@recipe.nutrients.create(recipe_id: params[:recipe_id],ingredient_id: @ingredient.id, measure: params[:quantity][:measure] )
 				redirect_to request.referrer
 			end

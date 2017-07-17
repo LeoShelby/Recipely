@@ -64,9 +64,11 @@ Rails.application.routes.draw do
    #per ingredients:
    resources :ingredients, only: [ :show ]
    
+   get 'allergens/users/:id', to: 'allergens#new_foruser' , as: :allergens_users
    resources :quantities, only: [:create,:new]
    resources :allergens
    get 'allergens/new/:id' => 'allergens#new'
+   post 'allergens/user',to: 'allergens#create_foruser' , as: :create_allergens_users
   # get 'quantities/:id/' => 'quantities#new'
 
   resources :ratings, only: :update
@@ -76,6 +78,8 @@ Rails.application.routes.draw do
   get 'badges/show_all'
   #faccio in modo che tale route prenda come parametro l'id
   get 'badges/:id/show_all' => 'badges#show_all', as: :show_all
+  
+  get 'user/allergen/:id' => 'allergen#show_all', as: :allergens_all
 
 
 

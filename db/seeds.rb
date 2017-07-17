@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Allergen.create!(type_allergen: "fish")
-Allergen.create!(type_allergen: "egg")
+
+	
+
 User.create!(name:  "Example User",
              email: "example@railstutorial.org",
              password:              "foobar",

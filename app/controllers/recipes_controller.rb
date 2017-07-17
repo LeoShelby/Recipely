@@ -51,7 +51,7 @@ class RecipesController < ApplicationController
 
     
     if @recipe.save
-      #flash[:success] = "Recipe created!"
+      flash[:success] = "Recipe created!"
       #redirect_to new_quantity_path
       redirect_to controller: 'quantities', action: 'new',recipe_id: @recipe.id
     else
