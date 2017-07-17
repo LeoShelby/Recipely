@@ -1,3 +1,5 @@
+require 'httparty'
+
 class EventsController < ApplicationController
 
   def new
@@ -21,6 +23,8 @@ class EventsController < ApplicationController
 	@event=Event.find(params[:id])
 	@guests=@event.users  #lista degli invitati
 	@menu=@event.menu
+	
+	@meteo=search
   end
   
   
@@ -30,5 +34,18 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:content,:title,:data_ev)
     end
+    
+    
+    def search()
+
+		app_key = '04dc0e30db0c4ee3b28164434171707'
+
+
+		api='http://api.apixu.com/v1/current.json?key=' + app_key +'&q=Modena'
+
+		response = HTTParty.get(api)
+		json = JSON.parse(response.body)
+	
+	end
   
 end

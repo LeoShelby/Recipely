@@ -48,6 +48,18 @@
      <% end %>  <h4/>
      <br/>
      
+    <FONT SIZE="4" COLOR="blue"> Today's weather</FONT>
+	<%= image_tag(@meteo['current']['condition']['icon'], :class => "w3-round w3-image w3-opacity-min" , :width => "100", :height => "100") %><br/>
+    Condition: <%= @meteo['current']['condition']['text'] %> <br/>
+    Temperature(C): <%= @meteo['current']['temp_c'] %><br/>
+    Humidity: <%= @meteo['current']['humidity'] %><br/>
+    Cloud:  <%= @meteo['current']['cloud'] %>
+
+	<br/>
+	<br/>
+	<br/>
+
+
      
     <div id="com">
 
@@ -71,12 +83,7 @@
 	</div>
 	</div>
 
-	 
-
-
-
-    
-
+   
 
 
 
@@ -85,7 +92,6 @@
 
 <!-- End page content -->
 </div>
-
 
 
 
