@@ -22,7 +22,7 @@ class MenusController < ApplicationController
     
     if @menu.save
       flash[:success] = "Menu created!"
-      redirect_to root_url
+      redirect_to controller: 'invitations', action: 'new',event_id: @event.id
     else
       render 'menus/new'
     end

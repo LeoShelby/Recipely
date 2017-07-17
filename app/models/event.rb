@@ -6,10 +6,11 @@ class Event < ApplicationRecord
   belongs_to :user
   has_one :menu
   
-  
-  
+  has_many  :guests , class_name: "Invitation" , foreign_key: "event_id",dependent: :destroy
+  has_many  :users , through: :guests ,source: :user
   
   validate :valid_date?
+  
 
   
   validates :user,presence: true
