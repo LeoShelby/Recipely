@@ -1,0 +1,16 @@
+<h1> All results</h1>
+
+<% if @search.search_recipes.empty? %>
+ 
+	No recipes found
+
+<%else%>
+
+<ul class="recipes">
+	<% @search.search_recipes.each do |c| %>    <--! chiamo il metodo search_recipes definito nel model di Search -->
+		
+		<%= render c %>
+		
+	<% end %>
+<ul/>
+<% end %>

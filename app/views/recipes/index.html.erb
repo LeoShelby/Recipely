@@ -6,16 +6,18 @@
 <!-- barra per la ricerca degli utenti --> 
 
 <%= form_tag(recipes_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Recipes by title, ingredient or allergen" %>  <!-- metodo search definito nel model user -->
+    <%= text_field_tag :search, params[:search], placeholder: "Search Recipes by title or ingredient" %>  <!-- metodo search definito nel model user -->
     <%= submit_tag "Search Recipe", :name => nil %>
 <% end %>
 
 
+<%= link_to "Advanced Search", new_search_path %>  <!-- azione new del controller Search -->
+
+<br/>
+<br/>
 
 
-
-
-<%= will_paginate %>   <%# visualizza le ricette su più pagine a patto che si usi il metodo paginate nell'azione index del controller %> 
+<%= will_paginate %>   <%# visualizza le ricette su più pagine a patto che si usi il metodo paginate nell'azione index del controller %>
  
 <ul class="recipes">
 	<% @recipes.each do |recipe| %>
@@ -23,7 +25,7 @@
 	<% end %>
 </ul>
 
-<%# rails è talmente sveglio che potevo pure solo scrivere	%= render @recipes %, senza fare l'each do %> 
+<%# rails è talmente sveglio che potevo pure solo scrivere	%= render @recipes %, senza fare l'each do %>  
  
  
 

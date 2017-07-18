@@ -49,9 +49,10 @@ class Recipe < ApplicationRecord
    def self.search(search)
 		#where("title LIKE ?", "%#{search}%") 
 		
-		left_outer_joins(:ingredients).left_outer_joins(:allergens).
-		where('recipes.title LIKE ? or allergens.type_allergen LIKE ? or ingredients.name LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+		res=left_outer_joins(:ingredients).where('recipes.title LIKE ? or ingredients.name LIKE ?', "%#{search}%", "%#{search}%")
 		
+		
+		return res
 	    #devo fare due letf_outer_joins per prendere TUTTE le ricette con i relativi possibili ingredienti e relativi possibili allergeni
 	    #se facevo solo il join mi perdevo tutte le ricette senza ingredienti e tutte le ricette senza allergeni
    end

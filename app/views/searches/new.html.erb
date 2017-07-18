@@ -1,0 +1,23 @@
+<h1> Advanced Search</h1>
+
+<%= form_for(@search , html: {multipart:true} ) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  
+			<%= f.label :title %>
+			<%= f.text_field :title, class: 'form-control' %>   <!-- form-control classe specifica per Bootstrap -->
+	
+			<%= f.label :category %>
+			<%= f.select :category, options_for_select([ "primo", "secondo", "contorno", "dessert"]),:include_blank => true, :class => 'form-control' %>
+			
+			<%= f.label :max_eximated_time  %>
+			<%= f.number_field :time, class: 'form-control' %>
+			
+			<%= f.label :max_difficulty %>
+			<%= f.select :rate, options_for_select([ 1, 2, 3, 4,5]), :include_blank => true,:class => 'form-control' %>
+			
+			
+  <%= f.submit "Search", class: "btn btn-primary" %>
+
+<% end %>
+
