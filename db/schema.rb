@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717011958) do
+ActiveRecord::Schema.define(version: 20170717195705) do
 
   create_table "allergens", force: :cascade do |t|
     t.string   "type_allergen"
