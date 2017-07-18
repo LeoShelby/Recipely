@@ -27,7 +27,18 @@ class EventsController < ApplicationController
 	@meteo=search(@event.location)
   end
   
+  def destroy
+	@event=Event.find_by(id: params[:id])
+	@event.destroy
+    flash[:success] = "Event deleted"
+    redirect_to  root_url
+  end
   
+  
+  def show_all_ev  #accroccata per mostrare tutti i likes
+		@user=User.find(params[:id])
+	    @events=@user.events
+  end
   
     private
 

@@ -94,5 +94,9 @@ Rails.application.routes.draw do
   resources :invitations 
   
   resources :searches
+  
+  get 'events/show_all_ev'
+  get 'events/:id/show_all_ev' => 'events#show_all_ev', as: :show_all_ev
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

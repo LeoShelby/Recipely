@@ -1,0 +1,24 @@
+
+<h1>Your Events</h1>
+
+
+
+<ul class="recipes">
+	<% @events.each do |event| %>
+
+		<li id="recipe">
+		  <%= link_to gravatar_for(event.user, size: 50), event.user %>
+		  <span class="user"><%= link_to event.user.name, event.user %></span>
+		  <span class="title"><%= link_to event.title,event_path(event.id) %></span>
+		  <span class="timestamp">
+		  Posted <%= time_ago_in_words(event.created_at) %> ago.
+		</li>
+<% end %>
+
+<ul/>
+
+
+
+<% if @events.blank? %>
+  <h4>There are no Event <h4/>
+<% end %>

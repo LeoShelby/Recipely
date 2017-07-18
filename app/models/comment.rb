@@ -15,6 +15,7 @@ class Comment < ApplicationRecord
   validates :content, presence: true , length: { maximum: 20 }
   
   
+  
   private      
 	def create_notification
 		return if recipe.user == user

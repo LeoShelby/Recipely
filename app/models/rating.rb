@@ -9,6 +9,8 @@ class Rating < ApplicationRecord
   belongs_to :user
   belongs_to :recipe
   
+  
+  
   private      
 	def create_notification
 		return if recipe.user == user

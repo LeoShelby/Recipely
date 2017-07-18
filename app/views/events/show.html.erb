@@ -20,41 +20,44 @@
       
      <h4>Menù:</h4><br/>
      
-     Primo:<h4>
-     <% if @event.menu.primo%> 
-		<%= link_to @event.menu.primo.title, recipe_path(@event.menu.primo) %>
-	 <% else %> Assente
-     <% end %> <h4/>
-     <br/>
      
-     
-     Secondo:<h4> 
-     <% if @event.menu.secondo%> 
-		<%= link_to @event.menu.secondo.title, recipe_path(@event.menu.secondo) %>
-	 <% else %> Assente
-     <% end %> <h4/>
-     <br/>
-     
-     Contorno:<h4>
-     <% if @event.menu.contorno%> 
-		<%= link_to @event.menu.contorno.title, recipe_path(@event.menu.contorno) %>
-     <% else %> Assente
-     <% end %> <h4/>
-     <br/>
-     
-     Dessert:<h4> 
-     <% if @event.menu.dessert%> 
-		<%= link_to @event.menu.dessert.title, recipe_path(@event.menu.dessert) %>
-     <% else %> Assente 
-     <% end %>  <h4/>
-     <br/>
-     
-     <hr/>
+		 Primo:<h4>
+		 <% if @event.menu.primo%> 
+			<%= link_to @event.menu.primo.title, recipe_path(@event.menu.primo) %>
+		 <% else %> Assente
+		 <% end %> <h4/>
+		 <br/>
+		 
+		 
+		 Secondo:<h4> 
+		 <% if @event.menu.secondo%> 
+			<%= link_to @event.menu.secondo.title, recipe_path(@event.menu.secondo) %>
+		 <% else %> Assente
+		 <% end %> <h4/>
+		 <br/>
+		 
+		 Contorno:<h4>
+		 <% if @event.menu.contorno%> 
+			<%= link_to @event.menu.contorno.title, recipe_path(@event.menu.contorno) %>
+		 <% else %> Assente
+		 <% end %> <h4/>
+		 <br/>
+		 
+		 Dessert:<h4> 
+		 <% if @event.menu.dessert%> 
+			<%= link_to @event.menu.dessert.title, recipe_path(@event.menu.dessert) %>
+		 <% else %> Assente 
+		 <% end %>  <h4/>
+		 <br/>
+		 
+		 <hr/>
+		 
+
      
     <h4>Location:
     <p class="w3-text-grey"><%=  @event.location %></p><br> </h4>
     
-    <% if @meteo=="error" %>
+    <% if @meteo['error']%>
 		Meteo non disponibile per questa città
 	<% else %>
 		<FONT SIZE="4" COLOR="blue"> Today's weather</FONT>
@@ -97,7 +100,12 @@
    
 
 
-
+	<% if current_user==@event.user %>
+	 <div >
+		<%= link_to "delete", @event, method: :delete,
+                                  data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
+	
+    <% end %>
 
 
 

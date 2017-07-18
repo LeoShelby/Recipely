@@ -11,6 +11,8 @@ class Doneit < ApplicationRecord
   validates :recipe_id, presence: true
   
   
+  
+  
   private      
 	def create_notification
 		Notification.create(
