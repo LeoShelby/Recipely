@@ -4,7 +4,7 @@
 
 
 <ul class="recipes">
-	<% @events.each do |event| %>
+	<% @events.order('created_at DESC').each do |event| %>
 
 		<li id="recipe">
 		  <%= link_to gravatar_for(event.user, size: 50), event.user %>
