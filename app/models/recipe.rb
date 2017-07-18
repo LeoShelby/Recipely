@@ -41,6 +41,23 @@ class Recipe < ApplicationRecord
 	end
   end
   
+  
+  
+  
+  	
+   #ricerca nel database
+   def self.search(search)
+		#where("title LIKE ?", "%#{search}%") 
+		
+		left_outer_joins(:ingredients).left_outer_joins(:allergens).
+		where('recipes.title LIKE ? or allergens.type_allergen LIKE ? or ingredients.name LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+		
+	    #devo fare due letf_outer_joins per prendere TUTTE le ricette con i relativi possibili ingredienti e relativi possibili allergeni
+	    #se facevo solo il join mi perdevo tutte le ricette senza ingredienti e tutte le ricette senza allergeni
+   end
+   
+   
+  
   private
 
     # Validates the size of an uploaded picture.

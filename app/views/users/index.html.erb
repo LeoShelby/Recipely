@@ -6,7 +6,7 @@
 <!-- barra per la ricerca degli utenti --> 
 
 <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>  <!-- metodo search definito nel model user -->
+    <%= text_field_tag :search, params[:search], placeholder: "Search Users by name or recipe" %>  <!-- metodo search definito nel model user -->
     <%= submit_tag "Search User", :name => nil %>
 <% end %>
 

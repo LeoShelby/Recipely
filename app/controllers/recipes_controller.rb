@@ -31,7 +31,11 @@ class RecipesController < ApplicationController
 	end
 	
 	def index
-		@recipes=Recipe.paginate(page: params[:page])
+		if params[:search]
+			@recipes=Recipe.search(params[:search]).order("created_at DESC").paginate(page: params[:page]).distinct	
+		else
+			@recipes=Recipe.paginate(page: params[:page])
+		end
 	end
 	
     def update
