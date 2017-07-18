@@ -49,11 +49,31 @@ ActiveRecord::Schema.define(version: 20170717011958) do
     t.index ["user_id"], name: "index_doneits_on_user_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "content"
+    t.string   "data_ev"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "location"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "recipe_id"
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_invitations_on_event_id"
+    t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -65,6 +85,21 @@ ActiveRecord::Schema.define(version: 20170717011958) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "menus", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "primo_id"
+    t.integer  "secondo_id"
+    t.integer  "contorno_id"
+    t.integer  "dessert_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["contorno_id"], name: "index_menus_on_contorno_id"
+    t.index ["dessert_id"], name: "index_menus_on_dessert_id"
+    t.index ["event_id"], name: "index_menus_on_event_id"
+    t.index ["primo_id"], name: "index_menus_on_primo_id"
+    t.index ["secondo_id"], name: "index_menus_on_secondo_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "notified_by_id"
@@ -74,7 +109,9 @@ ActiveRecord::Schema.define(version: 20170717011958) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "badge_id"
+    t.integer  "event_id"
     t.index ["badge_id"], name: "index_notifications_on_badge_id"
+    t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
     t.index ["recipe_id"], name: "index_notifications_on_recipe_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"

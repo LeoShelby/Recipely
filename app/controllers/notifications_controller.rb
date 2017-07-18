@@ -8,6 +8,8 @@ class NotificationsController < ApplicationController
 		redirect_to @notification.notified_by
 	elsif @notification.type_not=="badge"
 		redirect_to show_all_path(@notification.user) # ti reindirizzo alla tua pagina dei badges!
+	elsif @notification.type_not=="event"
+		redirect_to event_path(@notification.event) # ti reindirizzo alla pagina dell'evento!
 	else #altrimenti è commento o like quindi vai comunque sulla ricetta
 		redirect_to recipe_path(@notification.recipe)
 	end

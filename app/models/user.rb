@@ -53,6 +53,8 @@ class User < ApplicationRecord
 	
 	has_many :badges, dependent: :destroy
 	
+	has_many :events, dependent: :destroy
+	
 	def feed
 		Recipe.where("user_id IN (?) OR user_id = ?",following_ids,id)
 	end
@@ -165,6 +167,18 @@ class User < ApplicationRecord
 	def undoneit(recipe)
 		doneits.find_by(recipe_id: recipe.id).destroy
 	end
+	
+	
+	
+   #ricerca nel database
+   def self.search(search)
+		#where("name LIKE ?", "%#{search}%") 
+		left_outer_joins(:recipes).where('recipes.title LIKE ? or users.name LIKE ?', "%#{search}%", "%#{search}%")
+		# voglio cercare gli utenti anche tramite il nome delle ricette che hanno fatto
+		#faccio un left_outer_joins poichè non tutti gli utenti hanno fatto delle ricette e risulterebbero esclusi dalla ricerca per nome!
+   end
+	
+	
 	
 	class << self
 	  def from_omniauth(auth_hash)

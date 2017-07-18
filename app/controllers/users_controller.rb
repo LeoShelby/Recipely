@@ -53,7 +53,11 @@ class UsersController < ApplicationController
   
   
   def index
-	@users = User.paginate(page: params[:page])  #variabile che contiene tutti gli utenti del database, utilizzo il metodo paginate per dividerli in più pagine
+	if params[:search]
+		@users = User.search(params[:search]).order("created_at DESC").paginate(page: params[:page]).distinct
+	else 
+		@users = User.paginate(page: params[:page])  #variabile che contiene tutti gli utenti del database, utilizzo il metodo paginate per dividerli in più pagine
+	end
   end
   
   

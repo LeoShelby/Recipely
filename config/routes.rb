@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
+
   get 'allergens/new'
+
+  get 'invitations/new'
+
+  get 'menus/new'
+
+  get 'events/new'
+
 
   get 'password_resets/new'
 
@@ -81,7 +89,9 @@ Rails.application.routes.draw do
   
   get 'user/allergen/:id' => 'allergen#show_all', as: :allergens_all
 
-
-
+  resources :events
+  resources :menus 
+  resources :invitations 
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

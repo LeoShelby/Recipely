@@ -1,0 +1,20 @@
+
+<%= form_for(@invitation , html: {multipart:true} ) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+			
+			<%= f.label :Followings %>
+			<%= f.collection_select :user_id , current_user.following.where.not(id: @event.users), :id, :name, {:prompt => 'Vuoi invitare qualcuno?'} %>
+
+
+			<%= hidden_field_tag :event_id, @event.id %> 
+			
+			
+
+			<%= f.submit "Invita", class: "btn btn-primary" %>
+			
+			<br/>
+			
+			<%= link_to "Finish", event_path(@event), class: "btn btn-primary" %>
+
+<% end %>
