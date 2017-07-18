@@ -10,7 +10,6 @@ class Event < ApplicationRecord
   has_many  :users , through: :guests ,source: :user
   
   validate :valid_date?
-  
 
   
   validates :user,presence: true
@@ -29,11 +28,11 @@ class Event < ApplicationRecord
 		begin
 		Date.strptime(self.data_ev,"%d/%m/%Y") 
 		rescue
-		errors.add(self.data_ev, "Is not a date") 
+		errors.add(:data_ev, "Is not a date") 
 		else
 			@dat=Date.strptime(self.data_ev,"%d/%m/%Y") 
 			if(@dat < Date.today) 
-				errors.add(self.data_ev, "is in the past!") 
+				errors.add(:data_ev, "is in the past!") 
 			end
         end
     end
