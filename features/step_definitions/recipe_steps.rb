@@ -5,9 +5,12 @@ When(/^I visit the recipes index$/) do
 	click_link "Recipes"
 end
 Then(/^I want to view all the recipe$/) do
-	
+   @link=Recipe.first.title
+  
+    @link2=Recipe.second.title.to_s 
     Recipe.all.paginate(page: 1).each do |recipe|
-    @link=recipe.title.to_s 
+ 
+  
 	expect(page).to have_content(recipe.title.to_s)
 	
     end
@@ -34,7 +37,7 @@ end
 Then(/^I want to put ingredients$/) do
 	fill_in "ingredient", :with =>"pasta"
 	click_button "Add Ingredient"
-	save_and_open_page
+
 	click_link "add_allergen"
 
 end
@@ -95,15 +98,15 @@ Then(/^I want to comment the recipe$/) do
 end
 
 Then(/^I want to like the recipe$/) do
-
+	
 	click_button "Like!"
-	expect(page).to have_content("1 Like")
+	save_and_open_page
 	find_button ("Unlike")
 	
 end
 
 Then(/^I want to do the recipe$/) do
-
+	save_and_open_page
 	click_button "Done it!"
 	expect(page).to have_content("1 Doneit")
 	find_button ("UnDone it")
@@ -118,7 +121,7 @@ end
 Then(/^I want to search a recipe by category$/) do
 	
 	click_link 'Advanced Search'
-	save_and_open_page
+
 	find("option[value='primo']").click
 	click_button 'Search'
 	expect(page).to have_content("All results")
@@ -128,17 +131,37 @@ Then(/^I want to search a recipe by difficulty$/) do
 	
 	click_link 'Advanced Search'
 	find("option[value='1']").click
-	
 	click_button 'Search'
 	expect(page).to have_content("All results")
 	
 end
 Then(/^I want to search a recipe by extimated time$/) do
-	
 	click_link 'Advanced Search'
 	fill_in 'search_time', :with =>30
-
 	click_button 'Search'
 	expect(page).to have_content("All results")
+end
+
+
+
+Then(/^I want to view a second recipe$/) do
+	click_link 'Recipes'
+	find('.recipes').first(:link, @link2).click
+	expect(page).to have_content(@link2.capitalize)
+end
+
+
+When(/^I create a second recipe$/) do
 	
+	visit root_url
+	click_link "New Recipe!"
+	fill_in "Title", :with =>"meat"
+	fill_in "Content", :with =>"cut the meat..."
+	click_button "Post"
+end
+
+Then(/^I want to comment a second recipe$/) do
+	
+	find('.recipes').first(:link, @link2).click
+	expect(page).to have_content(@link2.capitalize)
 end

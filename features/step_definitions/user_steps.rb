@@ -24,6 +24,7 @@ Given(/^I am userB$/) do
              activated: true,
              activated_at: Time.zone.now)
 	@userA=User.find_by(email: "example@railstutorial.org")
+	@userC=User.find_by(email: "example-3@railstutorial.org")
 	visit '/login'
 	fill_in "Email", :with => @userB.email
 	fill_in "Password", :with => 'password'
@@ -266,6 +267,91 @@ end
 Then(/^I want to search a user$/) do
 	fill_in "search", :with => User.second.name
 	click_button 'Search User'
-	find_link(User.second.name)
+	
 end
 
+Then(/^I recive a chef badge notification$/) do
+	click_link 'View All'
+	expect(page).to have_content("You gain a new badge! Chef")
+end
+
+
+Then(/^I want to follow a user$/) do
+	find('.users').first(:link,@userA.name).click
+	click_button 'Follow'
+end
+
+Then(/^I recive a birdman badge notification$/) do
+	click_link 'View All'
+	expect(page).to have_content("You gain a new badge! Birdman")
+end
+
+Then(/^I recive a commenter badge notification$/) do
+	click_link 'View All'
+	expect(page).to have_content("You gain a new badge! Commenter")
+end
+When(/^I visit my profile$/) do
+	
+	visit root_url
+	click_link 'view my profile'
+end
+
+
+Then(/^I want to view my badges$/) do
+	click_link 'View My Badges'
+	expect(page).to have_content("Your Badges")
+	expect(page).to have_content("Liker")
+end
+
+Then(/^I want to view my chef lv2 badge$/) do
+	click_link 'View My Badges'
+	expect(page).to have_content("Your Badges")
+	expect(page).to have_content("Chef Level 2")
+end
+
+Then(/^I want to view my liker lv2 badge$/) do
+	click_link 'View My Badges'
+	expect(page).to have_content("Your Badges")
+	expect(page).to have_content("Liker Level 2")
+end
+
+Then(/^I want to view my creator lv2 badge$/) do
+	click_link 'View My Badges'
+	expect(page).to have_content("Your Badges")
+	expect(page).to have_content("Creator Level 2")
+end
+
+Then(/^I want to follow 2 users$/) do
+	click_link 'Users'
+	#click_link @userA.name
+	find('.users').first(:link,@userA.name).click
+	click_button 'Follow'
+	click_link 'Users'
+	#click_link @userC.name
+	find('.users').first(:link,@userC.name).click
+	click_button 'Follow'
+	visit root_url
+
+
+end
+
+Then(/^I want to view my birdman lv2 badge$/) do
+
+	click_link 'View My Badges'
+	expect(page).to have_content("Your Badges")
+	expect(page).to have_content("Birdman Level 2")
+end
+
+Then(/^I want to view my commenter lv2 badge$/) do
+	click_link 'View My Badges'
+	expect(page).to have_content("Your Badges")
+	expect(page).to have_content("Commenter Level 2")
+end
+
+Then(/^I want to view the event$/) do
+	
+	expect(page).to have_content("Created by")
+	expect(page).to have_content("Description")
+	expect(page).to have_content("Date")
+	
+end
