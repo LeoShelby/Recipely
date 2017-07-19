@@ -5,7 +5,58 @@ OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({
 
 }) 
 
+Given(/^I am authenticated$/) do
+	@Auser = User.second
+	@followed_user=@Auser.following.first
+	@followed_user
+	visit '/login'
+	fill_in "Email", :with => @Auser.email
+	fill_in "Password", :with => 'password'
+	click_button "Log in"
 
+end
+
+Given(/^I am userB$/) do
+	@userB=User.create!(name:  "UserB",
+             email: "UserB@railstutorial.org",
+             password:              "password",
+             password_confirmation: "password",
+             activated: true,
+             activated_at: Time.zone.now)
+	@userA=User.find_by(email: "example@railstutorial.org")
+	visit '/login'
+	fill_in "Email", :with => @userB.email
+	fill_in "Password", :with => 'password'
+	click_button "Log in"
+	
+
+end
+
+When(/^I am userA$/) do
+
+	visit '/login'
+	fill_in "Email", :with => @userA.email
+	fill_in "Password", :with => 'foobar'
+	click_button "Log in"
+	
+
+end
+
+Then(/^I want to view UserA profile$/) do
+	click_link 'Users'
+	click_link @userA.name
+
+end
+
+Given(/^I am admin$/) do
+	@admin = User.find_by(name: 'Example User')
+
+	visit '/login'
+	fill_in "Email", :with => @admin.email
+	fill_in "Password", :with => 'foobar'
+	click_button "Log in"
+
+end
 
 Given(/^I am not registred$/) do
 	@user = User.new(name: 'Marco Example', 
@@ -89,9 +140,6 @@ When(/^I sign up with (Facebook|Google\+)$/) do |provider|
 	assert find_link('Sign up with '+provider)
 	
 	click_link 'Sign up with '+provider #ritorna al controller  le credenziali autohash come se fossi veramente acceduto a facebook con quelle
-	
-	
-	
 end
 Then(/^I want to view my account$/) do
 	#save_and_open_page
@@ -114,4 +162,110 @@ Then(/^I want to view my profile$/) do
 	expect(page).to have_content("Welcome to the kitchen of ")
 end
 
+When(/^I visit the users index$/) do
+	#save_and_open_page
+	click_link 'Users'
+	User.all.paginate(page: 1).each do |u|
+		assert find('.users').first(:link,u.name)
+		@Ulink=@Ulink||u.name 
+    end
+end
+
+Then(/^I want to view a user profile$/) do
+
+	find('.users').first(:link,@Ulink).click
+	expect(page).to have_content("Recipes")
+	expect(page).to have_content("My allergens are :")
+end
+
+Then(/^I want to un-follow a user$/) do
+	if @followed_user
+		find('.users').first(:link,@followed_user.name).click
+		click_button 'Unfollow'
+		click_button 'Follow'
+	else
+		find('.users').first(:link,@Ulink).click
+		click_button 'Follow'
+		click_button 'Unfollow'
+	end
+end
+
+When(/^I visit the settings$/) do
+	click_link 'Settings'
+end
+
+Then(/^I want to edit my profile$/) do
+
+	fill_in "Name", :with => @Auser.name+"mod"
+	click_button 'Save changes'
+	expect(page).to have_content(@Auser.name+"mod")
+	expect(page).to have_content("Profile updated")
+	
+end
+Then(/^I want to logout$/) do
+	click_link 'Log out'
+	find_link('Log in')
+end
+
+Then(/^I want to delete a user$/) do
+	
+	find('.users').first(:link,'delete').click
+	expect(page).to have_content("User deleted")
+end
+
+Then(/^I want to follow UserB$/) do
+	@userB=User.create!(name:  "UserB",
+             email: "UserB@railstutorial.org",
+             password:              "password",
+             password_confirmation: "password",
+             activated: true,
+             activated_at: Time.zone.now)
+     @Auser.follow(@userB)
+
+
+	
+end
+
+When(/^UserB authenticate$/) do
+	visit '/login'
+	fill_in "Email", :with => @userB.email
+	fill_in "Password", :with => 'password'
+	click_button "Log in"
+end
+
+Then(/^UserB recives a Follow notification$/) do
+	click_link 'View All'
+	expect(page).to have_content(@Auser.name+" started to follow you")
+end
+
+
+Then(/^UserA recives a Like notification$/) do
+	click_link 'View All'
+	expect(page).to have_content(@userB.name+" like your recipe")
+	
+end
+
+Then(/^UserA recives a Done notification$/) do
+	click_link 'View All'
+	expect(page).to have_content(@userB.name+" done your recipe")
+end
+
+
+
+Then(/^I recive a creator badge notification$/) do
+	click_link 'View All'
+	expect(page).to have_content("You gain a new badge! Creator")
+end
+
+Then(/^I recive a liker badge notification$/) do
+	click_link 'View All'
+	expect(page).to have_content("You gain a new badge! Liker")
+end
+
+
+Then(/^I want to search a user$/) do
+	fill_in "search", :with => User.second.name
+	click_button 'Search User'
+	find_link(User.second.name)
+end
 

@@ -30,7 +30,7 @@
     <div class="center col-sm-offset-1 col-sm-10">
      <%= f.submit class: 'btn btn-primary', value: 'Add Ingredient' %>
      	<%= link_to "next step :Allergens ", allergens_new_path(@recipe.id),
-                                  data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
+                                  data: { confirm: "You sure?" },class: "btn btn-lg btn-primary",id:"add_allergen" %>
 	
     </div>
   </div>
