@@ -28,15 +28,18 @@ $orange-light: #ffa500;
 html {
 	overflow-y: scroll;
 }
+
 body {
 	padding-top: 60px;
 }
+
 section {
 	overflow: auto;
 }
 textarea {
 	resize: vertical;
 }
+
 .center {
 	text-align: center;
 	h1 {
@@ -48,12 +51,14 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1;
 }
+
 h1 {
 	font-size: 3em;
 	letter-spacing: -2px;
 	margin-bottom: 30px;
 	text-align: center;
 }
+
 h2 {
 	font-size: 1.2em;
 	letter-spacing: -1px;
@@ -62,6 +67,7 @@ h2 {
 	font-weight: normal;
 	color: $gray-light;
 }
+
 p {
 	font-size: 1.1em;
 	line-height: 1.7em;
@@ -82,6 +88,7 @@ p {
 			text-decoration: none;
 		}
 }
+
 
 /* footer */
 footer {
@@ -134,10 +141,12 @@ aside {
 		}
 	}
 }
+
 .gravatar {
 	float: left;
 	margin-right: 10px;
 }
+
 .gravatar_edit {
 	margin-top: 15px;
 }
@@ -150,9 +159,11 @@ input, textarea, select, .uneditable-input {
 	margin-bottom: 15px;
 	@include box_sizing;
 }
+
 input {
 	height: auto !important;
 }
+
 #error_explanation {
 	color: red;
 	ul {
@@ -160,12 +171,14 @@ input {
 		margin: 0 0 30px 0;
 	}
 }
+
 .field_with_errors {
 	@extend .has-error;
 	.form-control {
 		color: $state-danger-text;
 	}
 }
+
 .checkbox {
 	margin-top: -10px;
 	margin-bottom: 10px;
@@ -174,6 +187,7 @@ input {
 		font-weight: normal;
 	}
 }
+
 #session_remember_me {
 	width: auto;
 	margin-left: 0;
@@ -283,6 +297,7 @@ span.picture {
     border: 3px orange solid; 
     overflow-wrap: break-word;
 }
+
 .padded {
     padding-left: 20px;
 }
