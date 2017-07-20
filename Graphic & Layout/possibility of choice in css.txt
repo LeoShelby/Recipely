@@ -1,5 +1,0 @@
-The CSS Working Group has reached an impasse on the issue of percentage margins (and padding) in flex and grid layout, and needs your input to help decide it.
-Option 1: Flex and grid items resolve percentages in margin-top and margin-bottom against the height of the element’s containing block.
-Option 2: Flex and grid items resolve percentages in margin-top and margin-bottom against the width of the element’s containing block.
-Option 1 makes vertical margins consistent with horizontal margins (which resolve percentages against the width of the element’s containing block). This is a theoretically simpler model, and works well with Flexbox and Grid’s dimension-agnostic layout concepts. However, it is inconsistent with CSS block layout, and causes the margins to collapse to zero when used in an auto-height container.
-Option 2 is consistent with the behavior of vertical margins in block and table layout. It has usable behavior in auto-height boxes, and enables the “aspect ratio hack”. However, it is a less obvious behavior, and means the layout interactions change based on whether a flexbox is “row” or “column”.
