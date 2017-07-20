@@ -48,11 +48,23 @@ and is wrapped around the whole page content, except for the footer in this exam
    <div class="w3-container w3-white w3-margin w3-padding-large">
  
   <h3> My allergens are : <h3/>
+		
    		<% @user.allergens.each do |a| %>
-			<h6><%= a.type_allergen %><h6/>
+			<h6><%= a.type_allergen %>			
+
+				
+
+			<h6/>
+
 		<% end %>
-   
+
+
    <%end%>
+    			<% if current_user?(@user) && @user.allergens.size<12%>
+				<%= link_to "add allergen", allergens_users_path(@user.id),
+                                  data: { confirm: "You sure?" },class: "btn btn-primary" %>
+
+			<% end %>
    </div>
       <!-- Blog entry -->
       <div class="w3-container w3-white w3-margin w3-padding-large">
