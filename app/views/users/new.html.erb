@@ -15,9 +15,12 @@
 			<%= f.password_field :password_confirmation, class: 'form-control' %>
 			<%= f.submit "Create my account", class: "btn btn-primary",id: "Sign up" %>
 		<% end %>
+		<br/>
+		<%= link_to 'Sign up with Facebook', '/auth/facebook', class: "btn btn-lg btn-primary" %> 
+		<br/><br/>
+		<%= link_to 'Sign up with Google+', '/auth/google_oauth2', class: "btn btn-lg btn-primary" %>  
+	
 	</div>
 	
-	<%= link_to 'Sign up with Facebook', '/auth/facebook', class: "btn btn-lg btn-primary" %>        
-	<%= link_to 'Sign up with Google+', '/auth/google_oauth2', class: "btn btn-lg btn-primary" %>  
-	
+
 </div>

@@ -19,12 +19,18 @@
 			<%= f.submit "Log in", class: "btn btn-primary" %>
 		<% end %>
 		<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+		
+		
+		<%= link_to 'Login with Facebook', '/auth/facebook', class: "btn btn-lg btn-primary" %>        
+		<%= link_to 'Login with Google+', '/auth/google_oauth2', class: "btn btn-lg btn-primary" %>  
+
 	</div>
 </div>
 
 
-<%= link_to 'Login with Facebook', '/auth/facebook', class: "btn btn-lg btn-primary" %>        
-<%= link_to 'Login with Google+', '/auth/google_oauth2', class: "btn btn-lg btn-primary" %>  
+
+
+
 
 
 
