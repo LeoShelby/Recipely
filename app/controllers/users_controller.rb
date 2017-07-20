@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 		@user.activated_at= Time.zone.now
 		
 		#flash[:info] = "Please check your email to activate your account."
+		log_in(@user)
 		redirect_to allergens_users_path(@user.id)
 		
 
