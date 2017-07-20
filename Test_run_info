@@ -1,0 +1,6 @@
+Per eseguire i test :
+1) rails db:drop:all
+2) rails db:migrate
+3) rails db:seed
+4) rails cucumber
+5) bundle exec rspec

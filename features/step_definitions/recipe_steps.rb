@@ -100,13 +100,13 @@ end
 Then(/^I want to like the recipe$/) do
 	
 	click_button "Like!"
-	save_and_open_page
+	
 	find_button ("Unlike")
 	
 end
 
 Then(/^I want to do the recipe$/) do
-	save_and_open_page
+	
 	click_button "Done it!"
 	expect(page).to have_content("1 Doneit")
 	find_button ("UnDone it")

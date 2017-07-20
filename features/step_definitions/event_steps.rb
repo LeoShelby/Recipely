@@ -1,7 +1,7 @@
 
 Then(/^I want to create an event$/) do
 	visit root_url
-	save_and_open_page
+
 	click_link "new event"
 	fill_in "Title", :with =>"pasta"
 	fill_in "Content", :with =>"boil water..."
