@@ -76,10 +76,14 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(@recipe.created_at) %> ago.
   </span>
-	<% if current_user?(@recipe.user) %>
+	<% if current_user?(@recipe.user) || current_user.admin? %>
 	 <div >
 		<%= link_to "delete", @recipe, method: :delete,
                                   data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
+                                  
+    <% end %>
+                                  
+    <% if current_user?(@recipe.user) %>
 	<%= link_to "update", edit_recipe_path(@recipe.id),
                                   data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
 

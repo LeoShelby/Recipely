@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :logged_in_user , only: [:create, :destroy,  :edit, :update]#per creare / ditruggerere/fare la new o la show devo essere loggato
   before_action :correct_user,   only: [:destroy, :edit, :update] #posso distruggere o modificare la receipe solo se sono io il crreatore
-	
+  #before_action :admin_user, only: :destroy  #si deve essere admin per eliminare un altro utente	
 	def new
 		if logged_in?
 			@recipe  = current_user.recipes.build
@@ -65,6 +65,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    @recipe = Recipe.find(params[:id])
     @recipe.destroy
     flash[:success] = "Recipe deleted"
     #redirect_to request.referrer || root_url
@@ -78,6 +79,7 @@ class RecipesController < ApplicationController
     end
     
     def correct_user
+	  return if current_user.admin?
       @recipe = current_user.recipes.find_by(id: params[:id])
       redirect_to root_url if @recipe.nil?
     end

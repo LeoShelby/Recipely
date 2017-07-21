@@ -449,7 +449,7 @@ DEPENDENCIES
   coffee-rails (= 4.2.2)
   cucumber-rails
   database_cleaner
-  faker (= 1.8.4)
+  faker (= 1.8.1)
   fog (= 1.40.0)
   guard (= 2.14.1)
   guard-minitest (= 2.4.6)
