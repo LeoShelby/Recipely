@@ -1,5 +1,6 @@
 class RatingsController < ApplicationController
-  
+  before_action :logged_in_user
+	
   def update
     @rating = Rating.find(params[:id])
     @recipe = @rating.recipe

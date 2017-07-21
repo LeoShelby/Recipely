@@ -46,9 +46,11 @@ class EventsController < ApplicationController
     private
     
     def correct_user
-	  return if current_user.admin?
-      @event = current_user.events.find_by(id: params[:id])
-      redirect_to root_url if @event.nil?
+	  if current_user	
+		  return if current_user.admin?
+		  @event = current_user.events.find_by(id: params[:id])
+		  redirect_to root_url if @event.nil?
+	  end
     end
 
     def event_params

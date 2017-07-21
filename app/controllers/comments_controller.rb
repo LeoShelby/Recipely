@@ -40,11 +40,13 @@ class CommentsController < ApplicationController
 		end
 		
 		def correct_user
-			return if current_user.admin?
-			@comment=current_user.comments.find_by(id: params[:id])
-			if @comment.nil?
-				redirect_to root_url 
-				flash[:danger]= "Can't delete the comment"
+			if current_user
+				return if current_user.admin?
+				@comment=current_user.comments.find_by(id: params[:id])
+				if @comment.nil?
+					redirect_to root_url 
+					flash[:danger]= "Can't delete the comment"
+				end
 			end
 		end
   
