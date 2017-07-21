@@ -15,7 +15,7 @@
 	 <strong><%= comment.content %> </strong>
 	<br/>
 	Posted <%= time_ago_in_words(@recipe.created_at) %> ago
-	<% if current_user?(comment.user) %>
+	<% if current_user?(comment.user) || current_user.admin? %>
 	    | 
 		<font color="#0000FF"><%= link_to "delete", comment , method: :delete, data: { confirm: "You sure?" }, remote: true %> </font>
     <% end %>
