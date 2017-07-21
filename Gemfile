@@ -14,7 +14,7 @@ group :development, :test do
 end
 gem 'rails',                   '5.0.3'
 gem 'bcrypt',                  '3.1.11'
-gem 'faker',                   '1.8.4'
+gem 'faker',                   '1.8.1'
 gem 'carrierwave',             '1.1.0'
 gem 'mini_magick',             '4.7.0'
 gem 'fog',                     '1.40.0'
