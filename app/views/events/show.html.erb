@@ -100,7 +100,7 @@
    
     <br/>
 
-	<% if current_user==@event.user %>
+	<% if current_user==@event.user || current_user.admin? %>
 	 <div >
 		<%= link_to "delete", @event, method: :delete,
                                   data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>

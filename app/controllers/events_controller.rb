@@ -2,6 +2,9 @@ require 'httparty'
 
 class EventsController < ApplicationController
 
+  before_action :logged_in_user , only: [:create, :destroy,  :edit, :update]
+  before_action :correct_user,   only: [:destroy, :edit, :update]
+
   def new
 	  if logged_in?
 		@event  = current_user.events.build		
@@ -41,6 +44,12 @@ class EventsController < ApplicationController
   end
   
     private
+    
+    def correct_user
+	  return if current_user.admin?
+      @event = current_user.events.find_by(id: params[:id])
+      redirect_to root_url if @event.nil?
+    end
 
     def event_params
       params.require(:event).permit(:content,:title,:data_ev,:location)
