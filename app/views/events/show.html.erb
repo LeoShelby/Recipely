@@ -51,6 +51,15 @@
 		 <% end %>  </h4>
 		 <br/>
 		 
+		 
+	<% if current_user?(@event.user) %>
+		<%= link_to "Update menu", edit_menu_path(@event.id),
+                                  data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
+
+    <% end %>
+		 
+		 
+		 
 		 <hr/>
 		 
 
@@ -108,7 +117,7 @@
 
 		<% if current_user==@event.user || current_user.admin? %>
 		 <div >
-			<%= link_to "delete", @event, method: :delete,
+			<%= link_to "Delete", @event, method: :delete,
 									  data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
 		
 		<% end %>
@@ -117,10 +126,12 @@
 	
 	
 	<% if current_user?(@event.user) %>
-		<%= link_to "update", edit_event_path(@event.id),
+		<%= link_to "Update", edit_event_path(@event.id),
                                   data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
 
     <% end %>
+    
+    
 
 
 

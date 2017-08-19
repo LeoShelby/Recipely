@@ -27,7 +27,22 @@ class MenusController < ApplicationController
       render 'menus/new'
     end
   end
+
+  def edit
+    @event=Event.find(params[:id])
+	@menu=@event.menu
+  end
   
+  def update
+	@event=Event.find(params[:id])
+	@menu=@event.menu
+	if @menu.update_attributes(menu_params)   #se l'aggiornamento dell'evento va a buon fine...
+		flash[:success] = "Menu updated"
+		redirect_to @event
+	else
+		render 'edit'
+	end
+  end
     
   private
 
