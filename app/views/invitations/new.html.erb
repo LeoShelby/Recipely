@@ -4,14 +4,14 @@
   
 			
 			<%= f.label :Followings %>
-			<%= f.collection_select :user_id , current_user.following.where.not(id: @event.users), :id, :name, {:prompt => 'Vuoi invitare qualcuno?'} %>
+			<%= f.collection_select :user_id , current_user.following.where.not(id: @event.users), :id, :name, {:prompt => 'Do you want to invite someone?'} %>
 
 
 			<%= hidden_field_tag :event_id, @event.id %> 
 			
 			
 
-			<%= f.submit "Invita", class: "btn btn-primary" %>
+			<%= f.submit "Invite", class: "btn btn-primary" %>
 			
 			<br/>
 			<br/>
