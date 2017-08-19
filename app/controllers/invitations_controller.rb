@@ -22,5 +22,17 @@ class InvitationsController < ApplicationController
 	end
 
   end
+  
+  
+  def destroy
+	@guest=Invitation.find_by(id: params[:id])
+	@event=@guest.event
+	@guest.destroy
+    flash[:success] = "Guest deleted"
+    respond_to do |format|
+		format.html {redirect_to @event}
+		format.js 
+    end
+  end
 
 end
