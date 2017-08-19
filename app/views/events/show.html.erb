@@ -5,12 +5,13 @@
       <h1 class="w3-center"><%=  @event.title.capitalize %> </h1><br>
       
       <FONT color="green" size="6">Created by <%=  @event.user.name.capitalize %> </FONT>
+      <br/><br/>
       
-      <h4>Description</h4>
+      <h4>Description:</h4>
       <p class="w3-text-grey"><%=  @event.content %></p><br>
 
     
-      <h4>Date</h4>
+      <h4>Date:</h4>
       <p class="w3-text-grey"><%=  @event.data_ev %></p><br>
       
       
@@ -24,7 +25,7 @@
 		 Primo:<h4>
 		 <% if @event.menu.primo%> 
 			<%= link_to @event.menu.primo.title, recipe_path(@event.menu.primo) %>
-		 <% else %> Assente
+		 <% else %> Nothing
 		 <% end %> </h4>
 		 <br/>
 		 
@@ -32,21 +33,21 @@
 		 Secondo:<h4> 
 		 <% if @event.menu.secondo%> 
 			<%= link_to @event.menu.secondo.title, recipe_path(@event.menu.secondo) %>
-		 <% else %> Assente
+		 <% else %> Nothing
 		 <% end %></h4>
 		 <br/>
 		 
 		 Contorno:<h4>
 		 <% if @event.menu.contorno%> 
 			<%= link_to @event.menu.contorno.title, recipe_path(@event.menu.contorno) %>
-		 <% else %> Assente
+		 <% else %> Nothing
 		 <% end %> </h4>
 		 <br/>
 		 
 		 Dessert:<h4> 
 		 <% if @event.menu.dessert%> 
 			<%= link_to @event.menu.dessert.title, recipe_path(@event.menu.dessert) %>
-		 <% else %> Assente 
+		 <% else %> Nothing 
 		 <% end %>  </h4>
 		 <br/>
 		 
