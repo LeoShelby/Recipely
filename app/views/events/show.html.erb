@@ -67,6 +67,9 @@
 		Humidity: <%= @meteo['current']['humidity'] %><br/>
 		Cloud:  <%= @meteo['current']['cloud'] %>
 
+		<br/>
+		<br/>
+		<%= link_to "See 7 days weather", weather_path(@event) %>
 		
 	<% end %>
 	<br/>

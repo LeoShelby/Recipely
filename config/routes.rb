@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
   
+
+  get 'static_pages/:id/weather' => 'static_pages#weather', as: :weather
+
+  
   #con questo codice (a differenza di quello vecchio sopra) si ottengono le seguenti "variabili" : 
   #help_path -> '/help'
   #help_url -> 'http://www.example.com/help
