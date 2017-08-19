@@ -29,7 +29,7 @@ class Event < ApplicationRecord
 		begin
 		Date.strptime(self.data_ev,"%d/%m/%Y") 
 		rescue
-		errors.add(:data_ev, "Is not a date") 
+		errors.add(:data_ev, "is not a date") 
 		else
 			@dat=Date.strptime(self.data_ev,"%d/%m/%Y") 
 			if(@dat < Date.today) 
