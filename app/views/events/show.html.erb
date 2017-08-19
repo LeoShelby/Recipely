@@ -114,6 +114,13 @@
 		<% end %>
 		
 	<% end %>
+	
+	
+	<% if current_user?(@event.user) %>
+		<%= link_to "update", edit_event_path(@event.id),
+                                  data: { confirm: "You sure?" },class: "btn btn-lg btn-primary" %>
+
+    <% end %>
 
 
 

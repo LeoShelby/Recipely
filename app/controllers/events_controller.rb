@@ -43,6 +43,20 @@ class EventsController < ApplicationController
 	    @events=@user.events
   end
   
+  def edit
+	@event=Event.find(params[:id])
+  end
+  
+  def update
+	@event=Event.find(params[:id])
+	if @event.update_attributes(event_params)   #se l'aggiornamento dell'evento va a buon fine...
+		flash[:success] = "Event updated"
+		redirect_to @event
+	else
+		render 'edit'
+	end
+  end
+  
     private
     
     def correct_user
