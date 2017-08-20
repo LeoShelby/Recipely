@@ -15,11 +15,18 @@
 	<%= gravatar_for guest, size: 50 %>
 	<font color="#0000FF"> <%= link_to guest.name, user_path(guest.id) %> </font> 
 	
+
+	
 	<% if current_user?(@event.user) %>
 		| <%= link_to "Cancel the invitation", Invitation.find_by(event_id: @event.id, user_id: guest.id), method: :delete,data: { confirm: "You sure?" }, remote: true %>
 	<% end %>
 	
-	</li><br/>
+	<br/>
+	<%= Invitation.find_by(event_id: @event.id, user_id: guest.id).status %>
+	
+	</li>
+	
+		
 	<hr style="border: 1px solid " ></hr>
 	
 	

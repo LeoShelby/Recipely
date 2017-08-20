@@ -33,5 +33,19 @@ class InvitationsController < ApplicationController
 		format.js 
     end
   end
+  
+  def update
+	@guest=Invitation.find(params[:id])
+	@event=Event.find(params[:event_id])
+	
+	if @guest.update_attribute(:status,params[:invitation][:status])   
+		respond_to do |format|
+			format.html {redirect_to @event}
+			format.js 
+		end
+	else
+		render 'edit'
+	end
+  end
 
 end
