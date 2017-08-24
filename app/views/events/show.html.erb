@@ -20,37 +20,40 @@
       
       
      <h4>Menù:</h4><br/>
+		<% if @event.menu %>
      
-     
-		 Primo:<h4>
-		 <% if @event.menu.primo%> 
-			<%= link_to @event.menu.primo.title, recipe_path(@event.menu.primo) %>
-		 <% else %> Nothing
-		 <% end %> </h4>
-		 <br/>
+			 Primo:<h4>
+			 <% if @event.menu.primo%> 
+				<%= link_to @event.menu.primo.title, recipe_path(@event.menu.primo) %>
+			 <% else %> Nothing
+			 <% end %> </h4>
+			 <br/>
+			 
+			 
+			 Secondo:<h4> 
+			 <% if @event.menu.secondo%> 
+				<%= link_to @event.menu.secondo.title, recipe_path(@event.menu.secondo) %>
+			 <% else %> Nothing
+			 <% end %></h4>
+			 <br/>
+			 
+			 Contorno:<h4>
+			 <% if @event.menu.contorno%> 
+				<%= link_to @event.menu.contorno.title, recipe_path(@event.menu.contorno) %>
+			 <% else %> Nothing
+			 <% end %> </h4>
+			 <br/>
+			 
+			 Dessert:<h4> 
+			 <% if @event.menu.dessert%> 
+				<%= link_to @event.menu.dessert.title, recipe_path(@event.menu.dessert) %>
+			 <% else %> Nothing 
+			 <% end %>  </h4>
+			 <br/>
 		 
-		 
-		 Secondo:<h4> 
-		 <% if @event.menu.secondo%> 
-			<%= link_to @event.menu.secondo.title, recipe_path(@event.menu.secondo) %>
-		 <% else %> Nothing
-		 <% end %></h4>
-		 <br/>
-		 
-		 Contorno:<h4>
-		 <% if @event.menu.contorno%> 
-			<%= link_to @event.menu.contorno.title, recipe_path(@event.menu.contorno) %>
-		 <% else %> Nothing
-		 <% end %> </h4>
-		 <br/>
-		 
-		 Dessert:<h4> 
-		 <% if @event.menu.dessert%> 
-			<%= link_to @event.menu.dessert.title, recipe_path(@event.menu.dessert) %>
-		 <% else %> Nothing 
-		 <% end %>  </h4>
-		 <br/>
-		 
+		 <% else %>
+			<h4>The menù has not been created</h4> <br/>
+		 <% end %>
 		 
 	<% if current_user?(@event.user) %>
 		<%= link_to "Update menu", edit_menu_path(@event.id),
