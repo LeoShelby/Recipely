@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_one :menu ,dependent: :destroy
   
-  has_many  :invitations
+  has_many  :invitations , dependent: :destroy
   has_many  :guests , through: :invitations ,source: :user
   
   
