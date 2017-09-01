@@ -4,7 +4,7 @@
   
 			
 			<%= f.label :Followings %>
-			<%= f.collection_select :user_id , current_user.following.where.not(id: @event.users), :id, :name, {:prompt => 'Do you want to invite someone?'} %>
+			<%= f.collection_select :user_id , current_user.following.where.not(id: @event.guests), :id, :name, {:prompt => 'Do you want to invite someone?'} %>
 
 
 			<%= hidden_field_tag :event_id, @event.id %> 

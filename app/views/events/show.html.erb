@@ -116,11 +116,11 @@
     
     <!-- form for edit partecipation -->
     
-    <% if Invitation.find_by(event_id: @event.id, user_id: current_user.id) %>
+    <% if current_user.partecipations.include?(@event) %>
 		<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 
-			<%= form_for(Invitation.find_by(event_id: @event.id, user_id: current_user.id), remote: true) do |f| %>
+			<%= form_for(current_user.invitations.find_by(event_id: @event.id), remote: true) do |f| %>
 			 <%= render 'shared/error_messages', object: f.object %>
 				<%= f.label :Will_you_partecipe? %>
 				<%= f.select :status,options_for_select([ "I don't know", "Going", "Not Going"]), class: 'form-control' %>  

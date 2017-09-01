@@ -6,8 +6,10 @@ class Event < ApplicationRecord
   belongs_to :user
   has_one :menu ,dependent: :destroy
   
-  has_many  :guests , class_name: "Invitation" , foreign_key: "event_id",dependent: :destroy
-  has_many  :users , through: :guests ,source: :user
+  has_many  :invitations
+  has_many  :guests , through: :invitations ,source: :user
+  
+  
   
   validate :valid_date?
 
@@ -19,7 +21,7 @@ class Event < ApplicationRecord
   validates :location, presence: true , length: { maximum: 20 }
   
 
-  validates :data_ev, presence: true , length: { maximum: 20 }
+  validates :data_ev, presence: true 
   
   has_many :notifications, dependent: :destroy
   

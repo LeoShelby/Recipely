@@ -1,5 +1,5 @@
 <div id="com">
-<FONT SIZE="6" COLOR="#FFA500"> <%= pluralize(@event.users.count, "Guest") %> </FONT>
+<FONT SIZE="6" COLOR="#FFA500"> <%= pluralize(@event.guests.count, "Guest") %> </FONT>
 
 <% if current_user?(@event.user) %>
 	 <%= link_to "Add guests", new_invitation_path(:event_id => @event.id), data: { confirm: "You sure?" }%>
@@ -10,7 +10,7 @@
 <br/>
 <div class="box">
 <br/>
-<% @event.users.each do |guest| %>
+<% @event.guests.each do |guest| %>
 	<li  class="padded" >
 	<%= gravatar_for guest, size: 50 %>
 	<font color="#0000FF"> <%= link_to guest.name, user_path(guest.id) %> </font> 
@@ -18,11 +18,11 @@
 
 	
 	<% if current_user?(@event.user) %>
-		| <%= link_to "Cancel the invitation", Invitation.find_by(event_id: @event.id, user_id: guest.id), method: :delete,data: { confirm: "You sure?" }, remote: true %>
+		| <%= link_to "Cancel the invitation", guest.invitations.find_by(event_id: @event.id), method: :delete,data: { confirm: "You sure?" }, remote: true %>
 	<% end %>
 	
 	<br/>
-	<%= Invitation.find_by(event_id: @event.id, user_id: guest.id).status %>
+	<%= guest.invitations.find_by(event_id: @event.id).status %>
 	
 	</li>
 	

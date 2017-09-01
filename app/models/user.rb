@@ -55,6 +55,11 @@ class User < ApplicationRecord
 	
 	has_many :events, dependent: :destroy
 	
+	has_many  :invitations
+    has_many  :partecipations , through: :invitations ,source: :event
+	
+	
+	
 	def feed
 		Recipe.where("user_id IN (?) OR user_id = ?",following_ids,id)
 	end

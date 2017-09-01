@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   
   def show
 	@event=Event.find(params[:id])
-	@guests=@event.users  #lista degli invitati
+	@guests=@event.guests  #lista degli invitati
 	@menu=@event.menu
 	
 	@meteo=search(@event.location)
