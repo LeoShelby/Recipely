@@ -2,13 +2,11 @@ require 'httparty'
 
 class EventsController < ApplicationController
 
-  before_action :logged_in_user , only: [:create, :destroy,  :edit, :update]
+  before_action :logged_in_user , only: [:new, :create, :destroy,  :edit, :update]
   before_action :correct_user,   only: [:destroy, :edit, :update]
 
   def new
-	  if logged_in?
-		@event  = current_user.events.build		
-	  end
+	@event  = current_user.events.build		
   end
   
   def create
