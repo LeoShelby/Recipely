@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   
   def show
 	@event=Event.find(params[:id])
-	@guests=@event.guests  #lista degli invitati
+	@guests=@event.guests  
 	@menu=@event.menu
 	
 	@meteo=search(@event.location)
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   end
   
   
-  def show_all_ev  #accroccata per mostrare tutti i likes
+  def show_all_ev 
 		@user=User.find(params[:id])
 	    @events=@user.events
   end
@@ -49,7 +49,7 @@ class EventsController < ApplicationController
   
   def update
 	@event=Event.find(params[:id])
-	if @event.update_attributes(event_params)   #se l'aggiornamento dell'evento va a buon fine...
+	if @event.update_attributes(event_params)   
 		flash[:success] = "Event updated"
 		redirect_to @event
 	else
