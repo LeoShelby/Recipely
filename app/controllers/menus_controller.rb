@@ -1,9 +1,8 @@
 class MenusController < ApplicationController
   
   def new
-		@event=Event.find(params[:event_id])
-	  	@menu  = Menu.new
-		@recipes= current_user.recipes
+		@event=Event.find(params[:event_id])	  
+		@menu  = Menu.new
   end
   
   def create
