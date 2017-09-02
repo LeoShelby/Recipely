@@ -1,13 +1,9 @@
 class MenusController < ApplicationController
   
   def new
-	  if logged_in?
 		@event=Event.find(params[:event_id])
-	  
-		@menu  = Menu.new
-		
+	  	@menu  = Menu.new
 		@recipes= current_user.recipes
-	  end
   end
   
   def create
