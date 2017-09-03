@@ -1,5 +1,9 @@
 class InvitationsController < ApplicationController
-
+  
+  
+  before_action :organiser?, only: [:destroy, :new]
+  before_action :invitated?, only: [:update] 
+  
   def new
   	  if logged_in?
 		@event=Event.find(params[:event_id])
@@ -47,5 +51,17 @@ class InvitationsController < ApplicationController
 		render 'edit'
 	end
   end
-
+  
+  
+  private
+      def organiser?
+		 if Invitation.find_by(id: params[:id])
+			 @event=Invitation.find_by(id: params[:id]).event
+	     else
+	         @event=Event.find(params[:event_id])
+	     end
+			 return if current_user?(@event.user)
+			 flash[:danger] = "You are not the organiser"
+			 redirect_to @event
+	  end
 end
