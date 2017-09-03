@@ -2,7 +2,6 @@ class InvitationsController < ApplicationController
   
   
   before_action :organiser?, only: [:destroy, :new]
-  before_action :invitated?, only: [:update] 
   
   def new
   	  if logged_in?
@@ -30,10 +29,9 @@ class InvitationsController < ApplicationController
   
   def destroy
 	@guest=Invitation.find_by(id: params[:id])
-	@event=@guest.event
+	#@event=@guest.event
 	@guest.destroy
     respond_to do |format|
-		format.html {redirect_to @event}
 		format.js 
     end
   end
@@ -44,7 +42,6 @@ class InvitationsController < ApplicationController
 	
 	if @guest.update_attribute(:status,params[:invitation][:status])   
 		respond_to do |format|
-			format.html {redirect_to @event}
 			format.js 
 		end
 	else
@@ -64,4 +61,5 @@ class InvitationsController < ApplicationController
 			 flash[:danger] = "You are not the organiser"
 			 redirect_to @event
 	  end
+
 end
