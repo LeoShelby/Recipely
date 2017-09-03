@@ -33,4 +33,26 @@
 <% end %>
 
 </div>
+<br/>
+    <!-- form for edit partecipation -->
+    
+    <% if current_user.partecipations.include?(@event) %>
+		<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+
+			<%= form_for(current_user.invitations.find_by(event_id: @event.id), remote: true) do |f| %>
+			 <%= render 'shared/error_messages', object: f.object %>
+				<%= f.label :Will_you_partecipe? %>
+				<%= f.select :status,options_for_select([ "I don't know", "Going", "Not Going"]), class: 'form-control' %>  
+
+				<%= hidden_field_tag :event_id, @event.id %> 
+				
+				<%= f.submit "Save changes", class: "btn btn-primary" %>
+
+			<% end %>
+
+		</div>
+		</div>
+	<% end %>
+
 </div>
