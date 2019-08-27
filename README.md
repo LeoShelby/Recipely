@@ -1,4 +1,4 @@
-# README
+# Recipely
 
 
 Il laboratorio di Applicazioni Software e Sicurezza Informatica ci ha fornito gli strumenti necessari per realizzare un’applicazione web nella quale sono confluiti gran parte degli insegnamenti del corso accademico triennale.
